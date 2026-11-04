@@ -57,6 +57,8 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     /** Dung lượng cache thật (byte), lấy qua `Maintenance.cacheSizeBytes()` (BE-17). */
     private val cacheBytes = MutableStateFlow(0L)
+    /** F14: trạng thái gói ngoại tuyến 5 ngôn ngữ (hỏi thẳng ML Kit, không tin DataStore). */
+    private val modelStates = MutableStateFlow<Map<String, OfflineModelState>>(emptyMap())
 
     private val _messages = MutableSharedFlow<SettingsMessage>(extraBufferCapacity = 4)
     val messages: SharedFlow<SettingsMessage> = _messages
@@ -66,8 +68,9 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         keyRevision,
         keyTest,
         cacheBytes,
-    ) { settings, _, test, bytes ->
-        settings.toUiState(test, bytes)
+        modelStates,
+    ) { settings, _, test, bytes, models ->
+        settings.toUiState(test, bytes, models)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
@@ -79,6 +82,60 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     init {
         refreshCacheBytes()
+        refreshModelStates()
+    }
+
+    /** F14: đọc trạng thái 5 gói; chưa xác định được thì để NOT_DOWNLOADED (UI hiện "—"). */
+    fun refreshModelStates() {
+        viewModelScope.launch {
+            val manager = container.offlineModelManager
+            val result = mutableMapOf<String, OfflineModelState>()
+            LANGUAGE_CODES.forEach { lang ->
+                result[lang] = runCatching { manager.modelState(lang) }
+                    .getOrDefault(OfflineModelState.NOT_DOWNLOADED)
+            }
+            modelStates.value = result
+        }
+    }
+
+    /** F14: tải 1 gói (chỉ khi user bấm — không tải ngầm). */
+    fun downloadModelFor(lang: String) {
+        viewModelScope.launch {
+            modelStates.value = modelStates.value + (lang to OfflineModelState.DOWNLOADING)
+            runCatching { container.offlineModelManager.ensureModelDownloaded(lang) }
+            refreshModelStates()
+        }
+    }
+
+    /** F14: tải tuần tự các gói còn thiếu (tránh 4 model ML Kit tải song song). */
+    fun downloadAllModels() {
+        viewModelScope.launch {
+            val manager = container.offlineModelManager
+            LANGUAGE_CODES.filter { it != "en" }.forEach { lang ->
+                val current = runCatching { manager.modelState(lang) }
+                    .getOrDefault(OfflineModelState.NOT_DOWNLOADED)
+                if (current != OfflineModelState.READY) {
+                    modelStates.value = modelStates.value + (lang to OfflineModelState.DOWNLOADING)
+                    runCatching { manager.ensureModelDownloaded(lang) }
+                    refreshModelStates()
+                }
+            }
+        }
+    }
+
+    fun deleteModelFor(lang: String) {
+        viewModelScope.launch {
+            runCatching { container.offlineModelManager.deleteModel(lang) }
+            refreshModelStates()
+        }
+    }
+
+    /** F14: đổi ngôn ngữ đích (DataStore), mặc định "vi". */
+    fun setTargetLang(lang: String) {
+        viewModelScope.launch {
+            settingsStore.setTargetLang(lang)
+            refreshModelStates()
+        }
     }
 
     /** Cache đổi khi tra cứu/xoá; đọc lại dung lượng thật, không hardcode. */
@@ -233,11 +290,20 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch { offlineTranslator.deleteModel() }
     }
 
-    private fun AppSettings.toUiState(testStatus: ApiKeyTestStatus, cacheBytes: Long): SettingsUiState {
+    private fun AppSettings.toUiState(
+        testStatus: ApiKeyTestStatus,
+        cacheBytes: Long,
+        models: Map<String, OfflineModelState>,
+    ): SettingsUiState {
         val key = secretStore.geminiApiKey()
         return SettingsUiState(
             bubbleEnabled = bubbleEnabled,
             onlineSourcesEnabled = onlineSourcesEnabled,
+            targetLang = targetLang,
+            modelStates = models,
+            modelRequiredForPair = runCatching {
+                container.offlineModelManager.requiredModels("en", targetLang)
+            }.getOrDefault(emptyList()),
             freeSourceStatus = when {
                 !onlineSourcesEnabled -> FreeSourceStatus.OFF
                 // BE-20 đánh dấu ngày (yyyy-MM-dd) đã hết quota -> tới hết ngày bỏ qua MyMemory.
@@ -306,3 +372,6 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         "${info.versionName} ($code)"
     }.getOrDefault("?")
 }
+
+/** 5 ngôn ngữ hỗ trợ F14 (mã ISO 639-1). */
+private val LANGUAGE_CODES = listOf("vi", "en", "zh", "ko", "ja")

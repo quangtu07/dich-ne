@@ -1,0 +1,35 @@
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: FATAL EXCEPTION: main
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: Process: vn.bubbledict, PID: 12275
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: java.lang.IllegalArgumentException: Only VectorDrawables and rasterized asset types are supported ex. PNG, JPG, WEBP
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.ui.res.PainterResources_androidKt.loadVectorResource(PainterResources.android.kt:99)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.ui.res.PainterResources_androidKt.painterResource(PainterResources.android.kt:70)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt.HomeContent(MainActivity.kt:228)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt.access$HomeContent(MainActivity.kt:1)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt$MainScreen$3.invoke(MainActivity.kt:155)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt$MainScreen$3.invoke(MainActivity.kt:127)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:118)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.material3.ScaffoldKt$ScaffoldLayout$1$1$bodyContentPlaceables$1.invoke(Scaffold.kt:261)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.material3.ScaffoldKt$ScaffoldLayout$1$1$bodyContentPlaceables$1.invoke(Scaffold.kt:238)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:109)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.ui.layout.LayoutNodeSubcompositionsState$subcompose$3$1$1.invoke(SubcomposeLayout.kt:1017)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.ui.layout.LayoutNodeSubcompositionsState$subcompose$3$1$1.invoke(SubcomposeLayout.kt:493)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:109)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.ActualJvm_jvmKt.invokeComposable(ActualJvm.jvm.kt:97)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.ComposerImpl.doCompose(Composer.kt:3595)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.ComposerImpl.composeContent$runtime_release(Composer.kt:3522)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.CompositionImpl.composeContent(Composition.kt:743)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.Recomposer.composeInitial$runtime_release(Recomposer.kt:1122)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.ComposerImpl$CompositionContextImpl.composeInitial$runtime_release(Composer.kt:3876)
+11-04 21:11:45.912 12275 12275 E AndroidRuntime: 	at androidx.compose.runtime.CompositionImpl.composeInitial(Composition.kt:649)
+--
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: FATAL EXCEPTION: main
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: Process: vn.bubbledict, PID: 12627
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: java.lang.IllegalArgumentException: Only VectorDrawables and rasterized asset types are supported ex. PNG, JPG, WEBP
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: 	at androidx.compose.ui.res.PainterResources_androidKt.loadVectorResource(PainterResources.android.kt:99)
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: 	at androidx.compose.ui.res.PainterResources_androidKt.painterResource(PainterResources.android.kt:70)
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt.HomeContent(MainActivity.kt:228)
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt.access$HomeContent(MainActivity.kt:1)
+11-04 21:12:00.802 12627 12627 E AndroidRuntime: 	at vn.bubbledict.ui.main.MainActivityKt$MainScreen$3.invoke(MainActivity.kt:155)

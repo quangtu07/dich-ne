@@ -17,10 +17,10 @@ android {
         applicationId = "vn.bubbledict"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 6
+        versionName = "1.0.5"
         // F12: banner cập nhật đọc manifest JSON. Đổi URL ở đây khi chuyển host (LAN -> Cloudflare).
-        buildConfigField("String", "UPDATE_MANIFEST_URL", "\"http://192.168.100.106:8770/update.json\"")
+        buildConfigField("String", "UPDATE_MANIFEST_URL", "\"https://raw.githubusercontent.com/quangtu07/dich-ne/dist/update.json\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

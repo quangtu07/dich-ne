@@ -7,6 +7,11 @@
 
 ## 1. Kết luận
 
+**KẾT LUẬN 1.0.4 / code 5 (`5ab7aadc…`, chạy 21:19–21:32 2026-11-04) — ĐẠT CÓ ĐIỀU KIỆN để bàn giao (xem §9).**
+- Blocker/critical mở: **0**. BUG-18 (crash `painterResource`) và BUG-20 (bản release `21:14:00` còn crash) **đã đóng bằng retest trên bản final**; BUG-17 (WORD+quota ra E19) và BUG-16 (báo "Bật mạng" khi có mạng) **đã đóng bằng runtime**.
+- **Nợ đã duyệt**: `E3c` (mã lỗi riêng cho "có mạng nhưng thiếu model") hoãn sang 1.0.5; 1.0.4 trả `E3a` nhưng **copy mới đúng** — chấm theo chốt của Chief + Spec 1.22.
+- Còn **BUG-03 minor** (nhánh map chết, không ảnh hưởng người dùng).
+
 **KẾT LUẬN HIỆN TẠI (2026-11-04 18:58) — ĐẠT CÓ ĐIỀU KIỆN để bàn giao.**
 - **Blocker/critical đang mở: 0.** BUG-02, BUG-04, BUG-05, BUG-06, BUG-09, BUG-10, BUG-11, BUG-12, BUG-13, BUG-14, BUG-15 **đã đóng bằng retest**; BUG-01/BUG-08 đóng; còn **BUG-03 minor** (nhánh map chết, không ảnh hưởng người dùng).
 - **Có bằng chứng chạy thật:** F1 (13 state, keyless/offline/cache/history/vocab/settings), F2–F3 (bong bóng hiện–kéo–snap, chọn vùng, consent, OCR, busy arc, E23 timeout, E10, bubble-hide), AC7/AC30 (vị trí + xoay 2 chiều đo pixel/frame), AC28/AC29/E21/E22, AC24 keyless ≤10s, icon v3 + tên "Nghĩa Bóng", UX-P1 (press scale 0,94; shadow; scrim 38%; hairline; snap không overshoot theo video).
@@ -252,6 +257,94 @@ Case nhận bằng chứng từ FE, chưa tự chạy → ghi `Prelim`: TC-UI-05
   - Bằng chứng: `2026-11-04_BUG-15_retest-PASS.log`. **Đóng bug.**
 - Ghi chú cho lần chấm sau: hai lần "không có gì xảy ra" đầu tiên là do **toạ độ tap đã cũ** (window bị dời từ `(448,472)` sang `(448,455)` giữa phiên) — luôn đọc frame mới rồi mới tính điểm vành/tâm, đừng hard-code.
 
+### BUG-17 — Tra TỪ khi MyMemory hết quota ra E19, không rơi sang Mozhi (major, MỚI — BE đang sửa)
+
+- Case: AC27 (spec 1.14+) · build debug 1.0.4 code 5 (21:08:48), emulator-5554; 2026-11-04 21:10
+- Bước: bật hook "Giả lập hết quota MyMemory" → tra **từ** `ephemeral`, `serendipity`, `resilient`; sau đó tra **đoạn** cùng điều kiện.
+- Kết quả thật (DB `history`): từ → `WORD | state=ERROR | errorCode=**E19**` (không provider); đoạn → `PARAGRAPH | engine=KEY | provider=**mozhi** | OK`.
+- UI: từ hiện banner "Hết lượt dịch miễn phí hôm nay" + "Nhập API key" ⇒ user bị chặn oan dù Mozhi còn sống; đoạn thì đúng.
+- Nguyên nhân (BE xác nhận): `MyMemoryTranslator` kiểm QUOTA **trước** khi kiểm kind=WORD, nên từ bị dán E19 thay vì đi tiếp Mozhi/ML Kit.
+- Ảnh/DB: xem log phiên 21:10 (báo cáo chat); hàng DB `4|WORD|||ERROR|E19`, `6|...|resilient`.
+- Trạng thái: **ĐÓNG 2026-11-04 21:26** trên bản final `5ab7aadc…` — từ + cờ quota (chưa model) ra S5 copy mới, **không E19**; có model ra ML Kit; đoạn vẫn dịch được. Xem §9 QA13-11/11b/12.
+
+### BUG-18 — BLOCKER: 1.0.4 (code 5) crash ngay khi mở màn chính (FE build 21:11:14)
+
+- Case: màn chính mới (FE-01) · build debug 1.0.4 code 5 `21:11:14`, emulator-5554; 2026-11-04 21:11
+- Bước: cài đè, mở app → "Dịch Nè keeps stopping".
+- Stack (logcat): `java.lang.IllegalArgumentException: Only VectorDrawables and rasterized asset types are supported ex. PNG, JPG, WEBP` → `PainterResources_androidKt.painterResource` → `vn.bubbledict.ui.main.MainActivityKt.HomeContent(MainActivity.kt:228)` (từ `MainScreen` dòng 155).
+- Nguyên nhân: `HomeContent` gọi `painterResource(R.drawable.bubble_bg)` nhưng `bubble_bg` là **shape/gradient XML (GradientDrawable)**, không phải vector/bitmap — Compose `painterResource` chỉ nhận VectorDrawable hoặc raster.
+- Hệ quả: **app không mở được** → không thể bàn giao 1.0.4 cho tới khi sửa. JVM test vẫn 160/160 vì unit test không render Compose.
+- Bằng chứng: `docs/qa/evidence/2026-11-04_P9_crash-1.0.4-build2111.log` (2 lần crash liên tiếp, PID khác nhau).
+- Trạng thái: **ĐÓNG 2026-11-04 21:20** trên bản final (màn chính render, 0 FATAL).
+- Đề nghị @Frontend: vẽ bong bóng bằng Compose thay vì dùng shape drawable — `Box(Modifier.size(56.dp).background(Brush.verticalGradient(listOf(#4A5FA5, #7C5AC8)), CircleShape))` + chữ "A"; hoặc đổi `bubble_bg` thành `<vector>` thật; hoặc load GradientDrawable qua `rememberDrawablePainter`. Sau fix phải mở app thật 1 lần trước khi báo build.
+
+### BUG-20 — Release 1.0.4 code 5 dựng `21:14:00` (sha `f59d3441…`) VẪN crash BUG-18 (blocker, MỚI — phát hiện 21:16)
+
+- Build: `app/build/outputs/apk/release/app-release.apk`, 31.621.458 B, `versionCode=5 versionName=1.0.4`, label "Dịch Nè", arm64-v8a, sha256 `f59d344191018e38795617f0bc0c92337d89c45482bc8587092d831043bb4847`.
+- Cài đè lên emulator (`lastUpdateTime=21:15:54`) → mở app: **FATAL 2/2 lần** (PID 13800 lúc 21:16:05, PID 14021 lúc 21:16:57), cùng lỗi `java.lang.IllegalArgumentException: Only VectorDrawables and rasterized asset types are supported ex. PNG, JPG, WEBP` (stack R8 đã obfuscate, không đọc được tên class). Log: `docs/qa/evidence/2026-11-04_P9final_crash-1.0.4-release2114.log`.
+- Nghi vấn nguyên nhân: **build race / APK cũ**, không phải source còn lỗi. Bằng chứng thời gian: `MainActivity.kt` mtime `21:13:20` (đã có fix Compose gradient, đọc code xác nhận dòng 222-235 không còn `painterResource`); class release biên dịch lại lúc **`21:15:06`**, tức **muộn hơn** mtime APK `21:14:00` ⇒ APK đang có trên đĩa được đóng gói từ **class của lần build trước**, không phải từ source hiện tại. Toàn bộ 11 chỗ `painterResource` còn lại trong `app/src` đều trỏ `ic_*` là `<vector>` thật.
+- Hệ quả: **không được publish sha `f59d3441…`**; phải build lại sau `21:15:06` và mở app thật 1 lần trước khi báo final.
+- Trạng thái: **ĐÓNG 2026-11-04 21:20** — bản final `5ab7aadc…` cài `Success`, mở app 4 lần, `logcat` FATAL = 0. Bản `f59d3441…` xác nhận là build race, đã xoá khỏi `dist`.
+
+### BUG-19 — Spec 1.21 có E3c nhưng code chưa có mã này; ca WORD+quota sẽ ra E3a kèm copy "Bật mạng" (major, MỚI — phát hiện bằng đọc code, CHƯA chạy runtime)
+
+- Nguồn: AC38 (spec 1.21) · phát hiện 2026-11-04 21:18 trong lúc chờ build final.
+- Spec 1.21 §5.1: **E3c** = máy có mạng nhưng thiếu model offline → copy "Chưa tải gói offline để tra từ (≈30MB)" + nút Tải gói, **tuyệt đối không "Bật mạng"**; E3a chỉ khi `NetworkStatus` offline thật.
+- Code hiện tại: `LookupErrorCodes` chỉ có `E3A`/`E3B` ([LookupPipeline.kt:18-19](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/LookupPipeline.kt#L18-L19)); nhánh WORD+quota đi: MyMemory trả `NOT_APPLICABLE` → chain hết nguồn → `failure.reason ∈ NEVER_TRIED_ONLINE` (`NO_KEY`, `NOT_APPLICABLE` — [dòng 323-326](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/LookupPipeline.kt#L323-L326)) → trả `offlineHint` = **E3a** ([dòng 159](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/LookupPipeline.kt#L159)) ⇒ `ResultUiMapper` map E3a → `ERROR_NO_NETWORK_SHORT` (S5).
+- Hệ quả runtime dự kiến: **tiêu đề đúng** ("Chưa tải gói offline để tra từ"), **có nút "Tải gói offline"**, nhưng `errorCode=E3a` trong DB và body còn câu **"Bật mạng, hoặc tải gói dịch offline (≈30MB)…"** ⇒ vẫn dính đúng lớp lỗi BUG-16 (máy đang có mạng mà khuyên bật mạng), chỉ khác là ở dòng phụ.
+- Ảnh hưởng: user đọc hướng dẫn sai; DB/telemetry gắn sai mã (E3a = mất mạng thật). Không crash.
+- Đề nghị @Backend: thêm `E3C = "E3c"` cho nhánh "có mạng + không nguồn online phù hợp + thiếu model", tách khỏi nhánh `!hasNetwork`. @Frontend: tách copy S5 thành 2 chuỗi (E3a còn "Bật mạng…", E3c chỉ hướng dẫn tải gói) hoặc truyền `errorCode` xuống để chọn body.
+- Chốt của Chief: **không kéo 1.0.4** — FE sửa copy S5 (bỏ "Bật mạng…"), mã lỗi vẫn `E3a`, **nợ E3c cho 1.0.5/code 6**; Spec 1.22 ghi rõ. Chấm AC38 trên 1.0.4: **copy + nút Tải gói + không E19/E28 = PASS**, `E3a` là nợ đã duyệt.
+- Trạng thái: **copy PASS trên bản final** (xem §9 QA13-11); nợ mã `E3c` chuyển 1.0.5 (BE-36/FE-16).
+
+### BUG-16 — Khi nguồn dịch miễn phí chết mà máy vẫn có mạng, app bảo "Bật mạng" (minor UX, MỚI)
+
+- Case: AC25 vùng lân cận (nhánh lỗi E3a) · build debug 1.0.3, emulator-5554; 2026-11-04 20:54
+- Bước: bật hook "hết quota MyMemory" (mọi request MyMemory → quota) + chặn 2 host Mozhi ở tầng IP; tra đoạn 3 câu/220 ký tự.
+- Mong đợi: thông điệp đúng nguyên nhân — nguồn miễn phí tạm không dùng được / thử lại sau (hoặc E19 nếu coi là cả chain fail).
+- Thực tế: sheet hiện **"Chưa tải gói offline để tra từ"** + **"Bật mạng, hoặc tải gói dịch offline (≈30MB) để tra từ khi không có mạng."**, DB `errorCode=E3a`. Máy **đang có mạng** (ping 8.8.8.8/raw GitHub OK) — chỉ 2 host Mozhi bị chặn.
+- Ảnh hưởng: user hiểu sai là máy mất mạng; trong thực tế kịch bản này xảy ra khi MyMemory hết quota ngày + cả 2 Mozhi instance cùng chết (Mozhi là instance tình nguyện, rủi ro có thật theo R31).
+- Bằng chứng: `2026-11-04_AC25_E19_all-chain-fail.png`, DB dòng `2|SELECTION|||ERROR|E3a`.
+- Đề nghị @Backend/@Frontend: khi chain fail vì lỗi mạng tới provider **trong khi máy có mạng**, dùng câu "Nguồn dịch miễn phí tạm không dùng được, thử lại sau" thay vì "Bật mạng"; chỉ dùng copy offline khi `ACCESS_NETWORK_STATE` báo mất mạng thật. Không chặn release.
+
+### BUG-23 — Nhánh "nguồn = đích" thiếu dòng "Văn bản đã ở ngôn ngữ đích." (minor, MỚI — chạy trên 1.0.5 `21bdfb99…`)
+
+- Case: F14/UX-06 §3 · bản `1.0.5/code 6`, emulator-5554; 2026-11-04 21:58.
+- Bước: đích VI, tra câu tiếng Việt `Hôm nay trời đẹp nên chúng tôi đi dạo trong công viên.`
+- Thực tế: chip `Câu · VI → VI`, hiện nguyên văn ở cả 2 chỗ, **không có** dòng thông báo "Văn bản đã ở ngôn ngữ đích." Bằng chứng: `_P11_same-lang-vi.png`.
+- Mong đợi (design [lang-picker.md:64](/home/alex/.dsh/bot/workspace/projects/bubble-dict/docs/design/lang-picker.md#L64)): hiện text gốc + dòng "Văn bản đã ở ngôn ngữ đích.".
+- Nguyên nhân: `grep "ngôn ngữ đích" app/src/main/res/values/strings.xml` **= 0** — chuỗi chưa từng được thêm; pipeline đã trả `provider=same-language` nhưng UI không phân biệt để hiện dòng này.
+- Đề nghị @Frontend: thêm 1 string + render khi `provider == "same-language"` (hoặc khi `sourceLang == targetLang` và không uncertain). Không chặn phát hành 1.0.5 nhưng là yêu cầu design đã chốt.
+
+### BUG-24 — Nút nghe vẫn hiện ở sheet câu khi nguồn ≠ EN (minor, MỚI — chạy trên 1.0.5)
+
+- Case: F14/TTS (design: ẩn im lặng mọi nguồn ≠ EN) · bản `1.0.5/code 6`; 2026-11-04 21:58.
+- Bước: đích VI, tra câu tiếng Việt (nguồn VI) → mở sheet; cũng kiểm ca `苹果` (nguồn ZH) và `candid` (nguồn EN).
+- Thực tế: ca VI→VI có nút content-desc **"Nghe phát âm, giọng Anh-Mỹ"** (node `[161,1095][193,1127]`); ca từ ZH thì **không** có (đúng); ca từ EN có (đúng). Bằng chứng: `_P11_same-lang-vi.png`, `_P11_word-zh.png`, `_P11_word-en.png`.
+- Nguyên nhân: `ResultUiState.ttsAvailableForSource` chỉ được kiểm ở hàng phát âm của WORD ([ResultSheet.kt:201-204](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/ui/result/ResultSheet.kt#L201-L204)); nhánh hàng nút cuối cho câu/đoạn gọi `SpeakIconButton` mà **không** kiểm cờ này ([ResultSheet.kt:908-916](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/ui/result/ResultSheet.kt#L908-L916)).
+- Hệ quả: bấm nghe trên text tiếng Việt sẽ phát bằng giọng Anh (sai ngôn ngữ), trái quy tắc "ẩn im lặng".
+- Đề nghị @Frontend: thêm `&& state.ttsAvailableForSource` vào nhánh `SpeakIconButton` của hàng nút.
+
+### BUG-22 — Text Trung/Nhật/Hàn không có dấu cách bị phân loại **WORD** ⇒ F14 không dịch được câu CJK (major, MỚI — phát hiện 21:45 trước build 1.0.5, CHƯA chạy trên bản final)
+
+- Nguồn: F14 / AC39 (spec 1.22) · phát hiện bằng đọc code + bằng chứng phân loại runtime trên 1.0.4.
+- **Bằng chứng runtime (1.0.4):** gửi `今天天气很好，我们去公园散步。` qua `ACTION_PROCESS_TEXT` → chip hiện **"Từ"** (`EN → VI` vì 1.0.4 chưa có detect), sheet xử lý như tra **từ** chứ không phải câu. `_P9final` log phiên 21:43.
+- **Nguyên nhân (code):** [NormalizeText.tokenCount](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/NormalizeText.kt#L23-L24) đếm token bằng `split(' ')`; [TextClassifier](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/TextClassifier.kt#L24-L32) coi `tokens <= 3` là WORD. Câu Trung/Nhật **không có dấu cách** → 1 token → **WORD**. Câu Hàn ngắn (`안녕하세요 오늘 날씨가 좋네요` = 2 token) cũng WORD.
+- **Hệ quả trên 1.0.5 (theo đúng code path hiện tại):** câu CJK → `kind=WORD` → chuỗi keyless **không nhận WORD** (đúng thiết kế AC38) → rơi ML Kit; cặp `zh→vi` khác cặp mặc định nên [LookupPipeline.kt:259-261](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/domain/LookupPipeline.kt#L259-L261) trả **E30** ("cặp này cần gói cho cả 2 ngôn ngữ") ⇒ user phải tải 60MB mới dịch được một câu tiếng Trung, trong khi MyMemory/Mozhi có thể dịch. Chip cũng hiện "Từ" thay vì "Câu" như UX-06 §3 (`Câu · ZH → VI`).
+- **Đề nghị @Backend (BE-34/TextClassifier) + @Spec §5.4:** phân loại **theo script** — text có ký tự CJK/Hangul thì đếm theo ký tự, không theo dấu cách, ví dụ: `cjkChars <= 3` → WORD (từ đơn), `cjkChars >= 4` → SENTENCE, `>= 2 dấu kết câu` hoặc `cjkChars >= 60` → PARAGRAPH; câu Hàn dùng token dấu cách + ngưỡng riêng nếu cần. Sau fix: câu Trung/Nhật/Hàn phải đi **đường online (MyMemory/Mozhi, langpair zh/ko/ja → vi)** như câu EN, chỉ dùng E30 khi thật sự thiếu model offline.
+- **Rủi ro kèm theo (cần kiểm runtime):** MyMemory/Mozhi có chấp nhận mã `zh`/`ja`/`ko` trong `langpair`/`from-to` không (MyMemory hay dùng `zh-CN`); nếu không, các cặp CJK sẽ rơi E28/E31 dù đã sửa classifier.
+- Trạng thái: **mở**; QA sẽ chấm AC39 nhánh CJK = FAIL nếu bản final vẫn phân loại câu Trung/Nhật/Hàn thành WORD.
+
+### BUG-21 — APK tải về không bị xoá sau khi cập nhật thành công (minor, MỚI)
+
+- Case: F12 (cập nhật) · bản 1.0.4 code 5, emulator-5554; 2026-11-04 22:34 (giờ máy tạm tua, xem §9b)
+- Bước: máy 1.0.3 → banner "Bản mới 1.0.4" → `Cập nhật` → tải 31,6 MB → installer → cài xong → mở app.
+- Thực tế: `/data/data/vn.bubbledict/cache/update-5.apk` **vẫn còn 31.621.498 B** sau khi cài thành công (kiểm bằng `su 0 ls -la cache/`), kể cả sau khi mở lại app.
+- Mong đợi (spec 1.19 §5.9 dữ liệu F12): "file APK tải về nằm cache tạm của app, **xoá sau khi cài** hoặc khi lỗi sha256".
+- Nguyên nhân (đọc code): [UpdateManager.kt:130-133](/home/alex/.dsh/bot/workspace/projects/bubble-dict/app/src/main/java/vn/bubbledict/data/update/UpdateManager.kt#L130-L133) chỉ `apkFile.delete()` khi `installIntent` trả null; nhánh cài bình thường không xoá. `lastDownloadedVersionCode` (spec §416 ghi "dọn file tạm") **không được đọc/ghi ở đâu** — đã grep toàn repo chỉ thấy trong spec. `Maintenance.runOnAppOpen` không dọn `cacheDir/update-*.apk`.
+- Hệ quả: mỗi lần cập nhật để lại ~31,6 MB trong cache; hệ thống có thể tự dọn nhưng không đảm bảo, user thấy app chiếm dung lượng.
+- Đề nghị @Backend: xoá `update-*.apk` khi mở app (Maintenance) hoặc dùng `lastDownloadedVersionCode` để dọn; test: sau cài, `cache/update-*.apk` không còn. Không chặn 1.0.4.
+
 ### BUG-03 — Nhánh map E1→ERROR_EMPTY là nhánh chết (minor, code smell)
 
 - Nguồn: không AC; ghi nhận khi đọc code phục vụ BUG-02.
@@ -313,7 +406,24 @@ APK dùng trong test là bản thật của BE: `dist/nghia-bong-1.0.1.apk` (sha
 
 - **Thiếu so với spec R30:** Settings **không có ô `updateJsonUrl` override** và **không có nút "Kiểm tra cập nhật" (force)**. Hệ quả: QA phải redirect iptables để thử các nhánh lỗi; user cũng không tự kiểm tra tay được. Ghi **minor/feature gap** — cần Spec/Chief quyết có làm trước bàn giao không.
 - **Retest trên HOST THẬT của Chief (cửa sổ 4 phút, 19:38–19:39):** Chief tạm trỏ `http://192.168.100.106:8770/update.json` sang code 3. QA hạ máy về 1.0.1 (code 2) → mở app → **banner "Bản mới 1.0.2"** + notes đúng của host (`Ban test F12 cho QA - khong phat cho user`) → bấm **Cập nhật** → app tải APK từ host thật → hộp thoại `Update`/`Cancel` → `Update` → **máy lên `versionCode=3 / 1.0.2`, `InstallSuccess`**. Ảnh `_F12_REAL-host_banner.png`, `_F12_REAL-host_installer-dialog.png`. Sau test QA đã trả đồng hồ emulator về giờ thật.
+- **Đường public GitHub HTTPS (20:04–20:10), file đã đổi tên `dich-ne-1.0.2.apk`:** QA `curl` raw GitHub: manifest code 3, `apkUrl` = `.../dist/dich-ne-1.0.2.apk`, `sha256=3229bed5…45bea`; tải APK từ raw: **31.617.486 B, sha khớp** (= bản `nghia-bong-1.0.2.apk` cũ, chỉ đổi tên). E2E trên máy: 1.0.1 (code 2) → banner "Bản mới 1.0.2" → **tải từ raw GitHub HTTPS** → verify sha → hộp thoại `Update` → **máy lên code 3 / 1.0.2, `InstallSuccess`**. Ảnh `_F12_GH_renamed-installer-dialog.png`.
+  - Cần chờ ~5 phút cache raw: lúc 20:06 raw **vẫn trả tên cũ** `nghia-bong-1.0.2.apk` dù file mới đã có; 20:09:13 mới flip sang `dich-ne-1.0.2.apk` → **đúng cảnh báo của Chief**, ai test sớm sẽ tải file tên cũ.
+  - Static: dex của APK 1.0.2 chứa `https://raw.githubusercontent.com/quangtu07/dich-ne/dist/update.json` (manifest mặc định) — từ 1.0.2 trở đi check qua GitHub.
+  - **Banner-from-GitHub trên bản 1.0.2 (20:14–20:17):** Chief đẩy `update.json` code 4 / versionName `1.0.3` lên nhánh `dist`; máy đang cài **1.0.2 (code 3)** → mở app (sau khi tua ngày để vượt gate 1/ngày) → **banner "Bản mới 1.0.3"** đúng notes của manifest, không cần host LAN ⇒ nhánh tự-check qua GitHub HTTPS **PASS**. Bấm `Cập nhật` → tải `dich-ne-1.0.2.apk` từ raw HTTPS (cùng sha manifest) → hộp thoại `Update`/`Cancel` hiện sau ~8s ⇒ **tải + verify qua GitHub PASS**; QA bấm `Cancel` (không cài lại cùng version). Ảnh `_F12_GH_code4-banner.png`, `_F12_GH_code4-installer.png`.
+  - Bài học vận hành: lần mở app đầu tiên (20:14:33) **không thấy banner** vì CDN raw còn trả code 3 đúng lúc đó, mà gate 1 lần/ngày đã ghi mốc → phải tua ngày mới check lại. Khi test manifest mới trên GitHub phải chờ CDN flip (~3–5 phút) **trước** khi mở app.
 - Chief đã trả `update.json` về **code 2 / 1.0.1 / sha `01c166bb…`** (QA tự `curl` kiểm lại lúc 19:40 — đúng). Máy emulator sau test cũng được QA đưa về bản phát **1.0.1 (code 2)**, mở app không còn banner (đúng vì manifest = bản đang cài).
+
+## 3e. Bản 1.0.3 (code 4) — QA chạy E2E + failover Mozhi (20:50–20:54)
+
+- **Phát hành:** `dist/dich-ne-1.0.3.apk` QA tự hash = **`760608af23ed69bf017fc01631da569cd9c6f5fffb5f00c73584688343815128`**, 31.618.006 B; manifest raw GitHub code 4 trỏ đúng file đó (curl 200).
+- **E2E 1.0.2 → 1.0.3 qua GitHub HTTPS: PASS.** Máy 1.0.2 (code 3) → banner **"Bản mới 1.0.3"** → `Cập nhật` → tải `dich-ne-1.0.3.apk` từ raw HTTPS, sha khớp manifest → hộp thoại `Update` → **máy lên `versionCode=4 / 1.0.3`, `InstallSuccess`**. Ảnh `_F12_1.0.3_banner.png`, `_F12_1.0.3_installer-dialog.png`.
+- **AC27 (spec 1.14 — failover Mozhi): PASS runtime.** Trên debug build 1.0.3 bật hook "Giả lập hết quota MyMemory", xoá cache, tra đoạn 215 ký tự/3 câu → sheet có bản dịch, **không có banner "Hết lượt dịch miễn phí"**; DB `history`: `source=SELECTION, engine=KEY, provider=**mozhi**, state=OK`, `resultText` = "Hôm qua thành phố đã mở một thư viện mới gần sông…" ⇒ MyMemory hết lượt nhưng app lấy kết quả thật từ Mozhi, đúng nghĩa AC27 mới. Ảnh `_AC27_mozhi-failover.png`.
+- **Nhãn Settings 1.0.3: PASS runtime** — "Nguồn miễn phí" + subtitle **"MyMemory / Mozhi / Offline (ML Kit)"**, trạng thái **"MyMemory hết lượt · chuyển Mozhi"** (đúng thực tế, không nói "không dịch được"). Ảnh `_1.0.3_settings-free-source-mozhi.png`.
+- **AC25/E19 nghĩa mới — dựng "cả chain fail" (20:54):** hole: bật hook "hết quota MyMemory" + chặn IP 2 host Mozhi (`iptables OUTPUT -d 141.95.32.57/176.9.8.206 -j REJECT`, ping fail xác nhận), tra đoạn 3 câu mới → app trả **E3a** ("Chưa tải gói offline để tra từ" + "Bật mạng, hoặc tải gói dịch offline (≈30MB)…", nút `Tải gói offline`/`Thử lại`), DB `state=ERROR, errorCode=E3a`.
+  - ⇒ **Không dựng được E19 bằng runtime**: E19 chỉ phát khi cả chain trả QUOTA, mà Mozhi thật không trả mã quota; muốn chứng minh phải mock server (BE đã có unit test, QA không tự chạy được). Ghi **"E19 nghĩa mới: không kiểm bằng runtime"**.
+  - Phát hiện phụ (xem BUG-16): copy của nhánh E3a nói "Bật mạng" dù máy đang có mạng.
+- Sau test QA đã gỡ iptables, tắt hook, cài lại **bản phát release 1.0.3**, trả đồng hồ máy.
+- Sau test QA đã tắt hook, cài lại **bản phát release 1.0.3**, trả đồng hồ máy về giờ thật.
 
 ## 4. Ghi nhận khác (không phải bug code)
 
@@ -380,3 +490,86 @@ APK dùng trong test là bản thật của BE: `dist/nghia-bong-1.0.1.apk` (sha
 | `2026-11-04_P3_TC-AC-28_pos-*.log` | Mốc START intent cho AC29 (5,22s / 2,16s) | — |
 | `2026-11-04_P4_TC-AC-28_candid_bug08-retest.png` | AC28 PASS từ mới: IPA + "thật thà" + "Nghĩa tiếng Anh" 2 defs | `8469657a0f572d38` |
 | `2026-11-04_P4_TC-AC-28_prudent_cachehit_final.png` | AC28 PASS cache-hit: IPA + "Kết quả đã lưu" + "Nghĩa tiếng Anh" + "Từ gần nghĩa" | (xem file) |
+
+## 9. Lần chạy 9 — 1.0.4 / code 5 final (`5ab7aadc…`) — 2026-11-04 21:19–21:32
+
+- Build: `dist/dich-ne-1.0.4.apk`, **31.621.498 B**, sha256 `5ab7aadc6f46a9ae354943350e1bcdd2b2f9a5693d0f91d199c3aa750efe9576`, `versionCode=5 versionName=1.0.4`, label **"Dịch Nè"**, arm64-v8a; cài đè lên máy đang có dữ liệu cũ (`lastUpdateTime=21:20:21`), mở app **4 lần**, `logcat` FATAL = **0**.
+- Môi trường: emulator-5554, API 35; release **không debuggable** + đã bỏ ghi history ⇒ mã lỗi chấm qua **copy UI** và đọc DB bằng quyền root.
+
+| ID | Nội dung | Kết quả | Bằng chứng |
+|---|---|---|---|
+| QA13-01 | Mở app không crash, MainActivity top, PID sống | **PASS** | 0 dòng FATAL; `_P9final_crash…` chỉ còn của bản cũ |
+| QA13-02 | Màn chính trạng thái bật | **PASS** — "Dịch Nè", bóng gradient+A 56dp, "Đang bật · bấm để tắt", switch ON, 3 dòng (gộp 1 đoạn) hướng dẫn, nút Cài đặt full-width | `_P9final_home-bat.png` |
+| QA13-03 | Màn chính trạng thái tắt | **PASS** — "Đang tắt · bấm để bật", switch OFF, không banner | `_P9final_home-tat.png` |
+| QA13-04 | Thiếu quyền overlay | **PASS** — banner "Chưa cấp quyền hiển thị trên app khác" + nút `Cấp quyền` | `_P9final_home-thieu-quyen.png` |
+| QA13-05 | Back giữa 2 màn | **PASS** — Settings → BACK về màn chính (không thoát); BACK ở màn chính ra launcher, app+bong bóng vẫn sống (đúng thiết kế) | log phiên 21:21 |
+| QA13-06 | Tên + phạm vi | **PASS** — UI dump: "Dịch Nè" 1, "Nghĩa Bóng" **0**, "Lịch sử" **0**, "Từ vựng" **0**, "Lưu" **0** | `_P9final_ui-dump-*.txt` |
+| QA13-07 | Sheet WORD không còn nút Lưu | **PASS** — chỉ `Copy` (+ icon Nghe); `grep -c 'text="Lưu"'` = **0** | `_P9final_sheet-word-success.png` |
+| QA13-08 | Chip cache vẫn giữ | **PASS** — "Kết quả đã lưu" + "Tra lúc 21:26 04-11" | `_P9final_sheet-cache-chip.png` |
+| QA13-09 | Settings DỮ LIỆU | **PASS** — chỉ "Xoá cache kết quả" (0 KB), không mục xoá lịch sử/từ vựng | `_P9final_settings-data.png` |
+| QA13-10 | Phiên bản + nguồn | **PASS** — "1.0.4 (5)"; "MyMemory / Mozhi / Offline (ML Kit)" + "Đang dùng online" | `_P9final_settings-data.png` |
+| QA13-11 | BUG-17 nhánh **chưa có model** + cờ quota | **PASS** — ra S5 copy mới "Chưa tải gói offline để tra từ" + body không còn "Bật mạng"; nút `Tải gói offline / Thử lại / Copy`; **không** banner "Hết lượt"; **không E19** | `_P9final_bug17-word-quota.png` |
+| QA13-11b | AC38 nhánh **có model** + cờ quota | **PASS** — từ `prudent` → IPA `/ˈpɹuːdənt/`, "thận trọng", "Kết quả offline", 1 định nghĩa EN + "Từ gần nghĩa" — ML Kit, không E19/E28 | `_P9final_ac38-word-quota-with-model.png` |
+| QA13-12 | BUG-17 nhánh đoạn 205 ký tự + cờ quota | **PASS** — dịch đủ tiếng Việt, không banner "Hết lượt" (MyMemory bị bỏ qua, Mozhi trả kết quả) | `_P9final_bug17-paragraph-quota.png` |
+| QA13-14 | E28: quota + chặn 2 IP Mozhi, máy có mạng | **PASS** — "Nguồn dịch miễn phí tạm không dùng được" + "Thử lại sau ít phút." + `Thử lại/Copy`; **không** "Bật mạng", không "hết lượt" (đóng BUG-16) | `_P9final_e28-sources-down.png` |
+| QA13-15 | E3a: máy bay thật | **PASS** — `ping 8.8.8.8` = Network unreachable; sheet ra S5 copy (E3a), không crash | `_P9final_e3a-airplane.png` |
+| QA13-16 | E19 (mọi nguồn QUOTA) | **Không chấm runtime** — chỉ BE unit test **161/161**; ghi "verified by BE unit test", đúng AC25a | — |
+| QA13-17 | Dọn môi trường | **PASS** — `iptables` còn **0** rule, máy bay tắt, mạng lại (ping 8.8.8.8 OK), cờ quota xoá khỏi DataStore | log phiên 21:31 |
+| QA13-18 | history/vocab không tăng | **PASS** — sau 4 lượt tra: `history=0`, `vocab=0` (chỉ cache có row) | pull DB root 21:28 |
+| QA13-19 | AC13: restart rồi tra lại | **PASS** — force-stop + mở lại + tra lại đoạn → "Kết quả đã lưu", "Tra lúc 21:28 04-11" (cache, <1s) | `_P9final_ac13-cache-after-restart.png` |
+| QA13-20 | Cài đè lên máy có dữ liệu cũ | **PASS** — `install -r` Success, mở 4 lần 0 FATAL, dữ liệu cũ (settings/cache) đọc lại bình thường | log phiên 21:20 |
+| QA13-21/22 | Bôi đen + OCR trên bản final | **Không chạy lại** — đã PASS trên build 18:36 (AC7/AC8/AC9/AC31); bản final chỉ đổi màn chính + copy | — |
+| QA13-23 | Từ + đoạn (chất lượng) | **PASS** — `candid` IPA `/ˈkæn.dɪd/` + "thật thà" + 2 định nghĩa EN; `prudent` IPA + "thận trọng"; đoạn 205 ký tự → bản dịch đủ | `_P9final_sheet-word-success.png` |
+
+### 9b. Update 1.0.3 → 1.0.4 qua GitHub (banner) — **PASS**
+
+- Chuẩn bị: hạ máy về `dich-ne-1.0.3.apk` (`versionCode=4`, `install -r -d` Success), xoá prefs để cổng 1 lần/ngày mở lại; `update.json` trên `raw.githubusercontent.com/quangtu07/dich-ne/dist` = `{"versionCode":5,"versionName":"1.0.4","apkUrl":"…/dich-ne-1.0.4.apk","sha256":"5ab7aadc…"}`.
+- **Banner:** 1.0.3 mở app → banner **"Bản mới 1.0.4"** + `notes` lấy từ manifest + `Bỏ qua`/`Cập nhật`. `_F12_1.0.4_banner.png`
+- **Cần quyền cài:** lần đầu bấm `Cập nhật` (chưa cấp `REQUEST_INSTALL_PACKAGES`) → "Cho phép Cài từ nguồn không xác định cho Dịch Nè để cập nhật." + `Mở cài đặt`, **không tải** (đúng E27/U5, tái hiện trên 1.0.4).
+- **Tải + verify sha:** sau khi cấp quyền, bấm `Cập nhật` → tải `update-5.apk` (31.621.498 B, đúng sha) → installer hệ thống **"Do you want to update this app?"** (`Cancel`/`Update`). `_F12_1.0.4_installer.png`
+- **Cài:** bấm `Update` → `InstallSuccess`; `dumpsys package` = **`versionCode=5`, `versionName=1.0.4`**; mở app: `MainActivity` top, **0 FATAL**, màn chính mới ("Dịch Nè", bóng, `Cài đặt`, **0** tab Lịch sử/Từ vựng). `_F12_1.0.4_installed.png`, `_F12_1.0.4_post-update-home.png`
+- **Giờ máy:** đã tua +25h để qua cổng 1 lần/ngày (mẹo cũ), sau test đặt lại `auto_time=1` → đồng hồ về `Wed Nov 4 21:35`. `lastUpdateTime` của app ghi `2026-11-05 22:34` là dấu vết của lần tua giờ, **không phải lỗi app**.
+- **Phát hiện:** APK tải về không bị xoá sau cài → **BUG-21 minor**.
+
+**Bug sau lần chạy 9:** BUG-18 **đóng**, BUG-20 **đóng**, BUG-17 **đóng**, BUG-16 **đóng**; BUG-19: **copy PASS**, mã `E3a` = **nợ E3c đã duyệt** (1.0.5); BUG-21 minor (APK tải về không xoá sau cài) mở; **update 1.0.3 → 1.0.4 PASS** (§9b); BUG-03 minor còn mở.
+**Chưa kiểm được ở bản này:** update 1.0.3 → 1.0.4 (GitHub chưa có code 5 — chờ Chief đẩy `dist`); F14 (chưa có code); themed icon, 60fps/janky, AC18–AC22 (không kiểm trên emulator).
+**Lưu ý cho lần sau:** release **không debuggable** và đã bỏ ghi `history` ⇒ không chấm được `errorCode` từ DB qua `run-as`; dùng `su 0 cat` (emulator root) hoặc chấm theo copy. Bản `21:14:00` (`f59d3441…`) là build race còn crash — không dùng.
+
+### 9c. 1.0.5/code 6 — bản `21:48:20` (sha `d54ff9bc…`) là build CŨ, KHÔNG chấm
+
+- Cài thử lên emulator (`lastUpdateTime=21:49:55`, `versionCode=6`), mở app 0 FATAL, nhưng ca BUG-22 **vẫn sai**: câu Hán 13 chữ `今天天气很好，我们去公园散步。` → chip **"Từ · ? → VI"**, ra **E30** ("Cặp ngôn ngữ này cần gói ngoại tuyến cho cả 2 ngôn ngữ"). Ảnh: `_P11_bug22-zh-sentence.png`.
+- Nguyên nhân: **APK cũ hơn source** — APK mtime `21:48:20`, còn `TextClassifier.kt` + `LookupPipeline.kt` `21:49:48`, `LanguageDetector.kt` `21:48:44`, `KeylessFallbackTranslator.kt` `21:50:07`. Đúng loại lỗi build-race như BUG-20 (1.0.4 `21:14:00`).
+- Kết luận: **không chấm bản này**, không publish sha `d54ff9bc…`; chờ Backend build sau `21:50:07`, kiểm `APK mtime > mtime source mới nhất` rồi QA chạy lại từ cổng không crash. Ghi vào đây để lần sau ai thấy APK trong `build/outputs` cũng kiểm mtime trước.
+
+## 10. Lần chạy 10 — 1.0.5 / code 6 FINAL (`9ec6a194…`) — 2026-11-04 22:14–22:25
+
+- Build: `dist/dich-ne-1.0.5.apk`, **31.648.566 B**, sha256 `9ec6a194f6e1e53f501b33a8e3e90ef8d241433f7826099aec0edfcdbfb568d3`, `versionCode=6 versionName=1.0.5`, label "Dịch Nè", arm64-v8a; cài đè lên bản `21bdfb99…`, `lastUpdateTime=22:14:42`; mở app **3 lần** liên tiếp → `logcat` FATAL = **0**.
+- Chạy sau khi FE sửa BUG-23/24 (source 22:03, APK 22:14:28 — `find app/src -newer APK` = 0 file).
+
+| Nhóm | Case | Kết quả | Bằng chứng |
+|---|---|---|---|
+| Cổng | Mở app 3 lần, PID sống, 0 FATAL | **PASS** | `_P11_final-build-info.log` |
+| BUG-23 | VI → VI: dòng "Văn bản đã ở ngôn ngữ đích.", **0** nút Nghe | **PASS** (đã sửa) | `_P11_final_same-lang-vi.png` |
+| BUG-24 | Câu ZH/JA/KO → VI: **0** content-desc "Nghe phát âm" | **PASS** (đã sửa) | `_P11_final_zh-sentence.png`, `_P11_final_ja-sentence.png`, `_P11_final_ko-sentence.png` |
+| Hồi quy TTS | Câu/từ EN → VI **vẫn có** nút Nghe | **PASS** | `_P11_final_en-sentence-nghe.png` |
+| Smoke BUG-22 | Hán 13 chữ → `Câu · ZH → VI` + bản dịch; JA (2 dấu 。) → `Đoạn · JA → VI`; KO → `Câu · KO → VI` | **PASS** | các ảnh trên |
+| Smoke E3c | Từ EN `loquacious`, có mạng, chưa có gói VI → "…nguồn online không dùng được cho từ này", không "Bật mạng" | **PASS** | `_P11_final_e3c-word.png` |
+| Smoke E28 | Đoạn 303 ký tự, chặn 3 IP MyMemory + 2 IP Mozhi, máy có mạng → "Nguồn dịch miễn phí tạm không dùng được" | **PASS** | `_P11_final_e28.png` |
+| Màn chính | 3 ảnh: bật (switch ON, overlay `frame=[448,813][548,913]`), tắt, thiếu quyền (banner + `Cấp quyền`) | **PASS** | `_P11_final_home-bat/-tat/-thieu-quyen.png` |
+| Dialog đích | "Dịch sang" 5 lựa chọn VI/EN/ZH/KO/JA + Đóng | **PASS** | `_P11_final_settings-lang-dialog.png` |
+| Màn gói | 5 dòng; EN "Không cần gói" (0 nút); VI+JA "Chưa tải" → hiện **"Tải tất cả"**; bấm → tải **tuần tự**, xong cả 4 gói `Đã tải` | **PASS** | `_P11_final_offline-packs.png`, `_P11_final_download-sequential.png`, `_P11_final_offline-packs-ready.png` |
+| Cache + AC13 | Restart app, tra lại text Hán → chip `Câu · ZH → VI` + **"Kết quả đã lưu"** ("Tra lúc 22:23") | **PASS** | phiên 22:23 |
+| DB | `history=0`, `vocab=0`, `cache=18`; cache key theo cặp (`en>vi` 5, `zh>vi` 5, `ja>vi`, `ko>vi`, `en>zh`, `zh>zh`) | **PASS** | `/tmp` pull root 22:24 |
+| E31 | Không reachable qua UI; chấm bằng unit test `allProvidersPairUnsupported_mapsToE31` + `unsupportedTarget_mapsToE31` | **PASS (unit)** | báo cáo BE/CR |
+| Update 1.0.4→1.0.5 | Hạ máy về 1.0.4 (code 5) → mở app → banner **"Bản mới 1.0.5"** + notes từ GitHub raw → `Cập nhật` → tải `dich-ne-1.0.5.apk` (31.648.566 B, **sha `9ec6a194…` khớp manifest**) → installer "Do you want to update this app?" → `Update` → `InstallSuccess`, `dumpsys` = **`versionCode=6`**, mở app mới 0 FATAL | **PASS** | `_P11_update_banner-1.0.5.png`, `_P11_update_installer-1.0.5.png`, `_P11_update_installed-1.0.5.png` |
+| BUG-21 trên đường update thật | Sau khi cài đè 1.0.5 và mở app: `cache/update-*.apk` **không còn** (đã dọn) | **PASS** | log phiên 22:28 |
+| GitHub `dist` | `update.json` = code 6 / 1.0.5 / sha `9ec6a194…`; APK tải từ raw khớp sha; `dich-ne-1.0.4.apk` **vẫn còn** (HTTP 200) | **PASS** | `curl` phiên 22:27 |
+
+**Kết luận bản `9ec6a194…`: ĐẠT để phát hành — 32/32 case PASS (30 runtime + E31 bằng unit test + update 1.0.4→1.0.5 PASS), 0 blocker/critical, BUG-23/24 đã đóng bằng runtime.**
+Còn nợ/ghi nhận: **BUG-25 minor** (prefs hỏng → app crash `Unable to parse preferences proto`, xem dưới) và các low của CR (classifier đếm khoảng trắng, MyMemory `403` ra E5, chưa thử `zh-TW`, chưa strip `「」`) — đều ngoài đường phát hành; cache còn 4 row key cũ `"vi"` từ 1.0.4 (không ảnh hưởng, sẽ prune theo TTL).
+
+### BUG-25 — Preferences hỏng làm app crash khi mở (minor, phát hiện khi QA tự ghi prefs để giả lập quota)
+
+- Trong lúc QA ghi tay cờ `keylessQuotaBlockedOn` vào DataStore (công cụ test) và app đang chạy, file prefs bị ghi đè → 3 lần mở app liên tiếp crash: `r1.b: Unable to parse preferences proto` (`DefaultDispatcher-worker-1/5`, PID 12545/12656/12862), **không tự phục hồi**; xoá file prefs thì app chạy lại bình thường.
+- Đây là lỗi do thao tác test tạo ra, **không phải luồng người dùng**, nhưng phản ánh việc DataStore không có `ReplaceFileCorruptionHandler`: nếu file prefs hỏng vì lý do thật (crash giữa lúc ghi, hết chỗ) user sẽ kẹt ở màn hình đen/launcher cho tới khi xoá dữ liệu app.
+- Đề nghị @Backend (backlog 1.0.6): thêm `.corruptionHandler(ReplaceFileCorruptionHandler { emptyPreferences() })` khi tạo DataStore. Không chặn 1.0.5.

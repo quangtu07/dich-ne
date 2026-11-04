@@ -3,6 +3,25 @@
 - Ngày: 2026-11-04 (Asia/Saigon) · Người làm: Researcher · Yêu cầu: Chief
 - Mục tiêu: chứng minh app bubble-dict chạy được **mặc định không cần key**, và key (Gemini/Groq free) chỉ là tuỳ chọn nâng chất lượng.
 
+## 0. CẬP NHẬT 20:45 cùng ngày — Lingva / SimplyTranslate / Mozhi (theo yêu cầu Chief)
+
+**Kết luận: dùng được Mozhi, bỏ Lingva và SimplyTranslate.**
+
+| Endpoint keyless | Sống? | EN→VI thật | Ghi chú |
+|---|---|---|---|
+| **Mozhi — `https://mozhi.ducks.party`** | ✅ **200** | ✅ "serendipity" → "sự tình cờ"; 3 câu văn xuôi dịch mượt, đúng ngữ pháp | 5 request liên tiếp đều 200; 1,0–3,0s/request; đoạn **1.680 ký tự** vẫn dịch đủ (1.951 ký tự ra); hỗ trợ **POST form** nên không lo giới hạn URL |
+| **Mozhi — `https://mozhi.adminforge.de`** | ✅ **200** | ✅ Giống hệt (cùng engine google) | 5 request liên tiếp đều 200; 0,9–2,0s. **Instance dự phòng tốt** |
+| Mozhi khác (`mozhi.aryak.me`, `mozhi.projectsegfau.lt`, `mozhi.privacyredirect.com`, `mozhi.dr460nf1r3.org`, `mozhi.aeong.one`) | ❌ | — | 429, 404, hoặc không kết nối được |
+| Lingva (`lingva.ml`, `lingva.garudalinux.org`, `lingva.lunar.icu`, `lingva.pussthecat.org`, `translate.plausibility.cloud`, `lingva.thedaviddelta.com`) | ❌ | — | 403 Cloudflare "Just a moment...", 500, 503 DEPLOYMENT_PAUSED, 000. **Đã chết toàn bộ** |
+| SimplyTranslate (`simplytranslate.org` + mirrors) | ⚠️ HTTP 200 nhưng **trả rỗng** | ❌ `"translated_text": ""` | Server sống, backend Google của họ bị chặn → **không dùng được** |
+
+**Cách gọi Mozhi (đã chạy thật):**
+- GET: `https://mozhi.ducks.party/api/translate?engine=google&from=en&to=vi&text=<urlencoded>`
+- POST form-urlencoded: cùng URL `/api/translate`, field `engine=google&from=en&to=vi&text=...` (dùng cho đoạn dài)
+- Response JSON: trường `translated-text` (có dấu gạch nối), kèm `engine`, `source_language`, `target_language`.
+
+**Cảnh báo phải nói rõ với user:** đây là instance tình nguyện, không SLA, **4/6 instance Mozhi tôi thử đã chết** và toàn bộ Lingva đã chết — đúng mô hình "sống nhờ proxy Google, Google chặn là chết". Vì vậy Mozhi chỉ là **best-effort**, không phải bảo đảm "không giới hạn". Chỉ ML Kit on-device mới thật sự không giới hạn.
+
 ## 1. Kết luận (để Backend chốt `TranslationClient` chain)
 
 1. **Chỉ có MỘT nguồn online không cần key dùng được thật: MyMemory.** Tôi đã gọi thật, EN→VI trả về đúng, không key, không đăng ký. Giới hạn: **5.000 ký tự/ngày** (ẩn danh) hoặc **50.000 ký tự/ngày** nếu gửi kèm email qua tham số `de=`; **tối đa 500 bytes/request**.
@@ -72,6 +91,24 @@
 
 ## 8. Đã kiểm chứng / chưa kiểm chứng
 
-**Đã kiểm chứng (tự gọi API, đọc trang gốc):** MyMemory chạy keyless + mẫu dịch thật + giới hạn 5k/50k/500 bytes; LibreTranslate chính thức đòi key; 6 mirror LT + 3 Lingva + gtx bị chặn/chết; Apertium không có en↔vi; Groq free plan limits; 2 điều khoản ToS của Google.
+**Đã kiểm chứng (tự gọi API, đọc trang gốc):** MyMemory chạy keyless + mẫu dịch thật + giới hạn 5k/50k/500 bytes; LibreTranslate chính thức đòi key; 6 mirror LT + 3 Lingva + gtx bị chặn/chết; Apertium không có en↔vi; Groq free plan limits; 2 điều khoản ToS của Google. **Bổ sung 20:45:** Mozhi `mozhi.ducks.party` và `mozhi.adminforge.de` sống, EN→VI tốt, POST được, 1.680 ký tự OK; Lingva chết toàn bộ (6 instance); SimplyTranslate trả rỗng.
 
 **Chưa kiểm chứng:** Groq chất lượng EN→VI thực tế (không có key trong phiên); ổn định của MyMemory theo thời gian (chỉ thử 6 request); ToS của MyMemory về dùng thương mại (chưa đọc — dùng cá nhân thì rủi ro thấp); hạn mức MyMemory có reset theo ngày UTC hay theo IP.
+
+## 9. Phân loại lỗi thật của 2 nguồn keyless (20:56 — phục vụ E19/AC25 + BUG-16)
+
+Gọi thật để dựng bảng phân loại, vì E19 ("hết lượt dịch miễn phí") phụ thuộc vào việc app đọc đúng mã lỗi.
+
+| Tình huống | MyMemory trả về | Mozhi trả về |
+|---|---|---|
+| Bình thường | HTTP **200**, `quotaFinished: false` | HTTP 200, JSON `translated-text` |
+| **Hết hạn mức ngày** | HTTP **200** + `quotaFinished: true` (không phải mã 4xx/429) | Không có khái niệm quota; upstream 429 bị bọc thành **HTTP 500** (body `request failed with status code: 429`) |
+| Query quá dài | HTTP **200** + `responseStatus: "403"` + `translatedText` = **"QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS"** | — |
+| Tham số sai | 200 + `responseStatus:"403"` + câu tiếng Anh trong `translatedText` (vd "PLEASE SELECT TWO DISTINCT LANGUAGES") | **HTTP 400** text `from, to, engine, text are required query strings.` |
+| Ngôn ngữ đích sai | HTTP 200 + câu tiếng Anh trong `translatedText` | **HTTP 500** text `Target language code invalid` |
+| Host chết | timeout / IOException | connection refused (fail nhanh ~0,3s) |
+
+**Hệ quả cho app (đối chiếu code hiện tại `MyMemoryTranslator.kt`):**
+1. MyMemory **không bao giờ** báo hết quota bằng HTTP status — phải đọc body `quotaFinished`; code đã làm đúng (dòng 112).
+2. Code đang map **`429` hoặc mọi `5xx` → `QUOTA`** (dòng 97). Với Mozhi, "chết/ quá tải" cũng là 500 ⇒ provider chỉ đang hỏng cũng bị dán nhãn hết-lượt → đây chính là gốc của BUG-16 (app bảo "Bật mạng"/"hết lượt" khi mạng vẫn tốt). Nên tách: `429` hoặc body chứa `status code: 429` = QUOTA thật; `5xx`/IO = UNAVAILABLE (copy "nguồn tạm không dùng được, thử lại sau").
+3. Code có `looksVietnamese()` kiểm ở **đầu ra** (dòng 70) nên câu lỗi tiếng Anh trong `translatedText` không lọt ra UI — tốt. Nhưng field `responseStatus` được khai báo (dòng 178) mà **không dùng** → nên check `responseStatus != 200` để phân loại sớm hơn (CR ghi nhận, không phải blocker).

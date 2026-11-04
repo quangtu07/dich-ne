@@ -1,3 +1,9 @@
+# UX-04 — Lịch sử + Từ vựng — **ĐÃ RETIRE (2026-11-04 21:09)**
+
+> **File này không còn hiệu lực.** User chốt bỏ hẳn Lịch sử và Từ vựng; app chỉ còn tra từ/dịch khi đang đọc.
+> Giữ lại để tham chiếu lịch sử quyết định. **Không implement bất kỳ mục nào trong đây.**
+> Cache kết quả vẫn chạy (không hiển thị), chip "Kết quả đã lưu" trong sheet vẫn giữ.
+
 # UX-04 — Lịch sử + Từ vựng
 
 - Task: UX-04 · Plan §5 (FE-06, FE-07) · Spec F6, F7, §5.6, AC11–AC13.

@@ -14,6 +14,17 @@ enum class FailureReason {
     TIMEOUT,
     /** Lỗi mạng/IO khác (UnknownHost...) — pipeline coi như offline để chuyển ML Kit (E3). */
     IO,
+    /**
+     * Spec 1.26 (F14): provider từ chối **cặp ngôn ngữ** (400/422 "invalid language code") —
+     * chain thử nguồn kế; nếu mọi nguồn đều vậy -> E31, không dán E28.
+     */
+    PAIR_UNSUPPORTED,
+    /**
+     * BUG-16: nguồn **tạm không dùng được** (5xx, host chết, instance quá tải) trong khi máy vẫn có
+     * mạng — KHÔNG phải hết quota. Pipeline trả E28 "Nguồn dịch miễn phí tạm không dùng được",
+     * không dùng câu "Bật mạng" (E3a/E3b) và không dùng câu "Hết lượt" (E19).
+     */
+    UNAVAILABLE,
     /** Trả về rỗng hoặc không đọc được (E5). */
     EMPTY,
     /** Trả về text không phải tiếng Việt (E5). */
@@ -53,10 +64,9 @@ sealed interface TranslationOutcome {
  * - E5: rỗng hoặc không phải tiếng Việt -> "Không có kết quả".
  *
  * Không đưa URL/key vào message/log (CR-01).
+ * Phân loại status -> [FailureReason] nằm ở [SourceFailure] (CR-04), không thêm helper ở đây.
  */
 object HttpErrors {
     const val E4 = "E4"
     const val E5 = "E5"
-
-    fun isSourceError(status: Int): Boolean = status == 429 || status in 500..599
 }

@@ -53,8 +53,14 @@ data class LookupResult(
     val examples: List<Example> = emptyList(),
     val synonyms: List<String> = emptyList(),
     val englishDefinitions: List<String> = emptyList(),
-    /** Nguồn trả kết quả (spec 1.6 §7); null khi lỗi/không xác định. */
+    /** Nguồn trả kết quả (spec 1.6 §7); null khi lỗi/không xác định. "same-language" = nguồn=đích. */
     val provider: String? = null,
+    /** F14 (BE-34): ngôn ngữ nguồn đã nhận diện (ISO 639-1) — chip "ZH → VI" lấy từ đây. */
+    val sourceLang: String = "en",
+    /** F14 (BE-34): ngôn ngữ đích của lượt tra — lấy từ Settings lúc tra. */
+    val targetLang: String = "vi",
+    /** E29: không chắc ngôn ngữ nguồn (text ngắn/trộn script) — UI hiện chip "? → VI". */
+    val sourceLangUncertain: Boolean = false,
     /** Text đã chuẩn hoá của lượt tra — cần cho enrich sau (cập nhật cache đúng key). */
     val requestText: String = "",
     val errorCode: String? = null,

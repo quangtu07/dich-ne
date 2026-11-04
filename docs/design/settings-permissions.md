@@ -37,8 +37,6 @@ PHÁT ÂM
   Giọng đọc mặc định                    [UK | US]
 
 DỮ LIỆU
-  Xoá lịch sử tra cứu                       ›
-  Xoá từ vựng                               ›
   Xoá cache kết quả            12,4 MB      ›
 
 GIỚI THIỆU
@@ -150,12 +148,10 @@ Nếu sau này BE lấy được size/percent thật (ví dụ qua `RemoteModelM
 - Đổi ở đây = đổi luôn segmented trong ResultSheet (cùng 1 nguồn `DataStore`).
 - Không gọi API, không cần mạng trừ khi tải voice pack.
 
-### 3.7 Xoá dữ liệu (3 item, đều màu `error`)
+### 3.7 Xoá dữ liệu (1 item: chỉ còn **Xoá cache** — 21:09 bỏ xoá lịch sử/từ vựng)
 
 | Item | Dialog tiêu đề | Dialog body | Nút |
 |---|---|---|---|
-| Xoá lịch sử tra cứu | "Xoá toàn bộ lịch sử?" | "Toàn bộ lượt tra sẽ bị xoá. Từ đã lưu trong Từ vựng vẫn còn." | `Xoá` (error) · `Huỷ` |
-| Xoá từ vựng | "Xoá toàn bộ từ vựng?" | "Danh sách từ đã lưu sẽ bị xoá. Không hoàn tác được." | `Xoá` · `Huỷ` |
 | Xoá cache kết quả | "Xoá cache kết quả?" | "Xoá 12,4 MB kết quả đã lưu để tra nhanh lại. Lịch sử và từ vựng không bị ảnh hưởng." | `Xoá` · `Huỷ` |
 
 - Xoá xong: snackbar "Đã xoá lịch sử" / "Đã xoá từ vựng" / "Đã xoá cache". Không có Hoàn tác cho xoá toàn bộ (đã xác nhận).
@@ -236,3 +232,18 @@ Từ chối chụp màn hình    → dialog nhỏ, không crash (AC9)
 - Chưa chạy: `ACTION_MANAGE_OVERLAY_PERMISSION` với package có mở đúng trang trên emulator API 35 không (một số bản ROM mở trang chung).
 - Chưa xác nhận `TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA` resolve trên emulator (E14/AC21) — có thể phải fallback `Settings.ACTION_SETTINGS`.
 - Chưa có số MB thật của model ML Kit en→vi (đang ghi ≈30MB theo research); BE-09 báo lại để sửa copy.
+## 8. Cập nhật 21:09 — bỏ Lịch sử/Từ vựng khỏi Settings
+
+- Bỏ 2 item **Xoá lịch sử tra cứu** và **Xoá từ vựng** + 2 dialog tương ứng. Nhóm "DỮ LIỆU" chỉ còn **Xoá cache**.
+- Lý do: user bỏ hẳn tính năng lịch sử/từ vựng, không còn gì để xoá. Cache vẫn cần xoá được (dung lượng + riêng tư).
+- Không còn cụm từ "lịch sử"/"từ vựng" nào được hiện trong UI Settings hay sheet kết quả.
+
+## 9. F14 — trả lại item "Ngôn ngữ đích" (spec 1.20)
+
+Trước đây tôi bỏ item này vì chỉ có 1 lựa chọn. F14 có đa ngôn ngữ nên **phải có lại**, đặt **đầu section DỊCH** (trước switch online):
+
+- Item: `Ngôn ngữ đích` — giá trị phải: `Tiếng Việt` (mặc định) / `English` / `中文` / `한국어` / `日本語`, dạng `ExposedDropdownMenu` hoặc dialog radio.
+- Phụ đề: "Nguồn tự nhận diện. Chỉ cần chọn ngôn ngữ bạn muốn đọc."
+- Đổi ngôn ngữ đích **không** xoá cache, **không** đổi kết quả đã lưu; không cần khởi động lại app.
+- KHÔNG thêm item "ngôn ngữ nguồn" — tự nhận diện, user không phải chọn 2 lần.
+- Mục "Tải gói dịch offline" phải nói rõ **đang tải gói cho ngôn ngữ nào** khi user chọn đích khác VI (mỗi ngôn ngữ 1 model ~30MB). Chi tiết bố cục màn gói + dialog chọn đích: [lang-picker.md](lang-picker.md) §2–§3.

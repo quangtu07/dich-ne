@@ -142,24 +142,27 @@ class GeminiClientTest {
     }
 
     @Test
-    fun http429_mapsToE4() = runBlocking {
+    fun http429_isUnavailable_notKeylessQuota() = runBlocking {
+        // AC37 (spec 1.18): 429 của provider có key = UNAVAILABLE — KHÔNG được phát E19
+        // ("hết lượt dịch miễn phí" chỉ dành cho nguồn keyless).
         enqueue("""{"error":{"code":429,"message":"quota"}}""", code = 429)
 
         val outcome = client().lookup(wordRequest())
 
         val failure = outcome as TranslationOutcome.Failure
         assertEquals(HttpErrors.E4, failure.code)
-        assertEquals(FailureReason.HTTP, failure.reason)
+        assertEquals(FailureReason.UNAVAILABLE, failure.reason)
         assertEquals(429, failure.httpStatus)
     }
 
     @Test
-    fun http500_mapsToE4() = runBlocking {
+    fun http500_mapsToUnavailable() = runBlocking {
         enqueue("""{"error":{"code":500}}""", code = 500)
 
         val failure = client().lookup(paragraphRequest()) as TranslationOutcome.Failure
 
         assertEquals(HttpErrors.E4, failure.code)
+        assertEquals(FailureReason.UNAVAILABLE, failure.reason)
         assertEquals(500, failure.httpStatus)
     }
 

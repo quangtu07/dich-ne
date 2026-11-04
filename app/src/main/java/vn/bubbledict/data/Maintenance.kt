@@ -20,6 +20,9 @@ class Maintenance(
 
     /** Gọi 1 lần khi app mở; an toàn khi gọi lại. */
     suspend fun runOnAppOpen(): Report {
+        // AC36 (spec 1.18): xoá email liên hệ MyMemory còn sót từ bản ≤1.0.3 (privacy release gate).
+        settings.purgeLegacyContactEmail()
+
         val retentionDays = settings.current().historyRetentionDays.coerceAtLeast(1)
         val cutoff = now() - retentionDays * DAY_MS
 

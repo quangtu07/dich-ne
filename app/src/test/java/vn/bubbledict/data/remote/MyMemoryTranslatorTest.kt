@@ -35,9 +35,8 @@ class MyMemoryTranslatorTest {
         server.shutdown()
     }
 
-    private fun translator(contactEmail: String? = null) = MyMemoryTranslator(
+    private fun translator() = MyMemoryTranslator(
         baseUrl = server.url("/").toString().trimEnd('/'),
-        contactEmailProvider = { contactEmail },
         logger = { logs += it },
     )
 
@@ -75,6 +74,22 @@ class MyMemoryTranslatorTest {
     }
 
     @Test
+    fun wordWithQuotaExhausted_isStillNotApplicable_notQuota() = runBlocking {
+        // BUG-17: tra TỪ khi MyMemory hết quota phải trả NOT_APPLICABLE (để rơi ML Kit),
+        // KHÔNG được trả QUOTA -> tránh UI hiện E19 "hết lượt dịch miễn phí" cho tra từ.
+        val quotaBlocked = MyMemoryTranslator(
+            baseUrl = server.url("/").toString().trimEnd('/'),
+            isQuotaBlockedToday = { true },
+            logger = { logs += it },
+        )
+
+        val failure = quotaBlocked.lookup(word) as TranslationOutcome.Failure
+
+        assertEquals(FailureReason.NOT_APPLICABLE, failure.reason)
+        assertEquals("WORD không được gọi mạng", 0, server.requestCount)
+    }
+
+    @Test
     fun quotaFinished_mapsToQuota() = runBlocking {
         enqueue(body("Thành phố yên tĩnh.", quotaFinished = true))
 
@@ -92,10 +107,35 @@ class MyMemoryTranslatorTest {
     }
 
     @Test
-    fun http500_mapsToQuota() = runBlocking {
+    fun http500_mapsToUnavailable() = runBlocking {
         enqueue("{}", code = 500)
 
-        assertEquals(FailureReason.QUOTA, (translator().lookup(sentence) as TranslationOutcome.Failure).reason)
+        // BUG-16 / spec 1.16: 5xx là nguồn hỏng tạm thời, KHÔNG phải hết lượt.
+        assertEquals(
+            FailureReason.UNAVAILABLE,
+            (translator().lookup(sentence) as TranslationOutcome.Failure).reason,
+        )
+    }
+
+    @Test
+    fun quotaInBodyStatus429_mapsToQuota() = runBlocking {
+        // MyMemory có thể trả HTTP 200 + responseStatus 429 khi hết lượt.
+        enqueue(body("Thành phố yên tĩnh.", status = 429))
+
+        assertEquals(
+            FailureReason.QUOTA,
+            (translator().lookup(sentence) as TranslationOutcome.Failure).reason,
+        )
+    }
+
+    @Test
+    fun queryTooLong_mapsToUnavailableNotQuota() = runBlocking {
+        enqueue(body("QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS", status = 403))
+
+        assertEquals(
+            FailureReason.UNAVAILABLE,
+            (translator().lookup(sentence) as TranslationOutcome.Failure).reason,
+        )
     }
 
     @Test
@@ -133,12 +173,14 @@ class MyMemoryTranslatorTest {
     }
 
     @Test
-    fun contactEmail_sendsDeParameter() = runBlocking {
+    fun requestIsAnonymous_neverSendsDeParameter() = runBlocking {
+        // Spec 1.17 §5.9: không gửi email liên hệ (`de=`) — MyMemory gọi ẩn danh.
         enqueue(body("Thành phố yên tĩnh."))
 
-        translator(contactEmail = "dev@example.com").lookup(sentence)
+        translator().lookup(sentence)
 
-        assertTrue(server.takeRequest().path!!.contains("de=dev%40example.com"))
+        val path = server.takeRequest().path!!
+        assertTrue("không được gửi de=: $path", !path.contains("de="))
     }
 
     @Test

@@ -16,6 +16,10 @@ class BubbleDictApp : Application() {
         super.onCreate()
         container = AppContainer(this)
         // BE-17: dọn cache quá TTL + history quá hạn khi mở app, không chặn UI.
-        container.appScope.launch { container.maintenance.runOnAppOpen() }
+        // BUG-21: dọn APK cập nhật đã cài ở lượt trước (spec §5.9: xoá sau khi cài).
+        container.appScope.launch {
+            container.maintenance.runOnAppOpen()
+            container.updateManager.purgeDownloadedApks()
+        }
     }
 }

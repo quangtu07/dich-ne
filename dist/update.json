@@ -1,8 +1,8 @@
 {
-  "versionCode": 2,
-  "versionName": "1.0.1",
-  "apkUrl": "http://192.168.100.106:8770/nghia-bong-1.0.1.apk",
-  "sha256": "01c166bb9af72b844734b4b69f503d90e4ab0a0c272966f85438c176e2623755",
-  "notes": "Ban dau co tu cap nhat: ten Dich Ne, banner cap nhat, Bo qua nho theo phien ban.",
-  "publishedAt": "2026-11-04T19:32:00+07:00"
+  "versionCode": 6,
+  "versionName": "1.0.5",
+  "apkUrl": "https://raw.githubusercontent.com/quangtu07/dich-ne/dist/dich-ne-1.0.5.apk",
+  "sha256": "9ec6a194f6e1e53f501b33a8e3e90ef8d241433f7826099aec0edfcdbfb568d3",
+  "notes": "Ban 1.0.5: dich 5 ngon ngu Anh/Viet/Trung/Han/Nhat, tu nhan dien nguon, sua loi E3c, don APK tai ve",
+  "publishedAt": "2026-11-04T22:27:00+07:00"
 }

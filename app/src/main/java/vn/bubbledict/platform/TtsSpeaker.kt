@@ -56,6 +56,13 @@ class TtsSpeaker(context: Context) : AutoCloseable {
     suspend fun ukAvailable(): Boolean = isLanguageAvailable(TtsVoice.UK)
 
     /**
+     * F14/BE-35 (UX-06 §4): app chỉ có giọng tiếng Anh (US/UK) -> nguồn ≠ EN thì **ẩn nút Nghe
+     * im lặng**, không hiện dòng "chưa có giọng", không tooltip.
+     */
+    suspend fun isAvailableFor(sourceLang: String): Boolean =
+        if (sourceLang.equals("en", ignoreCase = true)) usAvailable() || ukAvailable() else false
+
+    /**
      * Đọc [text] bằng [voice]; suspend tới khi đọc xong, bị [stop], hoặc lỗi.
      * Gọi lại khi đang đọc: caller nên [stop] trước (AC22).
      */

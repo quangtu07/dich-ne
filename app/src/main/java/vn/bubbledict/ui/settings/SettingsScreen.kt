@@ -1,5 +1,7 @@
 package vn.bubbledict.ui.settings
 
+import vn.bubbledict.domain.model.OfflineModelState
+
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -7,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -38,10 +41,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
@@ -89,9 +94,15 @@ fun SettingsScreen(
     modifier: Modifier = Modifier,
     initialRoute: SettingsRoute = SettingsRoute.LIST,
     onShowMessage: (String) -> Unit = {},
+    /** Có giá trị khi Settings là màn con: back ở màn gốc quay về màn chính thay vì thoát app. */
+    onBackFromRoot: (() -> Unit)? = null,
 ) {
     var route by rememberSaveable { mutableStateOf(initialRoute) }
     val context = LocalContext.current
+
+    BackHandler(enabled = onBackFromRoot != null && route == SettingsRoute.LIST) {
+        onBackFromRoot?.invoke()
+    }
 
     val notificationLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -176,7 +187,7 @@ fun SettingsScreen(
     }
 }
 
-private enum class SettingsDialog { CONTACT_EMAIL, DELETE_HISTORY, DELETE_VOCAB, DELETE_CACHE }
+private enum class SettingsDialog { TARGET_LANG, DELETE_CACHE }
 
 @Composable
 private fun SettingsList(
@@ -256,6 +267,24 @@ private fun SettingsList(
 
         item { SectionHeader(stringResource(R.string.settings_section_translate)) }
         item {
+            // F14 / UX-06 §1: chỉ có ô ngôn ngữ ĐÍCH (nguồn tự nhận diện, không có ô chọn).
+            SettingItem(
+                title = stringResource(R.string.settings_target_lang),
+                subtitle = stringResource(R.string.settings_target_lang_hint),
+                trailing = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = languageLabel(state.targetLang),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Chevron()
+                    }
+                },
+                onClick = { dialog = SettingsDialog.TARGET_LANG },
+            )
+        }
+        item {
             // F11 + spec §7: privacy rõ ràng, mặc định BẬT; tắt = chế độ chỉ offline.
             SettingItem(
                 title = stringResource(R.string.settings_online_sources),
@@ -270,9 +299,10 @@ private fun SettingsList(
             )
         }
         item {
-            // Designer §3.4: dòng trạng thái nguồn keyless (Đang tắt / Hết lượt tới 0h / Còn lượt).
+            // Designer §3.4 + F12/chain: nêu đúng các nguồn thay vì chỉ "Còn lượt hôm nay".
             SettingItem(
                 title = stringResource(R.string.settings_free_source),
+                subtitle = stringResource(R.string.settings_free_source_chain),
                 trailing = {
                     Text(
                         text = stringResource(
@@ -341,30 +371,6 @@ private fun SettingsList(
             )
         }
         item {
-            // AC27: email liên hệ MyMemory — trống = 5k/ngày ẩn danh, có email = 50k/ngày.
-            SettingItem(
-                title = stringResource(R.string.settings_contact_email),
-                subtitle = if (state.myMemoryContactEmail.isBlank()) {
-                    stringResource(R.string.settings_contact_email_empty)
-                } else {
-                    stringResource(R.string.settings_contact_email_set)
-                },
-                trailing = {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        if (state.myMemoryContactEmail.isNotBlank()) {
-                            Text(
-                                text = state.myMemoryContactEmail,
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.extendedColors.success,
-                            )
-                        }
-                        Chevron()
-                    }
-                },
-                onClick = { dialog = SettingsDialog.CONTACT_EMAIL },
-            )
-        }
-        item {
             SettingItem(
                 title = stringResource(R.string.settings_model),
                 subtitle = modelSubtitle(state.model),
@@ -398,22 +404,6 @@ private fun SettingsList(
         item { SectionHeader(stringResource(R.string.settings_section_data)) }
         item {
             SettingItem(
-                title = stringResource(R.string.settings_delete_history),
-                titleColor = MaterialTheme.colorScheme.error,
-                trailing = { Chevron() },
-                onClick = { dialog = SettingsDialog.DELETE_HISTORY },
-            )
-        }
-        item {
-            SettingItem(
-                title = stringResource(R.string.settings_delete_vocab),
-                titleColor = MaterialTheme.colorScheme.error,
-                trailing = { Chevron() },
-                onClick = { dialog = SettingsDialog.DELETE_VOCAB },
-            )
-        }
-        item {
-            SettingItem(
                 title = stringResource(R.string.settings_delete_cache),
                 titleColor = MaterialTheme.colorScheme.error,
                 subtitle = state.cacheSizeLabel,
@@ -439,34 +429,11 @@ private fun SettingsList(
     }
 
     when (dialog) {
-        SettingsDialog.CONTACT_EMAIL -> ContactEmailDialog(
-            current = state.myMemoryContactEmail,
-            onSave = { email ->
+        SettingsDialog.TARGET_LANG -> TargetLanguageDialog(
+            current = state.targetLang,
+            onSelect = { lang ->
                 dialog = null
-                actions.onMyMemoryEmailSave(email)
-                onShowMessage(context.getString(R.string.contact_email_saved_toast))
-            },
-            onDismiss = { dialog = null },
-        )
-
-        SettingsDialog.DELETE_HISTORY -> DeleteDataDialog(
-            title = stringResource(R.string.delete_history_title),
-            body = stringResource(R.string.delete_history_body),
-            onConfirm = {
-                dialog = null
-                actions.onDeleteHistory()
-                onShowMessage(context.getString(R.string.deleted_history_toast))
-            },
-            onDismiss = { dialog = null },
-        )
-
-        SettingsDialog.DELETE_VOCAB -> DeleteDataDialog(
-            title = stringResource(R.string.delete_vocab_title),
-            body = stringResource(R.string.delete_vocab_body),
-            onConfirm = {
-                dialog = null
-                actions.onDeleteVocab()
-                onShowMessage(context.getString(R.string.deleted_vocab_toast))
+                actions.onTargetLangChange(lang)
             },
             onDismiss = { dialog = null },
         )
@@ -671,57 +638,74 @@ private fun VoiceRow(state: SettingsUiState, actions: SettingsActions) {
     }
 }
 
+/** F14 / UX-06: 5 ngôn ngữ đích, ghi rõ tên tiếng Việt + mã. */
+private val TARGET_LANGUAGES = listOf("vi", "en", "zh", "ko", "ja")
+
+/** 5 ngôn ngữ F14 — cùng thứ tự với dialog chọn đích. */
+private val FORMAT_LANGUAGES = listOf("vi", "en", "zh", "ko", "ja")
+
 @Composable
-private fun ContactEmailDialog(
+private fun modelStateLabel(state: OfflineModelState): String = stringResource(
+    when (state) {
+        OfflineModelState.READY -> R.string.model_state_ready
+        OfflineModelState.DOWNLOADING -> R.string.model_state_downloading
+        OfflineModelState.FAILED -> R.string.model_state_failed
+        OfflineModelState.PAUSED_NETWORK -> R.string.model_state_failed
+        OfflineModelState.NOT_DOWNLOADED -> R.string.model_state_not_downloaded
+    },
+)
+
+@Composable
+private fun languageLabel(code: String): String = stringResource(
+    when (code) {
+        "en" -> R.string.lang_en
+        "zh" -> R.string.lang_zh
+        "ko" -> R.string.lang_ko
+        "ja" -> R.string.lang_ja
+        else -> R.string.lang_vi
+    },
+)
+
+@Composable
+private fun TargetLanguageDialog(
     current: String,
-    onSave: (String) -> Unit,
+    onSelect: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    var input by rememberSaveable(current) { mutableStateOf(current) }
-    val trimmed = input.trim()
-    // Designer: email phải có '@' và không có khoảng trắng; rỗng = cho phép xoá.
-    val isValid = trimmed.isEmpty() || (trimmed.contains('@') && !trimmed.contains(' '))
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.contact_email_title)) },
+        title = { Text(stringResource(R.string.target_lang_title)) },
         text = {
             Column {
-                Text(stringResource(R.string.contact_email_body))
-                Spacer(Modifier.height(12.dp))
-                OutlinedTextField(
-                    value = input,
-                    onValueChange = { input = it },
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text(stringResource(R.string.contact_email_label)) },
-                    singleLine = true,
-                    isError = !isValid,
-                    supportingText = if (!isValid) {
-                        { Text(stringResource(R.string.contact_email_invalid)) }
-                    } else {
-                        null
-                    },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                )
+                TARGET_LANGUAGES.forEach { code ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable(enabled = code != current) { onSelect(code) }
+                            .heightIn(min = 48.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        RadioButton(
+                            selected = code == current,
+                            onClick = { if (code != current) onSelect(code) },
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = languageLabel(code),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = if (code == current) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.onSurface
+                            },
+                        )
+                    }
+                }
             }
         },
         confirmButton = {
-            TextButton(
-                onClick = { onSave(trimmed) },
-                enabled = isValid,
-            ) {
-                Text(stringResource(R.string.contact_email_save))
-            }
-        },
-        dismissButton = {
-            Row {
-                if (current.isNotBlank()) {
-                    TextButton(onClick = { onSave("") }) {
-                        Text(stringResource(R.string.contact_email_clear))
-                    }
-                }
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(R.string.common_cancel))
-                }
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_close))
             }
         },
     )
@@ -1108,6 +1092,82 @@ private fun ModelDownloadScreen(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+            Spacer(Modifier.height(8.dp))
+
+            // F14 / UX-06 §10: danh sách gói theo 5 ngôn ngữ (không phải 1 gói duy nhất).
+            Text(
+                text = stringResource(R.string.model_lang_section),
+                style = MaterialTheme.typography.titleSmall,
+            )
+            Text(
+                text = stringResource(R.string.model_pivot_note),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            FORMAT_LANGUAGES.forEach { lang ->
+                // ML Kit không có model riêng cho tiếng Anh -> không phải "đã tải", không có nút.
+                val isEnglish = lang == "en"
+                val langState = state.modelStates[lang] ?: OfflineModelState.NOT_DOWNLOADED
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(languageLabel(lang), style = MaterialTheme.typography.bodyLarge)
+                            if (lang in state.modelRequiredForPair) {
+                                Spacer(Modifier.width(6.dp))
+                                Text(
+                                    text = stringResource(R.string.model_needed_for_pair),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.primary,
+                                )
+                            }
+                        }
+                        Text(
+                            text = if (isEnglish) {
+                                stringResource(R.string.model_state_not_required)
+                            } else {
+                                modelStateLabel(langState)
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    when {
+                        isEnglish -> Unit
+
+                        else -> when (langState) {
+                            OfflineModelState.READY -> TextButton(
+                                onClick = { actions.onDeleteModelFor(lang) },
+                            ) {
+                                Text(stringResource(R.string.model_delete_action))
+                            }
+
+                            OfflineModelState.DOWNLOADING -> Text(
+                                text = stringResource(R.string.settings_model_downloading_indeterminate),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+
+                            else -> TextButton(onClick = { actions.onDownloadModelFor(lang) }) {
+                                Text(stringResource(R.string.model_download_action))
+                            }
+                        }
+                    }
+                }
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+            }
+            // Tiếng Anh không có model riêng -> không tính vào "Tải tất cả".
+            val notDownloaded = FORMAT_LANGUAGES.count { lang ->
+                lang != "en" &&
+                    (state.modelStates[lang] ?: OfflineModelState.NOT_DOWNLOADED) != OfflineModelState.READY
+            }
+            if (notDownloaded >= 2) {
+                TextButton(onClick = actions.onDownloadAllModels) {
+                    Text(stringResource(R.string.model_download_all))
+                }
+            }
             Spacer(Modifier.height(8.dp))
 
             when (state.model.status) {

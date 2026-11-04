@@ -57,7 +57,11 @@ class OpenAiCompatibleTranslator(
             messages = listOf(
                 OpenAiMessage(
                     role = "user",
-                    content = if (isWord) wordPrompt(request.text) else translatePrompt(request.text),
+                    content = if (isWord) {
+                        wordPrompt(request.text, request.sourceLang, request.targetLang)
+                    } else {
+                        translatePrompt(request.text, request.targetLang)
+                    },
                 ),
             ),
             temperature = 0.2,
@@ -77,18 +81,23 @@ class OpenAiCompatibleTranslator(
         response.use { r ->
             if (!r.isSuccessful) {
                 logger("openai http ${r.code}")
-                return TranslationOutcome.Failure(HttpErrors.E4, FailureReason.HTTP, httpStatus = r.code)
+                // AC37 (spec 1.18): provider có key — 429/5xx = UNAVAILABLE, không QUOTA.
+                return SourceFailure.fromHttpStatus(r.code, hasQuota = false)
             }
             val content = extractContent(r.body?.string().orEmpty())
                 ?: run {
                     logger("openai empty")
                     return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.EMPTY, r.code)
                 }
-            return if (isWord) parseWord(content, r.code) else parseTranslation(content, r.code)
+            return if (isWord) {
+                parseWord(content, r.code, request.targetLang)
+            } else {
+                parseTranslation(content, r.code, request.targetLang)
+            }
         }
     }
 
-    private fun parseWord(content: String, status: Int): TranslationOutcome {
+    private fun parseWord(content: String, status: Int, targetLang: String): TranslationOutcome {
         val cleaned = content.trim().removeCodeFence()
         val payload = runCatching { json.decodeFromString<WordPayload>(cleaned) }.getOrNull()
             ?: run {
@@ -98,16 +107,16 @@ class OpenAiCompatibleTranslator(
         if (payload.meaning.isBlank()) {
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.EMPTY, status)
         }
-        if (!looksVietnamese(payload.meaning)) {
+        if (TargetLanguages.isVietnamese(targetLang) && !looksVietnamese(payload.meaning)) {
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.NOT_VIETNAMESE, status)
         }
         return TranslationOutcome.Word(payload, provider = PROVIDER_NAME)
     }
 
-    private fun parseTranslation(content: String, status: Int): TranslationOutcome {
+    private fun parseTranslation(content: String, status: Int, targetLang: String): TranslationOutcome {
         val text = content.trim().removeCodeFence().trim()
         if (text.isEmpty()) return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.EMPTY, status)
-        if (!looksVietnamese(text)) {
+        if (TargetLanguages.isVietnamese(targetLang) && !looksVietnamese(text)) {
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.NOT_VIETNAMESE, status)
         }
         return TranslationOutcome.Translation(text, provider = PROVIDER_NAME)
@@ -124,19 +133,22 @@ class OpenAiCompatibleTranslator(
     private fun looksVietnamese(text: String): Boolean =
         text.any { it.lowercaseChar() in VIETNAMESE_CHARS }
 
-    private fun wordPrompt(word: String) = buildString {
-        append("You are an English–Vietnamese dictionary. For the English word: \"")
+    private fun wordPrompt(word: String, sourceLang: String, targetLang: String) = buildString {
+        val source = TargetLanguages.name(sourceLang)
+        val target = TargetLanguages.name(targetLang)
+        append("You are a $source–$target dictionary. For the $source word: \"")
         append(word)
-        append("\" return ONLY a JSON object with fields: meaning (short Vietnamese meaning with full diacritics), ")
-        append("partOfSpeech (n/v/adj/adv), ipa (IPA of the English word), ")
-        append("examples (array of {\"text\": English sentence, \"translation\": Vietnamese translation}), ")
-        append("synonyms (array of English words). No markdown, no extra text.")
+        append("\" return ONLY a JSON object with fields: meaning (short $target meaning), ")
+        append("partOfSpeech (n/v/adj/adv), ipa (IPA of the $source word), ")
+        append("examples (array of {\"text\": $source sentence, \"translation\": $target translation}), ")
+        append("synonyms (array of $source words). No markdown, no extra text.")
     }
 
-    private fun translatePrompt(text: String) = buildString {
-        append("Translate this English text into Vietnamese. ")
+    private fun translatePrompt(text: String, targetLang: String) = buildString {
+        val target = TargetLanguages.name(targetLang)
+        append("Translate this text into $target. ")
         append("Keep every sentence (same sentence count), preserve meaning, do not shorten. ")
-        append("Return only the Vietnamese translation with full diacritics.\nText: ")
+        append("Return only the $target translation.\nText: ")
         append(text)
     }
 

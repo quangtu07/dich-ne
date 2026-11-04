@@ -45,6 +45,19 @@
     <string name="error_need_network_long_hint">Bản dịch offline chỉ đủ cho từ và câu ngắn.</string>
     <string name="error_need_model_short">Chưa tải gói offline để tra từ</string>
     <string name="error_need_model_short_hint">Bật mạng, hoặc tải gói dịch offline (≈30MB) để tra từ khi không có mạng.</string>
+    <!-- E3c: có mạng nhưng thiếu model -> không nhắc "Bật mạng" -->
+    <string name="error_model_missing_short_hint">Tải gói dịch offline (≈30MB) để tra từ khi nguồn online không dùng được cho từ này.</string>
+    <!-- E29 (F14): không chắc ngôn ngữ nguồn -->
+    <string name="result_same_language_hint">Văn bản đã ở ngôn ngữ đích.</string>
+    <string name="result_lang_uncertain_hint">Không chắc ngôn ngữ nguồn. Thử bôi đen đoạn dài hơn.</string>
+    <!-- E31: cặp ngôn ngữ ngoài phạm vi -->
+    <string name="error_pair_unsupported_title">Chưa hỗ trợ cặp ngôn ngữ này</string>
+    <string name="error_pair_unsupported_hint">Chọn ngôn ngữ đích khác trong Cài đặt rồi thử lại.</string>
+    <!-- E30: thiếu model cho cặp ngôn ngữ (pivot qua EN) -->
+    <string name="error_lang_model_missing_hint">Cặp ngôn ngữ này cần gói ngoại tuyến cho cả 2 ngôn ngữ (≈30MB mỗi gói).</string>
+    <!-- E28: có mạng nhưng mọi nguồn keyless đều chết (5xx/timeout) -->
+    <string name="error_sources_down_title">Nguồn dịch miễn phí tạm không dùng được</string>
+    <string name="error_sources_down_hint">Thử lại sau ít phút.</string>
     <string name="error_source">Không tra được lúc này</string>
     <string name="error_source_hint">Lỗi kết nối, hết hạn mức, hoặc quá thời gian chờ. Thử lại sau ít phút.</string>
     <string name="error_empty">Không có kết quả cho đoạn này</string>
@@ -64,9 +77,10 @@
     <string name="settings_online_sources">Cho phép nguồn online</string>
     <!-- AC27 (spec 1.6): email liên hệ MyMemory tuỳ chọn — trống = 5k ký tự/ngày ẩn danh. -->
     <string name="settings_free_source">Nguồn miễn phí</string>
-    <string name="settings_free_source_on">Còn lượt hôm nay</string>
-    <string name="settings_free_source_quota">Hết lượt hôm nay · về 0h</string>
-    <string name="settings_free_source_off">Đang tắt</string>
+    <string name="settings_free_source_chain">MyMemory / Mozhi / Offline (ML Kit)</string>
+    <string name="settings_free_source_on">Đang dùng online</string>
+    <string name="settings_free_source_quota">MyMemory hết lượt · chuyển Mozhi</string>
+    <string name="settings_free_source_off">Đang tắt · chỉ Offline</string>
     <string name="contact_email_invalid">Email không hợp lệ</string>
     <string name="result_english_meanings">Nghĩa tiếng Anh</string>
     <string name="settings_contact_email">Email liên hệ (tuỳ chọn)</string>
@@ -92,7 +106,7 @@
     <string name="provider_saved_toast">Đã lưu nguồn có key</string>
     <string name="provider_deleted_toast">Đã xoá key nguồn phụ</string>
     <string name="provider_delete_key">Xoá key</string>
-    <string name="settings_online_sources_hint">Khi bật, text đang tra được gửi tới nguồn dịch bên thứ ba (MyMemory/Gemini). Tắt: chỉ cache + ML Kit trên máy.</string>
+    <string name="settings_online_sources_hint">Khi bật, text đang tra được gửi tới nguồn dịch bên thứ ba (MyMemory/Mozhi, hoặc Gemini/OpenAI nếu bạn nhập key). Tắt: chỉ cache + ML Kit trên máy.</string>
     <string name="error_loading">Đang tra…</string>
 
     <!-- TTS (F10, E14–E17) -->
@@ -130,6 +144,36 @@
     <string name="a11y_saved_word">Đã lưu, bấm để bỏ lưu</string>
     <string name="a11y_unsaved_word">Chưa lưu</string>
     <string name="a11y_copy">Copy nội dung</string>
+    <!-- F14 / UX-06 §10: gói ngoại tuyến theo ngôn ngữ -->
+    <string name="model_lang_section">Gói ngoại tuyến theo ngôn ngữ</string>
+    <string name="model_pivot_note">Một số cặp cần 2 gói — ví dụ Trung → Việt cần cả gói Trung và gói Việt.</string>
+    <string name="model_needed_for_pair">cần cho cặp đang chọn</string>
+    <string name="model_state_ready">Đã tải</string>
+    <string name="model_state_downloading">Đang tải…</string>
+    <string name="model_state_failed">Tải lỗi — thử lại</string>
+    <string name="model_state_not_downloaded">Chưa tải</string>
+    <string name="model_state_not_required">Không cần gói</string>
+    <string name="model_download_action">Tải</string>
+    <string name="model_delete_action">Xoá</string>
+    <string name="model_download_all">Tải tất cả</string>
+    <!-- F14 / UX-06: ngôn ngữ đích -->
+    <string name="settings_target_lang_hint">Nguồn tự nhận diện; bản dịch chuyển sang ngôn ngữ này.</string>
+    <string name="target_lang_title">Dịch sang</string>
+    <string name="lang_vi">Tiếng Việt (VI)</string>
+    <string name="lang_en">Tiếng Anh (EN)</string>
+    <string name="lang_zh">Tiếng Trung (ZH)</string>
+    <string name="lang_ko">Tiếng Hàn (KO)</string>
+    <string name="lang_ja">Tiếng Nhật (JA)</string>
+    <string name="common_close">Đóng</string>
+    <!-- UX-01 v2: màn chính tối giản (bảng điều khiển bong bóng) -->
+    <string name="home_bubble_title">Bong bóng dịch</string>
+    <string name="home_bubble_on">Đang bật · bấm để tắt</string>
+    <string name="home_bubble_off">Đang tắt · bấm để bật</string>
+    <string name="home_guide">Bôi đen chữ ở app khác rồi chọn \"Dịch\" trong menu. Khi app không có menu đó, bấm bong bóng để chụp vùng chữ.</string>
+    <string name="home_open_settings">Cài đặt</string>
+    <string name="home_need_overlay">Chưa cấp quyền hiển thị trên app khác</string>
+    <string name="home_grant">Cấp quyền</string>
+    <string name="bubble_glyph">A</string>
     <!-- F12: banner cập nhật (APK cài ngoài Play) -->
     <!-- F12: chỉ thêm chuỗi FE cần; chuỗi trạng thái dùng chung nằm ở strings_be.xml
          (update_banner_action, update_downloading, update_error_download/checksum/permission). -->

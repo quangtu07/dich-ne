@@ -34,6 +34,25 @@ enum class ResultStatus {
     ERROR_KEY_INVALID,
     /** S11 (UX-02 §5): đang tải gói dịch offline ngay trong sheet; chỉ còn nút X. */
     DOWNLOADING_MODEL,
+    /**
+     * E28: có mạng nhưng mọi nguồn keyless (MyMemory + 2 Mozhi) đều chết/timeout/5xx.
+     * Khác E3a/E3b: KHÔNG dùng copy "Bật mạng", máy đang có mạng.
+     */
+    ERROR_SOURCES_DOWN,
+    /**
+     * E3c (spec 1.21): máy CÓ mạng nhưng thiếu model offline cho tra từ / không có nguồn
+     * online phù hợp. Dùng layout S5, copy riêng "Chưa tải gói offline để tra từ" —
+     * khác E3a (mất mạng thật mới nhắc "Bật mạng").
+     */
+    ERROR_MODEL_MISSING,
+    /**
+     * E30: thiếu model ML Kit cho CẶP ngôn ngữ (pivot qua EN có thể cần 2 gói).
+     * Cùng layout S5 với [ERROR_MODEL_MISSING]; khác copy. Khi cả E3c và E30 đúng
+     * thì pipeline trả E30 (cụ thể hơn) — FE không tự rẽ nhánh.
+     */
+    ERROR_LANG_MODEL_MISSING,
+    /** E31: cặp ngôn ngữ ngoài phạm vi (5 ngôn ngữ) — dùng S7 + lối mở Cài đặt. */
+    ERROR_PAIR_UNSUPPORTED,
 }
 
 @Immutable
@@ -77,13 +96,26 @@ data class ResultUiState(
     val usAvailable: Boolean = true,
     /** false = máy chưa có TTS tiếng Anh nào (E14, cả 2 giọng thiếu). */
     val ttsReady: Boolean = true,
+    /** F14: cặp ngôn ngữ của lượt tra (ISO thường: en/vi/zh/ko/ja). */
+    val sourceLang: String = "en",
+    val targetLang: String = "vi",
+    /** E29: không chắc ngôn ngữ nguồn -> chip hiện "? → VI". */
+    val sourceLangUncertain: Boolean = false,
+    /** F14: nguồn = đích (provider "same-language") -> hiện nguyên văn + dòng giải thích. */
+    val sameLanguage: Boolean = false,
     /** E11: mode sửa text OCR trong cùng sheet. */
     val editing: Boolean = false,
     val editText: String = "",
 ) {
     val isWord: Boolean get() = kind == TextKind.WORD
     val isOcr: Boolean get() = source == TextSource.OCR
-    val canSpeak: Boolean get() = ttsReady && originalText.isNotBlank()
+    /** F14: TTS chỉ có giọng tiếng Anh -> text nguồn khác EN ẩn nút Nghe im lặng. */
+    val ttsAvailableForSource: Boolean get() = sourceLang.equals("en", ignoreCase = true)
+
+    /** F14: WORD nguồn ZH/KO/JA không có IPA/định nghĩa tiếng Anh để hiện. */
+    val showsEnglishDetails: Boolean get() = sourceLang.equals("en", ignoreCase = true)
+
+    val canSpeak: Boolean get() = ttsReady && ttsAvailableForSource && originalText.isNotBlank()
     val canSave: Boolean get() = isWord && originalText.isNotBlank()
     val canCopy: Boolean get() = originalText.isNotBlank()
 

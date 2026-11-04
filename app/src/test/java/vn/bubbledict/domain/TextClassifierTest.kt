@@ -109,4 +109,58 @@ class TextClassifierTest {
         assertEquals(0, NormalizeText.tokenCount(""))
         assertEquals(3, NormalizeText.tokenCount("a b c"))
     }
+
+    // --- BUG-22 / spec 1.25-1.28: phân loại theo script cho CJK/Hangul ---
+
+    @Test
+    fun chineseSentence_isSentence() {
+        // 13 ký tự Hán, không dấu cách: trước BUG-22 bị 1 token -> WORD.
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("今天天气很好，我们去公园散步。"))
+    }
+
+    @Test
+    fun chineseThreeChars_isWord() {
+        assertEquals(TextKind.WORD, TextClassifier.classify("图书馆"))
+    }
+
+    @Test
+    fun japaneseSentence_isSentence() {
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("昨日、街の川のそばに新しい図書館ができました。"))
+    }
+
+    @Test
+    fun koreanSentence_isSentence() {
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("어제 도시는 강 근처에 새 도서관을 열었습니다."))
+    }
+
+    @Test
+    fun mixedScript_okHao_isSentence() {
+        // Spec 1.28: trộn script đếm TỔNG ký tự chữ -> "OK 好" = 4 -> SENTENCE.
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("OK 好"))
+    }
+
+    @Test
+    fun mixedScript_iphoneChinese_isSentence() {
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("iPhone 手机很好用"))
+    }
+
+    @Test
+    fun chineseParagraphWithMarks_isParagraph() {
+        assertEquals(TextKind.PARAGRAPH, TextClassifier.classify("今天天气很好。我们去公园散步。晚上一起吃饭。"))
+    }
+
+    @Test
+    fun latinRules_unchanged() {
+        // Hồi quy Latin: 1-3 token không dấu kết câu vẫn là WORD.
+        assertEquals(TextKind.WORD, TextClassifier.classify("serendipity"))
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("The city was quiet."))
+    }
+
+    @Test
+    fun cjkPunctuation_beatsLength() {
+        // Spec 1.30: "你好。" = 2 chữ Hán + dấu kết câu -> SENTENCE, không phải Từ.
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("你好。"))
+        // "苹果" = 2 ký tự, không dấu kết câu -> WORD.
+        assertEquals(TextKind.WORD, TextClassifier.classify("苹果"))
+    }
 }

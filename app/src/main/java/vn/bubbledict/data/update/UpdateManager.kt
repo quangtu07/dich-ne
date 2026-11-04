@@ -109,7 +109,9 @@ class UpdateManager(
         val target = manifest ?: return fail(UpdateErrorCodes.BAD_MANIFEST)
         if (!installer.canInstallPackages()) return fail(UpdateErrorCodes.INSTALL_PERMISSION)
 
-        val apkFile = File(context.cacheDir, "update-${target.versionCode}.apk")
+        // Dọn bản tải dở của lần trước trước khi tải bản mới.
+        purgeDownloadedApks()
+        val apkFile = File(context.cacheDir, "$APK_PREFIX${target.versionCode}.apk")
         val downloaded = runCatching { download(target, apkFile) }.getOrElse { false }
         if (!downloaded) {
             apkFile.delete()
@@ -148,6 +150,21 @@ class UpdateManager(
         context.startActivity(installer.unknownSourcesIntent())
         true
     }.getOrDefault(false)
+
+    /**
+     * BUG-21 (spec §5.9 "xoá sau khi cài"): dọn APK cập nhật đã tải ở lượt trước.
+     * Gọi lúc mở app (sau khi installer đã dùng xong file) — không xoá ngay sau `startActivity`
+     * vì trình cài hệ thống có thể còn đọc file. Idempotent, best-effort, không throw.
+     */
+    fun purgeDownloadedApks() {
+        runCatching {
+            context.cacheDir
+                ?.listFiles { f -> f.isFile && f.name.startsWith(APK_PREFIX) && f.name.endsWith(".apk") }
+                ?.forEach { stale ->
+                    if (stale.delete()) Log.d(TAG, "purged ${stale.name}") else Log.w(TAG, "cannot purge ${stale.name}")
+                }
+        }.onFailure { Log.w(TAG, "purge apks failed: ${it.javaClass.simpleName}") }
+    }
 
     fun resetError() {
         if (_state.value is State.Failed) _state.value = State.Idle
@@ -196,5 +213,8 @@ class UpdateManager(
 
     private companion object {
         const val TAG = "UpdateManager"
+
+        /** Tiền tố file APK tải về trong cacheDir — dùng cho [purgeDownloadedApks] (BUG-21). */
+        const val APK_PREFIX = "update-"
     }
 }

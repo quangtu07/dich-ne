@@ -4,6 +4,9 @@
     <!-- F1/F2 gọi Gemini qua HTTPS; quyền lúc cài, không xin runtime (spec §6). -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- BUG-16 (spec 1.16): phân biệt "máy mất mạng" (E3a/E3b) với "nguồn dịch chết" (E28). -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <!-- F2 (P3): bong bóng nổi trên app khác + foreground service giữ bong bóng. -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />

@@ -6,12 +6,16 @@ package vn.bubbledict.domain.model
  * - [source] chỉ để hiển thị/lọc trong lịch sử, không vào cache key.
  * - [sourceApp] tên app nguồn khi đi qua ACTION_PROCESS_TEXT; null khi OCR.
  * - [readOnly] từ `EXTRA_PROCESS_TEXT_READONLY`: MVP không sửa text của app nguồn.
+ * - [sourceLang]/[targetLang] (F14): mã ISO 639-1 của cặp dịch; provider đọc từ đây để dịch
+ *   đúng cặp (mặc định `en → vi` giữ hành vi 1.0.4).
  */
 data class LookupRequest(
     val text: String,
     val source: TextSource,
     val sourceApp: String? = null,
     val readOnly: Boolean = false,
+    val sourceLang: String = "en",
+    val targetLang: String = "vi",
 ) {
     val kind: TextKind get() = vn.bubbledict.domain.TextClassifier.classify(text)
 }

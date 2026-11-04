@@ -1,5 +1,7 @@
 package vn.bubbledict.ui.settings
 
+import vn.bubbledict.domain.model.OfflineModelState
+
 import androidx.compose.runtime.Immutable
 import vn.bubbledict.ui.result.Voice
 
@@ -46,6 +48,8 @@ data class SettingsUiState(
     val bubbleEnabled: Boolean = false,
     /** F11 privacy: tắt = chế độ chỉ offline (cache + ML Kit). Mặc định BẬT. */
     val onlineSourcesEnabled: Boolean = true,
+    /** F14: ngôn ngữ đích user chọn (mã ISO: vi/en/zh/ko/ja), lưu trong DataStore. */
+    val targetLang: String = "vi",
     val freeSourceStatus: FreeSourceStatus = FreeSourceStatus.ON,
     val overlayPermission: PermissionStatus = PermissionStatus.MISSING,
     val notificationPermission: PermissionStatus = PermissionStatus.GRANTED,
@@ -62,6 +66,10 @@ data class SettingsUiState(
     val voice: Voice = Voice.US,
     val ukAvailable: Boolean = true,
     val model: ModelDownloadUi = ModelDownloadUi(),
+    /** F14 / UX-06 §10: trạng thái model ML Kit cho 5 ngôn ngữ (gói ngoại tuyến). */
+    val modelStates: Map<String, OfflineModelState> = emptyMap(),
+    /** Gói cần cho cặp (en -> targetLang) — dùng cho tag "cần cho Anh → Việt". */
+    val modelRequiredForPair: List<String> = emptyList(),
     val cacheSizeLabel: String = "0 KB",
     val versionLabel: String = "0.1.0-dev (1)",
 ) {
@@ -87,6 +95,11 @@ data class SettingsActions(
     val onVoiceChange: (Voice) -> Unit = {},
     val onDownloadVoice: () -> Unit = {},
     val onOnlineSourcesToggle: (Boolean) -> Unit = {},
+    val onTargetLangChange: (String) -> Unit = {},
+    /** F14: tải/xoá gói ngoại tuyến của 1 ngôn ngữ. */
+    val onDownloadModelFor: (String) -> Unit = {},
+    val onDeleteModelFor: (String) -> Unit = {},
+    val onDownloadAllModels: () -> Unit = {},
     val onDeleteHistory: () -> Unit = {},
     val onDeleteVocab: () -> Unit = {},
     val onDeleteCache: () -> Unit = {},

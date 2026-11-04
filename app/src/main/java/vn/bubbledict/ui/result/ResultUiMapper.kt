@@ -24,8 +24,16 @@ fun LookupResult.toUiState(
         truncatedTo != null -> ResultStatus.TRUNCATED
         state == ResultState.ERROR -> when (errorCode) {
             LookupErrorCodes.E3A -> ResultStatus.ERROR_NO_NETWORK_SHORT
+            // E3c: có mạng nhưng thiếu model offline / không có nguồn online phù hợp.
+            LookupErrorCodes.E3C -> ResultStatus.ERROR_MODEL_MISSING
+            // E30: thiếu gói ngoại tuyến cho cặp ngôn ngữ (F14, pivot qua EN -> có thể 2 gói).
+            LookupErrorCodes.E30 -> ResultStatus.ERROR_LANG_MODEL_MISSING
+            // E31 (F14): cặp ngôn ngữ ngoài 5 ngôn ngữ hỗ trợ.
+            "E31" -> ResultStatus.ERROR_PAIR_UNSUPPORTED
             LookupErrorCodes.E3B -> ResultStatus.ERROR_NO_NETWORK_LONG
             LookupErrorCodes.E4 -> ResultStatus.ERROR_SOURCE
+            // E28: có mạng nhưng cả chain keyless chết (5xx/timeout) — không phải hết quota.
+            "E28" -> ResultStatus.ERROR_SOURCES_DOWN
             "E19" -> ResultStatus.ERROR_QUOTA
             "E20" -> ResultStatus.ERROR_KEY_INVALID
             LookupErrorCodes.E5 -> ResultStatus.ERROR_EMPTY
@@ -48,6 +56,10 @@ fun LookupResult.toUiState(
     return ResultUiState(
         status = baseStatus,
         kind = kind,
+        sourceLang = sourceLang,
+        targetLang = targetLang,
+        sourceLangUncertain = sourceLangUncertain,
+        sameLanguage = provider == "same-language",
         source = source,
         originalText = originalText,
         translation = displayText?.takeUnless { errorCode == "E22" },

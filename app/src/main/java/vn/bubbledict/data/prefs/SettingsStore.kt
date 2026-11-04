@@ -38,7 +38,11 @@ data class AppSettings(
     /** Provider OpenAI-compatible (Groq mặc định) — chỉ dùng khi có key. */
     val openAiBaseUrl: String = "https://api.groq.com/openai/v1",
     val openAiModel: String = "llama-3.3-70b-versatile",
-    /** Email liên hệ cho MyMemory (tuỳ chọn, user tự nhập) — tăng hạn mức lên 50k ký tự/ngày. */
+    /**
+     * @deprecated AC36 (spec 1.18): MyMemory gọi **ẩn danh**, không còn lưu email liên hệ.
+     *  Giữ property (luôn rỗng) để UI cũ biên dịch được; dữ liệu cũ bị [SettingsStore.purgeLegacyContactEmail] xoá.
+     */
+    @Deprecated("AC36: không lưu email MyMemory nữa; dùng purgeLegacyContactEmail() để xoá dữ liệu cũ")
     val myMemoryContactEmail: String = "",
     /** BE-20: ngày (yyyy-MM-dd) MyMemory đã hết quota; rỗng = chưa hết. */
     val keylessQuotaBlockedOn: String = "",
@@ -95,9 +99,20 @@ class SettingsStore(private val dataStore: DataStore<Preferences>) {
 
     suspend fun setOnlineSourcesEnabled(enabled: Boolean) = edit { it[ONLINE_SOURCES_ENABLED] = enabled }
 
-    /** Cho phép xoá về rỗng (dùng ẩn danh 5k/ngày). */
-    suspend fun setMyMemoryContactEmail(email: String) = edit {
-        it[MYMEMORY_EMAIL] = email.trim()
+    /**
+     * @deprecated AC36: không lưu email nữa — mọi lời gọi đều xoá giá trị legacy thay vì ghi mới.
+     */
+    @Deprecated("AC36: không lưu email MyMemory nữa")
+    suspend fun setMyMemoryContactEmail(@Suppress("UNUSED_PARAMETER") email: String) {
+        purgeLegacyContactEmail()
+    }
+
+    /**
+     * AC36 migration (spec 1.18): xoá email liên hệ MyMemory từng lưu ở bản ≤1.0.3.
+     * Gọi 1 lần lúc mở app ([vn.bubbledict.data.Maintenance.runOnAppOpen]); idempotent, không log giá trị.
+     */
+    suspend fun purgeLegacyContactEmail() {
+        edit { prefs -> prefs.remove(MYMEMORY_EMAIL) }
     }
 
     suspend fun setKeylessQuotaBlockedOn(date: String) = edit {
@@ -147,7 +162,8 @@ class SettingsStore(private val dataStore: DataStore<Preferences>) {
         onlineSourcesEnabled = this[ONLINE_SOURCES_ENABLED] ?: true,
         openAiBaseUrl = this[OPENAI_BASE_URL] ?: "https://api.groq.com/openai/v1",
         openAiModel = this[OPENAI_MODEL] ?: "llama-3.3-70b-versatile",
-        myMemoryContactEmail = this[MYMEMORY_EMAIL] ?: "",
+        // AC36: không đọc lại email cũ; key legacy bị xoá lúc khởi động.
+        myMemoryContactEmail = "",
         keylessQuotaBlockedOn = this[KEYLESS_QUOTA_BLOCKED_ON] ?: "",
         updateJsonUrl = this[UPDATE_JSON_URL] ?: "",
         lastUpdateCheckAt = this[LAST_UPDATE_CHECK_AT] ?: 0L,

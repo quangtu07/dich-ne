@@ -17,7 +17,8 @@
 | [bubble-region.md](bubble-region.md) | Bong bóng nổi + chọn vùng OCR | UX-05 |
 
 | [visual-polish-v2.md](visual-polish-v2.md) | Nâng cấp visual "3D nhẹ": elevation, gradient, highlight, motion | UX-P1 |
-| [app-icon.md](app-icon.md) | App icon (PNG thật) + bong bóng nổi đồng bộ | UX-06 |
+| [app-icon.md](app-icon.md) | App icon (PNG + vector thật) + bong bóng nổi đồng bộ | UX-06a |
+| [lang-picker.md](lang-picker.md) | F14: chọn ngôn ngữ đích, gói offline theo ngôn ngữ, chip cặp ngôn ngữ, E29/E30/E31 | UX-06 |
 
 Khi 2 file lệch nhau: file màn hình thắng về layout/chuỗi, file này thắng về token/màu/tương phản. [visual-polish-v2.md](visual-polish-v2.md) là **bản nâng cấp tuỳ chọn** — khi được duyệt thì nó thay §2.4 (elevation/motion) của file này, màu gốc §2.1/§2.2 không đổi.
 

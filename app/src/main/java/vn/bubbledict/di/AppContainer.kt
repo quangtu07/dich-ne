@@ -12,6 +12,7 @@ import vn.bubbledict.data.HistoryRepository
 import vn.bubbledict.data.VocabRepository
 import vn.bubbledict.data.db.AppDatabase
 import vn.bubbledict.data.offline.MlkitOfflineTranslator
+import vn.bubbledict.data.offline.OfflineModelManager
 import vn.bubbledict.data.prefs.EncryptedSecretStore
 import vn.bubbledict.data.prefs.SecretStore
 import vn.bubbledict.data.prefs.SettingsStore
@@ -21,6 +22,7 @@ import vn.bubbledict.data.update.UpdateManager
 import vn.bubbledict.data.remote.ChainedTranslator
 import vn.bubbledict.data.remote.FreeDictionaryApi
 import vn.bubbledict.data.remote.GeminiClient
+import vn.bubbledict.data.remote.MozhiTranslator
 import vn.bubbledict.data.remote.MyMemoryTranslator
 import vn.bubbledict.data.remote.OpenAiCompatibleTranslator
 import vn.bubbledict.data.remote.OpenAiConfig
@@ -30,6 +32,7 @@ import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import vn.bubbledict.BuildConfig
 import vn.bubbledict.platform.BubbleController
+import vn.bubbledict.platform.NetworkStatus
 import vn.bubbledict.platform.TtsSpeaker
 
 /**
@@ -62,14 +65,17 @@ class AppContainer(context: Context) {
         GeminiClient(apiKeyProvider = { secretStore.geminiApiKey() })
     }
 
-    val offlineTranslator: MlkitOfflineTranslator by lazy { MlkitOfflineTranslator(settingsStore) }
+    /** F14/BE-33: model dịch ML Kit theo từng ngôn ngữ — màn "Gói dịch ngoại tuyến" đọc trạng thái. */
+    val offlineModelManager: OfflineModelManager by lazy { OfflineModelManager(settingsStore) }
+
+    val offlineTranslator: MlkitOfflineTranslator by lazy {
+        MlkitOfflineTranslator(settingsStore, offlineModelManager)
+    }
 
     /** Nguồn keyless (mặc định chạy được không cần key) — chỉ câu/đoạn. */
     val myMemoryTranslator: MyMemoryTranslator by lazy {
         MyMemoryTranslator(
-            contactEmailProvider = {
-                settingsStore.current().myMemoryContactEmail.takeIf { it.isNotBlank() }
-            },
+            // Privacy (spec 1.17 §5.9): không truyền email — MyMemory gọi ẩn danh.
             // BE-20: hết quota hôm nay -> bỏ qua MyMemory tới hết ngày.
             isQuotaBlockedToday = {
                 settingsStore.current().keylessQuotaBlockedOn == today()
@@ -81,6 +87,14 @@ class AppContainer(context: Context) {
     }
 
     private fun today(): String = java.time.LocalDate.now().toString()
+
+    /**
+     * Nguồn keyless dự phòng khi MyMemory hết lượt (research 2026-11-04: Mozhi 2 instance còn sống,
+     * Lingva/SimplyTranslate bỏ). Chạy sau MyMemory, trước các nguồn có key.
+     */
+    val mozhiTranslator: MozhiTranslator by lazy {
+        MozhiTranslator(logger = { event -> Log.d("Mozhi", event) })
+    }
 
     /** Từ điển keyless cho WORD khi không có key (IPA + định nghĩa tiếng Anh). */
     val dictionaryApi: FreeDictionaryApi by lazy {
@@ -106,7 +120,9 @@ class AppContainer(context: Context) {
      * (nếu có key). Provider không cấu hình tự bị bỏ qua; hết chain thì pipeline rơi tiếp ML Kit.
      */
     val onlineTranslator: ChainedTranslator by lazy {
-        ChainedTranslator(listOf(myMemoryTranslator, geminiClient, openAiTranslator))
+        ChainedTranslator(
+            listOf(myMemoryTranslator, mozhiTranslator, geminiClient, openAiTranslator),
+        )
     }
 
     val historyRecorder: HistoryRecorder by lazy { HistoryRecorder(historyRepository) }
@@ -150,15 +166,26 @@ class AppContainer(context: Context) {
     /** F10: TTS hệ thống ngoài main thread; `speak()` là suspend. */
     val ttsSpeaker: TtsSpeaker by lazy { TtsSpeaker(appContext) }
 
-    /** Pipeline F1/F2 dùng chung: cache → Gemini → ML Kit (O1) → E3a/E3b, ghi lịch sử mỗi lượt. */
+    /** BUG-16: trạng thái mạng thật — E3a/E3b chỉ khi mất mạng, còn lại E28. */
+    val networkStatus: NetworkStatus by lazy { NetworkStatus(appContext) }
+
+    /**
+     * Pipeline F1/F2 dùng chung: cache → chain online → ML Kit (O1) → E3a/E3b/E19/E28.
+     *
+     * F6/F7 (lịch sử + từ vựng) **ra khỏi phạm vi** theo chốt 1.0.4: không truyền [HistoryRecorder]
+     * nên pipeline không ghi lịch sử nữa; bảng DB vẫn giữ (không cần migration) và cache vẫn bật
+     * để tra lại câu đã dịch nhanh.
+     */
     val lookupPipeline: LookupPipeline by lazy {
         LookupPipeline(
             online = onlineTranslator,
             offline = offlineTranslator,
             cache = cacheRepository,
-            history = historyRecorder,
+            history = null,
             dictionary = dictionaryApi,
+            targetLangProvider = { settingsStore.current().targetLang },
             onlineAllowed = { settingsStore.current().onlineSourcesEnabled },
+            networkOnline = { networkStatus.isOnline() },
         )
     }
 

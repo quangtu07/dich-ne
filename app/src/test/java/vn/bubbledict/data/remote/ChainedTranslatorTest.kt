@@ -143,4 +143,78 @@ class ChainedTranslatorTest {
 
         assertEquals(FailureReason.QUOTA, failure.reason)
     }
+
+    @Test
+    fun allSourcesQuota_returnsQuota() = runBlocking {
+        val chain = ChainedTranslator(
+            listOf(
+                FakeSource(failure(FailureReason.QUOTA, 429)),
+                FakeSource(failure(FailureReason.QUOTA, 429)),
+            ),
+        )
+
+        val failure = chain.lookup(request) as TranslationOutcome.Failure
+
+        // Spec 1.16 / AC25a: E19 chỉ khi MỌI nguồn keyless đều trả QUOTA.
+        assertEquals(FailureReason.QUOTA, failure.reason)
+    }
+
+    @Test
+    fun mixedQuotaAndUnavailable_returnsUnavailable() = runBlocking {
+        // Đúng ca BUG-16: MyMemory hết lượt + Mozhi chết (5xx) -> phải là "nguồn tạm không dùng
+        // được" (E28), không được hứa "hết lượt" (E19).
+        val chain = ChainedTranslator(
+            listOf(
+                FakeSource(failure(FailureReason.QUOTA, 429)),
+                FakeSource(failure(FailureReason.UNAVAILABLE, 500)),
+            ),
+        )
+
+        val failure = chain.lookup(request) as TranslationOutcome.Failure
+
+        assertEquals(FailureReason.UNAVAILABLE, failure.reason)
+    }
+
+    @Test
+    fun mixedQuotaAndIo_returnsUnavailable() = runBlocking {
+        val chain = ChainedTranslator(
+            listOf(
+                FakeSource(failure(FailureReason.QUOTA, 429)),
+                FakeSource(failure(FailureReason.IO)),
+            ),
+        )
+
+        val failure = chain.lookup(request) as TranslationOutcome.Failure
+
+        assertEquals(FailureReason.UNAVAILABLE, failure.reason)
+    }
+
+    @Test
+    fun allSourcesPairUnsupported_returnsPairUnsupported() = runBlocking {
+        val chain = ChainedTranslator(
+            listOf(
+                FakeSource(failure(FailureReason.PAIR_UNSUPPORTED, 400)),
+                FakeSource(failure(FailureReason.PAIR_UNSUPPORTED, 422)),
+            ),
+        )
+
+        val failure = chain.lookup(request) as TranslationOutcome.Failure
+
+        assertEquals(FailureReason.PAIR_UNSUPPORTED, failure.reason)
+    }
+
+    @Test
+    fun pairUnsupportedThenUnavailable_keepsUnavailable() = runBlocking {
+        // Lỗi hạ tầng (5xx) đáng báo hơn "cặp không hỗ trợ".
+        val chain = ChainedTranslator(
+            listOf(
+                FakeSource(failure(FailureReason.PAIR_UNSUPPORTED, 400)),
+                FakeSource(failure(FailureReason.UNAVAILABLE, 500)),
+            ),
+        )
+
+        val failure = chain.lookup(request) as TranslationOutcome.Failure
+
+        assertEquals(FailureReason.UNAVAILABLE, failure.reason)
+    }
 }

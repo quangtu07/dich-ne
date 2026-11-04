@@ -16,11 +16,14 @@ interface OnlineTranslator {
 }
 
 interface OfflineTranslator {
-    /** Gói dịch ML Kit en→vi đã tải xong và dùng được. */
-    suspend fun isModelReady(): Boolean
+    /**
+     * Đã có đủ model ML Kit cho cặp ngôn ngữ chưa (F14/BE-33: model theo từng ngôn ngữ,
+     * pivot qua EN). Mặc định `en → vi` giữ hành vi 1.0.4.
+     */
+    suspend fun isModelReady(sourceLang: String = "en", targetLang: String = "vi"): Boolean
 
-    /** Dịch offline; null/failure nghĩa là không dùng được (pipeline trả E3a). */
-    suspend fun translate(text: String): String?
+    /** Dịch offline; null/failure nghĩa là không dùng được (pipeline trả E3a/E3c/E30). */
+    suspend fun translate(text: String, sourceLang: String = "en", targetLang: String = "vi"): String?
 }
 
 interface LookupCache {

@@ -65,7 +65,9 @@ class GeminiClient(
         response.use { r ->
             if (!r.isSuccessful) {
                 logger("gemini http ${r.code}")
-                return TranslationOutcome.Failure(HttpErrors.E4, FailureReason.HTTP, httpStatus = r.code)
+                // AC37 (spec 1.18): provider có key — 429/5xx là UNAVAILABLE, không bao giờ QUOTA
+                // (E19 chỉ dành cho nguồn keyless). 401/403 vẫn là HTTP -> E20.
+                return SourceFailure.fromHttpStatus(r.code, hasQuota = false)
             }
             val raw = r.body?.string().orEmpty()
             val text = extractText(raw)
@@ -75,8 +77,9 @@ class GeminiClient(
                 }
 
             return when (request.kind) {
-                TextKind.WORD -> parseWord(text, r.code)
-                TextKind.SENTENCE, TextKind.PARAGRAPH -> parseTranslation(text, r.code)
+                TextKind.WORD -> parseWord(text, r.code, request.targetLang)
+                TextKind.SENTENCE, TextKind.PARAGRAPH ->
+                    parseTranslation(text, r.code, request.targetLang)
             }
         }
     }
@@ -93,7 +96,9 @@ class GeminiClient(
                 outcome.reason == FailureReason.NO_KEY -> KeyCheckResult.MISSING
                 outcome.reason == FailureReason.HTTP && outcome.httpStatus in INVALID_KEY_STATUSES ->
                     KeyCheckResult.INVALID
-                outcome.reason == FailureReason.HTTP && outcome.httpStatus == 429 -> KeyCheckResult.QUOTA
+                // AC37: 429 của provider có key được phân loại UNAVAILABLE (không phải hết lượt keyless).
+                outcome.reason == FailureReason.UNAVAILABLE && outcome.httpStatus == 429 ->
+                    KeyCheckResult.QUOTA
                 outcome.reason == FailureReason.TIMEOUT || outcome.reason == FailureReason.IO ->
                     KeyCheckResult.UNREACHABLE
                 // Key hợp lệ nhưng model trả rỗng/không phải tiếng Việt: key vẫn dùng được.
@@ -104,7 +109,11 @@ class GeminiClient(
 
     fun looksVietnamese(text: String): Boolean = text.any { it.lowercaseChar() in VIETNAMESE_CHARS }
 
-    private fun parseWord(candidateText: String, status: Int): TranslationOutcome {
+    private fun parseWord(
+        candidateText: String,
+        status: Int,
+        targetLang: String,
+    ): TranslationOutcome {
         val payload = runCatching { json.decodeFromString<WordPayload>(candidateText) }.getOrNull()
             ?: run {
                 logger("gemini parse word failed")
@@ -114,21 +123,26 @@ class GeminiClient(
             logger("gemini word empty")
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.EMPTY, status)
         }
-        if (!looksVietnamese(payload.meaning)) {
-            logger("gemini word not-vi")
+        // E22 chỉ áp cho đích tiếng Việt (các đích khác chưa có bộ kiểm script).
+        if (TargetLanguages.isVietnamese(targetLang) && !looksVietnamese(payload.meaning)) {
+            logger("gemini word not-target-language")
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.NOT_VIETNAMESE, status)
         }
         return TranslationOutcome.Word(payload, provider = PROVIDER_NAME)
     }
 
-    private fun parseTranslation(candidateText: String, status: Int): TranslationOutcome {
+    private fun parseTranslation(
+        candidateText: String,
+        status: Int,
+        targetLang: String,
+    ): TranslationOutcome {
         val text = candidateText.trim()
         if (text.isEmpty()) {
             logger("gemini translation empty")
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.EMPTY, status)
         }
-        if (!looksVietnamese(text)) {
-            logger("gemini translation not-vi")
+        if (TargetLanguages.isVietnamese(targetLang) && !looksVietnamese(text)) {
+            logger("gemini translation not-target-language")
             return TranslationOutcome.Failure(HttpErrors.E5, FailureReason.NOT_VIETNAMESE, status)
         }
         return TranslationOutcome.Translation(text, provider = PROVIDER_NAME)
@@ -143,7 +157,7 @@ class GeminiClient(
 
     private fun buildRequest(request: LookupRequest) = when (request.kind) {
         TextKind.WORD -> GeminiGenerateRequest(
-            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(wordPrompt(request.text))))),
+            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(wordPrompt(request.text, request.sourceLang, request.targetLang))))),
             generationConfig = GeminiGenerationConfig(
                 temperature = 0.2,
                 responseMimeType = "application/json",
@@ -151,34 +165,38 @@ class GeminiClient(
             ),
         )
         TextKind.SENTENCE -> GeminiGenerateRequest(
-            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(sentencePrompt(request.text))))),
+            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(sentencePrompt(request.text, request.sourceLang, request.targetLang))))),
             generationConfig = GeminiGenerationConfig(temperature = 0.2),
         )
         TextKind.PARAGRAPH -> GeminiGenerateRequest(
-            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(paragraphPrompt(request.text))))),
+            contents = listOf(GeminiContent(role = "user", parts = listOf(GeminiPart(paragraphPrompt(request.text, request.sourceLang, request.targetLang))))),
             generationConfig = GeminiGenerationConfig(temperature = 0.2),
         )
     }
 
-    private fun wordPrompt(word: String) = buildString {
-        append("You are an English–Vietnamese dictionary. For the English word: \"")
+    private fun wordPrompt(word: String, sourceLang: String, targetLang: String) = buildString {
+        val source = TargetLanguages.name(sourceLang)
+        val target = TargetLanguages.name(targetLang)
+        append("You are a $source–$target dictionary. For the $source word: \"")
         append(word)
-        append("\" return JSON only with: meaning (short Vietnamese meaning with full diacritics), ")
-        append("partOfSpeech (n/v/adj/adv), ipa (IPA of the English word), ")
-        append("examples (2-3 English sentences with Vietnamese translations), synonyms (English words).")
+        append("\" return JSON only with: meaning (short $target meaning), ")
+        append("partOfSpeech (n/v/adj/adv), ipa (IPA of the $source word), ")
+        append("examples (2-3 $source sentences with $target translations), synonyms ($source words).")
     }
 
-    private fun sentencePrompt(sentence: String) = buildString {
-        append("Translate this English sentence into natural Vietnamese. ")
-        append("Return only the Vietnamese translation with full diacritics; keep the meaning, do not shorten.\n")
+    private fun sentencePrompt(sentence: String, sourceLang: String, targetLang: String) = buildString {
+        val target = TargetLanguages.name(targetLang)
+        append("Translate this sentence into natural $target. ")
+        append("Return only the $target translation; keep the meaning, do not shorten.\n")
         append("Text: ")
         append(sentence)
     }
 
-    private fun paragraphPrompt(paragraph: String) = buildString {
-        append("Translate this whole English paragraph into Vietnamese in one pass. ")
-        append("Keep every sentence (same sentence count), preserve meaning, do not shorten and do not translate sentence by sentence incorrectly. ")
-        append("Return only the Vietnamese translation with full diacritics.\n")
+    private fun paragraphPrompt(paragraph: String, sourceLang: String, targetLang: String) = buildString {
+        val target = TargetLanguages.name(targetLang)
+        append("Translate this whole paragraph into $target in one pass. ")
+        append("Keep every sentence (same sentence count), preserve meaning, do not shorten. ")
+        append("Return only the $target translation.\n")
         append("Text: ")
         append(paragraph)
     }

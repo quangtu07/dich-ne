@@ -48,7 +48,7 @@ Landscape: sheet cao tối đa 70%, rộng 480dp, dán phải (không che nửa 
 │  Ví dụ: "beyond comprehension"            │  hàng 5b — ví dụ (bodyMedium nghiêng)
 │  → ngoài tầm hiểu                          │           + bản dịch ví dụ (bodySmall)
 │  ────────────────────────────────────────  │  divider nếu có ví dụ
-│  [ ★ Lưu ]   [ ⧉ Copy ]                    │  hàng 6 — hành động (X đã ở hàng 1)
+│  [ ⧉ Copy ]  [ 🔈 Nghe ]                   │  hàng 6 — hành động (X ở hàng 1)
 └────────────────────────────────────────────┘
 ```
 
@@ -82,7 +82,7 @@ Không đổi số hàng của S4; IPA vẫn ở hàng 3 (không dời xuống d
 | 4 | chip `Kết quả offline` (warning) | luôn (engine = MLKIT) |
 | 5 | nghĩa tiếng Việt từ ML Kit (`bodyLarge`) | luôn |
 | 5b | nhãn `Nghĩa tiếng Anh` + ≤2 định nghĩa | chỉ khi `englishDefinitions` có dữ liệu |
-| 6 | Lưu · Copy | luôn |
+| 6 | Copy · Nghe | luôn |
 
 **Vì sao IPA ở trên nghĩa, không theo thứ tự chữ của spec F5 "nghĩa trước, dưới là khối IPA + định nghĩa":** IPA thuộc về chính từ đó (như mọi từ điển giấy), và nút Nghe + segmented phải đứng cạnh IPA. Dời xuống dưới nghĩa thì hàng 3 trống → phải bỏ hàng 3 ở nhánh này, sheet nhảy cóc giữa kết quả có key (S2) và không key (S4), đồng thời nút Nghe rời xa từ đang đọc. Spec ghi ràng buộc là ẩn/hiện đúng điều kiện, nên cách này thoả.
 
@@ -119,10 +119,10 @@ Không đổi số hàng của S4; IPA vẫn ở hàng 3 (không dời xuống d
 
 | # | State | Hàng 4 (chip) | Hàng 5 (nội dung) | Hàng 6 (nút) |
 |---|---|---|---|---|
-| S1 | `loading` | không chip | 3 khối skeleton 16/16/12dp cao, rộng 100/85/60%, `surfaceContainer`, bo 8dp | X bật; Lưu/Copy/Nghe disable (alpha 38%) |
-| S2 | `success` | không chip | đầy đủ như mục 4 | Lưu (chỉ WORD) · Copy · Nghe · X |
-| S3 | `cached` | chip `successContainer` icon `check` **"Kết quả đã lưu"** | như S2 | Lưu (chỉ WORD) · Copy · Nghe · X |
-| S4 | `offline_result` (AC14) | chip `warningContainer` icon `cloud_off` **"Kết quả offline"** + dòng `bodySmall` "Dịch trên máy, có thể kém chính xác hơn" | bản dịch/nghĩa từ ML Kit | Lưu · Copy · Nghe · X |
+| S1 | `loading` | không chip | 3 khối skeleton 16/16/12dp cao, rộng 100/85/60%, `surfaceContainer`, bo 8dp | X bật; Copy/Nghe disable (alpha 38%) |
+| S2 | `success` | không chip | đầy đủ như mục 4 | Copy · Nghe · X |
+| S3 | `cached` | chip `successContainer` icon `check` **"Kết quả đã lưu"** | như S2 | Copy · Nghe · X |
+| S4 | `offline_result` (AC14) | chip `warningContainer` icon `cloud_off` **"Kết quả offline"** + dòng `bodySmall` "Dịch trên máy, có thể kém chính xác hơn" | bản dịch/nghĩa từ ML Kit | Copy · Nghe · X |
 | S5 | `error_no_network_short` (E3, AC15) | banner `warningContainer`, icon `wifi_off` | tiêu đề "Chưa tải gói offline để tra từ" + `bodySmall` "Bật mạng, hoặc tải gói dịch offline (≈30MB) để tra từ khi không có mạng." | `Tải gói offline` (FilledTonal) · `Thử lại` · Copy · X |
 | S6 | `error_no_network_long` (E3, AC16) | banner `warningContainer`, icon `wifi_off` | "Cần mạng để dịch đoạn này" + `bodySmall` "Bản dịch offline chỉ đủ cho từ và câu ngắn." | `Thử lại` · Copy · X |
 | S7 | `error_source` (E4) | banner `errorContainer`, icon `error_outline` | "Không tra được lúc này" + `bodySmall` "Lỗi kết nối, hết hạn mức, hoặc quá thời gian chờ. Thử lại sau ít phút." | `Thử lại` · Copy · X |
@@ -131,7 +131,7 @@ Không đổi số hàng của S4; IPA vẫn ở hàng 3 (không dời xuống d
 | S12 | `error_quota` (E19) | banner `warningContainer`, icon `schedule` | **"Hết lượt dịch miễn phí hôm nay"** + `bodySmall` "Thử lại sau hoặc nhập API key để dịch chất lượng cao hơn." | `Nhập API key` (FilledTonal) · Copy · X — **không** có `Thử lại` (không có tác dụng tới 0h) |
 | S13 | `error_bad_key` (E20) | banner `errorContainer`, icon `key_off` | **"API key không hợp lệ"** + `bodySmall` "Kiểm tra lại key trong Cài đặt. App vẫn tra được bằng nguồn miễn phí." | `Mở cài đặt` · `Thử lại` · Copy · X |
 | S11 | `downloading_model` (đang tải gói offline, bấm từ S5) | banner `secondaryContainer`, icon `download` | `LinearProgressIndicator` indeterminate + "Đang tải gói dịch…" + `bodySmall` "Có thể mất vài phút. Giữ app mở cho tới khi xong." | chỉ X (không Thử lại trong lúc tải) |
-| S10 | `word_not_found` | chip `secondaryContainer` **"Không có trong từ điển"** | bản dịch câu do fallback | Lưu · Copy · Nghe · X |
+| S10 | `word_not_found` | chip `secondaryContainer` **"Không có trong từ điển"** | bản dịch câu do fallback | Copy · Nghe · X |
 
 Luồng "Tải gói offline" từ S5 (không cần UI mới):
 1. Bấm `Tải gói offline` → gọi `ensureModelDownloaded()` → sheet chuyển state **S11** (không mở màn Settings, không đóng sheet).
@@ -161,7 +161,6 @@ Ngoại lệ duy nhất: lỗi thuộc về key (E20 → S13) thì nhắc "API k
 
 | Nút | Kiểu | Hành vi |
 |---|---|---|
-| `Lưu` / `Đã lưu` | FilledTonal, cao 40dp, icon `star_border`/`star`, padding ngang 16dp | Lưu → snackbar "Đã lưu vào Từ vựng"; đã lưu → nền `successContainer`, chữ `success`, bấm lại = bỏ lưu + snackbar "Đã bỏ lưu" (có Hoàn tác) |
 | `Copy` | TextButton, icon `content_copy` | Copy text **kết quả** (nghĩa/bản dịch), không copy text gốc. Snackbar "Đã copy bản dịch" / "Đã copy nghĩa". Không đóng sheet |
 | `Nghe` | IconButton 48dp, icon `volume_up` → đang đọc `stop` | Nhấn 1: đọc. Nhấn lần 2 khi đang đọc: dừng (AC22). Nhãn `contentDescription`: "Nghe phát âm, giọng Anh-Mỹ" (theo giọng đang chọn) |
 | `X` | IconButton 48dp, góc phải hàng 1 | finish() |
@@ -314,3 +313,27 @@ Còn chờ: ảnh S2 success (cần key Gemini hợp lệ) — chưa duyệt đ�
 2. Cùng chỗ: khi đã tách POS, phần nghĩa còn lại phải giữ nguyên chữ thường đầu câu nếu có thể.
 
 **Đã cân nhắc nhưng KHÔNG sửa ở MVP:** ở SENTENCE/PARAGRAPH, text gốc dùng `titleLarge` (22) nên trông "nặng" hơn bản dịch (16) — về lý thuyết nên hạ text gốc xuống `bodyMedium` muted để bản dịch nổi hơn. Không làm: phải chụp lại toàn bộ ảnh + QA test lại, lợi ích nhỏ. Ghi lại để làm sau MVP.
+
+## 24. Bỏ Lịch sử/Từ vựng (2026-11-04 21:09) — cập nhật file này
+
+Theo chốt của user (Chief xác nhận): **bỏ tab Lịch sử, tab Từ vựng, nút "Lưu", và 2 mục xoá lịch sử/từ vựng trong Settings.** App chỉ còn: tra từ/dịch khi đang đọc.
+
+- **Nút `Lưu`/`Đã lưu` xoá khỏi hàng 6** ở mọi state. Hàng 6 giờ chỉ còn `Copy` (và `Nghe` ở chỗ khác theo biến thể). Không có snackbar "Đã lưu", không chip "Đã lưu".
+- **Chip S3 "Kết quả đã lưu" giữ nguyên** — đó là cache, không phải từ vựng; câu đã tra vẫn trả nhanh từ cache dù user không thấy lịch sử.
+- **S10 `word_not_found`**: bỏ Lưu, chỉ Copy · Nghe · X.
+- Không đổi gì khác về layout/kích thước sheet.
+
+## 25. F14 — hiển thị đa ngôn ngữ (spec 1.20)
+
+Chip hàng 1 hiện **cặp ngôn ngữ thực tế**, không hard-code "EN → VI": `Câu · ZH → VI`, `Từ · JA → VI`. Mã ngôn ngữ dùng 2 chữ in hoa (VI, EN, ZH, KO, JA). Khi nguồn = EN và đích = VI vẫn hiện `EN → VI` — không cần trạng thái "đoán được".
+
+| Nguồn | IPA + khối "Nghĩa tiếng Anh" | Nút Nghe | Ghi chú |
+|---|---|---|---|
+| `EN` | có (nếu nguồn trả) | có, US/UK | như hiện tại |
+| `ZH`/`KO`/`JA` (WORD) | **ẩn cả hai** — chỉ hiện bản dịch tiếng Việt | **ẩn** (TTS chỉ có giọng Anh) | Không có dòng "chưa có giọng" — ẩn hẳn, vì không có giọng nào đúng để báo |
+| câu/đoạn ZH/KO/JA | — | **ẩn** | |
+
+- Không thêm nhãn "ngôn ngữ nhận diện được" ở chỗ khác — chip đã nói.
+- **E30 — chưa tải gói ngôn ngữ của ML Kit** (khi offline/không key mà cần dịch cặp chưa có model): dùng lại state **S5** nhưng đổi copy: tiêu đề "Chưa tải gói ngôn ngữ này", thân "Gói dịch ngoại tuyến cho ngôn ngữ này chưa được tải (khoảng 30MB)." Nút `Tải gói` · `Thử lại` · `Đóng`. Không tạo state mới — S5 đã là state "thiếu model", chỉ đổi chuỗi theo ngôn ngữ.
+- Khi đổi ngôn ngữ đích trong Settings: **không** xoá cache, không đổi lịch sử cũ; cache key đã có ngôn ngữ nên kết quả cũ vẫn đúng cặp.
+- **Nguồn = đích**: hiện text gốc + dòng `bodySmall` "Văn bản đã ở ngôn ngữ đích.", **không gọi API**, không chip lỗi. Chi tiết + 3 chuỗi E29/E30/E31: [lang-picker.md](lang-picker.md) §4–§6.

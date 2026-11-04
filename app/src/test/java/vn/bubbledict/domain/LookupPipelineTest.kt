@@ -2,6 +2,7 @@ package vn.bubbledict.domain
 
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -48,8 +49,8 @@ class LookupPipelineTest {
         var translation: String? = "Thành phố yên tĩnh.",
     ) : OfflineTranslator {
         var calls = 0
-        override suspend fun isModelReady(): Boolean = ready
-        override suspend fun translate(text: String): String? {
+        override suspend fun isModelReady(sourceLang: String, targetLang: String): Boolean = ready
+        override suspend fun translate(text: String, sourceLang: String, targetLang: String): String? {
             calls++
             return translation
         }
@@ -113,6 +114,10 @@ class LookupPipelineTest {
         cache: FakeCache = FakeCache(),
         history: FakeHistory = FakeHistory(),
         dictionary: FakeDictionary? = null,
+        /** BUG-16: true = máy có mạng (mặc định); false = mất mạng thật -> E3a/E3b. */
+        networkOnline: Boolean = true,
+        /** F14/BE-34: ngôn ngữ đích lấy từ Settings. */
+        targetLang: String = "vi",
     ) = Triple(
         LookupPipeline(
             online = online,
@@ -120,6 +125,8 @@ class LookupPipelineTest {
             cache = cache,
             history = history,
             dictionary = dictionary,
+            targetLangProvider = { targetLang },
+            networkOnline = { networkOnline },
             now = { now },
         ),
         Triple(offline, cache, history),
@@ -355,10 +362,214 @@ class LookupPipelineTest {
     }
 
     @Test
-    fun timeoutLongText_mapsToE4() = runBlocking {
+    fun timeoutLongText_mapsToE28() = runBlocking {
+        // Spec 1.16: timeout khi có mạng = nguồn tạm không dùng được -> E28 (không phải "hết lượt").
         val (pipe, _, _) = pipeline(FakeOnline(failure(FailureReason.TIMEOUT)))
 
-        assertEquals(LookupErrorCodes.E4, pipe.lookup(LONG_PARAGRAPH).errorCode)
+        assertEquals(LookupErrorCodes.E28, pipe.lookup(LONG_PARAGRAPH).errorCode)
+    }
+
+    // --- BUG-16 / spec 1.16: 3 nhánh lỗi theo trạng thái mạng thật ---
+
+    @Test
+    fun quotaShortTextWithoutModel_mapsToE19() = runBlocking {
+        // AC25a: hết lượt thật + chưa tải gói offline + text ngắn -> PHẢI là E19.
+        // Trước BUG-16 nhánh E3a được xét trước nên E19 không bao giờ hiện ở ca này.
+        val online = FakeOnline(failure(FailureReason.QUOTA, 429))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline)
+
+        // Câu ngắn (không phải WORD) -> nhánh E19 đúng AC25a.
+        assertEquals(LookupErrorCodes.E19, pipe.lookup("The city was quiet.").errorCode)
+    }
+
+    @Test
+    fun networkUpProviderUnavailable_shortTextNoModel_mapsToE28() = runBlocking {
+        // Đúng ca Tester dựng: máy có mạng, cả MyMemory + 2 Mozhi fail (5xx/host chết).
+        val online = FakeOnline(failure(FailureReason.UNAVAILABLE, 500))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        val result = pipe.lookup("The city was quiet.")
+
+        assertEquals(LookupErrorCodes.E28, result.errorCode)
+        assertTrue("không được dùng nhánh copy 'Bật mạng'", result.errorCode != LookupErrorCodes.E3A)
+    }
+
+    @Test
+    fun networkUpIoLongText_mapsToE28() = runBlocking {
+        // Host chết khi có mạng (connection refused) -> E28, không phải E3b "cần mạng".
+        val (pipe, _, _) = pipeline(FakeOnline(failure(FailureReason.IO)), networkOnline = true)
+
+        assertEquals(LookupErrorCodes.E28, pipe.lookup(LONG_PARAGRAPH).errorCode)
+    }
+
+    // --- BE-38 (spec 1.28): E22 chỉ áp khi đích tiếng Việt ---
+
+    @Test
+    fun offlineTargetEnglish_keepsTranslation_noE22() = runBlocking {
+        // CR-11: đích EN thì output không có ký tự Việt vẫn hợp lệ, KHÔNG bị E22.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = true, translation = "Yesterday it rained all night.")
+        val (pipe, _, _) = pipeline(online, offline = offline, targetLang = "en")
+
+        val result = pipe.lookup("Hôm qua trời mưa cả đêm.")
+
+        assertEquals(ResultState.OK, result.state)
+        assertEquals("Yesterday it rained all night.", result.translation)
+        assertNull("đích EN không được E22", result.errorCode)
+    }
+
+    @Test
+    fun offlineTargetVietnamese_stillE22ForEnglishOutput() = runBlocking {
+        // Hồi quy E22: đích VI mà ML Kit trả lại tiếng Anh -> không hiện làm nghĩa.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = true, translation = "Lucid")
+        val (pipe, _, _) = pipeline(online, offline = offline, targetLang = "vi")
+
+        val result = pipe.lookup("lucid")
+
+        assertEquals(LookupErrorCodes.E22, result.errorCode)
+    }
+
+    @Test
+    fun allProvidersPairUnsupported_mapsToE31() = runBlocking {
+        val online = FakeOnline(failure(FailureReason.PAIR_UNSUPPORTED, 400))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, targetLang = "vi")
+
+        assertEquals(LookupErrorCodes.E31, pipe.lookup("今天天气很好。").errorCode)
+    }
+
+    // --- BE-34 (F14/1.0.5): cặp ngôn ngữ, same-language, E30/E31 ---
+
+    @Test
+    fun result_carriesLanguagePair_englishToVietnamese() = runBlocking {
+        val online = FakeOnline(TranslationOutcome.Translation("Thành phố yên tĩnh."))
+        val (pipe, _, _) = pipeline(online)
+
+        val result = pipe.lookup("The city was quiet.")
+
+        assertEquals("en", result.sourceLang)
+        assertEquals("vi", result.targetLang)
+        assertFalse("câu tiếng Anh rõ ràng không được uncertain", result.sourceLangUncertain)
+    }
+
+    @Test
+    fun sameLanguage_returnsOriginalWithoutOnlineCall() = runBlocking {
+        // UX-06 §3: nguồn = đích -> trả nguyên văn, KHÔNG gọi API (tránh đốt quota).
+        val online = FakeOnline(TranslationOutcome.Translation("không được gọi"))
+        val (pipe, _, _) = pipeline(online, targetLang = "vi")
+
+        val result = pipe.lookup("Hôm qua thành phố mưa rất to.")
+
+        assertEquals(ResultState.OK, result.state)
+        assertEquals("same-language", result.provider)
+        assertEquals("Hôm qua thành phố mưa rất to.", result.translation)
+        assertEquals(0, online.calls)
+        assertEquals("vi", result.sourceLang)
+    }
+
+    @Test
+    fun nonDefaultPair_missingModel_mapsToE30() = runBlocking {
+        // zh→vi cần 2 gói; chưa tải -> E30 (cụ thể hơn E3c), không phải E3a/E28.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, targetLang = "vi")
+
+        assertEquals(LookupErrorCodes.E30, pipe.lookup("昨天城市很安静。").errorCode)
+    }
+
+    @Test
+    fun unsupportedTarget_mapsToE31() = runBlocking {
+        val (pipe, _, _) = pipeline(FakeOnline(failure(FailureReason.NO_KEY)), targetLang = "fr")
+
+        assertEquals(LookupErrorCodes.E31, pipe.lookup("hello").errorCode)
+    }
+
+    @Test
+    fun uncertainSource_isFlaggedForChip() = runBlocking {
+        val online = FakeOnline(TranslationOutcome.Translation("Xin chào"))
+        val (pipe, _, _) = pipeline(online)
+
+        val result = pipe.lookup("Hi")
+
+        assertTrue("text quá ngắn phải uncertain (chip ? → VI)", result.sourceLangUncertain)
+    }
+
+    // --- BE-36 (P11/1.0.5): E3c — WORD/có mạng/thiếu model offline ---
+
+    @Test
+    fun wordNoKeyNoModel_networkUp_mapsToE3c() = runBlocking {
+        // AC38 nhánh 1.0.5: tra TỪ, không key, có mạng, chưa tải gói -> E3c "tải gói offline",
+        // KHÔNG phải E3a ("Bật mạng") và không E19/E28.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        assertEquals(LookupErrorCodes.E3C, pipe.lookup("resilient").errorCode)
+    }
+
+    @Test
+    fun wordProviderUnavailableNoModel_networkUp_mapsToE3cNotE28() = runBlocking {
+        // Provider có key 429/5xx khi tra TỪ: vẫn là "thiếu gói offline" (E3c), không E28.
+        val online = FakeOnline(failure(FailureReason.UNAVAILABLE, 429))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        assertEquals(LookupErrorCodes.E3C, pipe.lookup("ephemeral").errorCode)
+    }
+
+    @Test
+    fun wordQuotaNoModel_networkUp_mapsToE3cNotE19() = runBlocking {
+        // AC38: WORD không bao giờ ra E19, kể cả khi chain trả QUOTA.
+        val online = FakeOnline(failure(FailureReason.QUOTA, 429))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        assertEquals(LookupErrorCodes.E3C, pipe.lookup("serendipity").errorCode)
+    }
+
+    @Test
+    fun wordNoKeyNoModel_networkDown_stillE3a() = runBlocking {
+        // Mất mạng thật thì vẫn E3a ("Bật mạng"), E3c chỉ khi có mạng.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = false)
+
+        assertEquals(LookupErrorCodes.E3A, pipe.lookup("resilient").errorCode)
+    }
+
+    @Test
+    fun wordNoKeyWithModel_usesMlkit() = runBlocking {
+        // Có gói: WORD vẫn ra kết quả ML Kit, không lỗi.
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = true, translation = "kiên cường")
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        val result = pipe.lookup("resilient")
+        assertEquals(ResultState.OK, result.state)
+        assertEquals(Engine.MLKIT, result.engine)
+    }
+
+    @Test
+    fun shortSentenceNoKeyNoModel_networkUp_mapsToE3c() = runBlocking {
+        // Câu ngắn + không key + chưa có model cũng hướng dẫn tải gói (E3c), không "Bật mạng".
+        val online = FakeOnline(failure(FailureReason.NO_KEY))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = true)
+
+        assertEquals(LookupErrorCodes.E3C, pipe.lookup("hello there").errorCode)
+    }
+
+    @Test
+    fun networkDownUnavailable_shortTextNoModel_mapsToE3a() = runBlocking {
+        // Mất mạng thật -> copy "Bật mạng" mới đúng.
+        val online = FakeOnline(failure(FailureReason.UNAVAILABLE))
+        val offline = FakeOffline(ready = false)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = false)
+
+        assertEquals(LookupErrorCodes.E3A, pipe.lookup("hello").errorCode)
     }
 
     @Test
@@ -420,7 +631,7 @@ class LookupPipelineTest {
     fun offlineWithoutModel_returnsE3a() = runBlocking {
         val online = FakeOnline(failure(FailureReason.IO))
         val offline = FakeOffline(ready = false)
-        val (pipe, deps, _) = pipeline(online, offline = offline)
+        val (pipe, deps, _) = pipeline(online, offline = offline, networkOnline = false)
         val (_, _, history) = deps
 
         val result = pipe.lookup("hello")
@@ -435,7 +646,7 @@ class LookupPipelineTest {
         val online = FakeOnline(failure(FailureReason.IO))
         val offline = FakeOffline(ready = true)
         val longText = "The city was quiet. Rain fell all night. By morning the streets were empty. Nobody spoke."
-        val (pipe, _, _) = pipeline(online, offline = offline)
+        val (pipe, _, _) = pipeline(online, offline = offline, networkOnline = false)
 
         val result = pipe.lookup(longText)
 
@@ -447,7 +658,7 @@ class LookupPipelineTest {
     fun offlineTooManyChars_returnsE3b() = runBlocking {
         val online = FakeOnline(failure(FailureReason.IO))
         val text = "a".repeat(201)
-        val (pipe, _, _) = pipeline(online)
+        val (pipe, _, _) = pipeline(online, networkOnline = false)
 
         assertEquals(LookupErrorCodes.E3B, pipe.lookup(text).errorCode)
     }
@@ -469,7 +680,7 @@ class LookupPipelineTest {
 
     @Test
     fun offlineBoundary201Chars_isE3b() = runBlocking {
-        val (pipe, _, _) = pipeline(FakeOnline(failure(FailureReason.IO)))
+        val (pipe, _, _) = pipeline(FakeOnline(failure(FailureReason.IO)), networkOnline = false)
         assertEquals(LookupErrorCodes.E3B, pipe.lookup("a".repeat(201)).errorCode)
     }
 

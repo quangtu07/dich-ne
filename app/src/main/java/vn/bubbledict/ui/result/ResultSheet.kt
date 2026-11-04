@@ -170,7 +170,26 @@ private fun ResultSheetContent(
             .padding(horizontal = 20.dp)
             .padding(bottom = 20.dp),
     ) {
-        HeaderRow(kind = state.kind, source = state.source, onClose = onClose, closeFocus = closeFocus)
+        HeaderRow(state = state, onClose = onClose, closeFocus = closeFocus)
+        // BUG-23 (F14): nguồn = đích -> nói rõ, không gọi API, không hứa bản dịch.
+        if (state.sameLanguage) {
+            Text(
+                text = stringResource(R.string.result_same_language_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp),
+            )
+        }
+
+        // E29 (F14): không chắc ngôn ngữ nguồn -> nói rõ dưới hàng chip, không chặn.
+        if (state.sourceLangUncertain) {
+            Text(
+                text = stringResource(R.string.result_lang_uncertain_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp),
+            )
+        }
         Spacer(Modifier.height(12.dp))
 
         if (state.editing) {
@@ -188,10 +207,11 @@ private fun ResultSheetContent(
             )
         }
 
-        if (state.isWord && !state.editing) {
+        // F14: TTS chỉ có giọng EN -> nguồn khác EN ẩn hàng phát âm im lặng.
+        if (state.isWord && !state.editing && state.ttsAvailableForSource) {
             Spacer(Modifier.height(8.dp))
             PronunciationRow(state = state, onSpeak = onSpeak, onVoiceChange = actions.onVoiceChange)
-        } else if (!state.editing && state.ttsReady) {
+        } else if (!state.editing && state.ttsReady && state.ttsAvailableForSource) {
             Spacer(Modifier.height(8.dp))
         }
 
@@ -233,8 +253,7 @@ private fun ResultSheetContent(
 
 @Composable
 private fun HeaderRow(
-    kind: TextKind,
-    source: TextSource,
+    state: ResultUiState,
     onClose: () -> Unit,
     closeFocus: FocusRequester,
 ) {
@@ -242,10 +261,11 @@ private fun HeaderRow(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        KindChip(kind = kind, source = source)
+        KindChip(kind = state.kind, source = state.source)
         Spacer(Modifier.width(8.dp))
+        // F14: chip cặp ngôn ngữ thật "· ZH → VI"; E29 (không chắc nguồn) -> "? → VI".
         Text(
-            text = stringResource(R.string.lang_pair),
+            text = languagePairLabel(state),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -263,6 +283,13 @@ private fun HeaderRow(
             )
         }
     }
+}
+
+/** F14: "· ZH → VI" (ghép sau chip loại); E29 -> "· ? → VI". */
+@Composable
+private fun languagePairLabel(state: ResultUiState): String {
+    val source = if (state.sourceLangUncertain) "?" else state.sourceLang.uppercase()
+    return "· $source → ${state.targetLang.uppercase()}"
 }
 
 @Composable
@@ -519,14 +546,20 @@ private fun ResultBody(state: ResultUiState) {
 
         ResultStatus.DOWNLOADING_MODEL -> DownloadingModelBody()
 
-        ResultStatus.WORD_NOT_FOUND -> Column {
-            StatusChip(
-                text = stringResource(R.string.result_chip_not_in_dict),
-                container = MaterialTheme.colorScheme.secondaryContainer,
-                content = MaterialTheme.colorScheme.onSecondaryContainer,
-                icon = null,
-            )
-            Spacer(Modifier.height(12.dp))
+        // F14 / UX-06 §9b: chip "Không có trong từ điển" (S10) CHỈ đúng khi đích = VI.
+        // Đích khác VI: hiện bản dịch bình thường, không chip, không dòng "chưa có từ điển".
+        ResultStatus.WORD_NOT_FOUND -> if (state.targetLang.equals("vi", ignoreCase = true)) {
+            Column {
+                StatusChip(
+                    text = stringResource(R.string.result_chip_not_in_dict),
+                    container = MaterialTheme.colorScheme.secondaryContainer,
+                    content = MaterialTheme.colorScheme.onSecondaryContainer,
+                    icon = null,
+                )
+                Spacer(Modifier.height(12.dp))
+                TranslationBody(state)
+            }
+        } else {
             TranslationBody(state)
         }
 
@@ -540,6 +573,24 @@ private fun ResultBody(state: ResultUiState) {
             body = stringResource(R.string.error_need_model_short_hint),
         )
 
+        // E3c: cùng layout S5 nhưng máy đang có mạng -> không nhắc "Bật mạng".
+        ResultStatus.ERROR_MODEL_MISSING -> WarningBanner(
+            title = stringResource(R.string.error_need_model_short),
+            body = stringResource(R.string.error_model_missing_short_hint),
+        )
+
+        // E31: cặp ngoài 5 ngôn ngữ — layout S7 + lối mở Cài đặt đổi ngôn ngữ đích.
+        ResultStatus.ERROR_PAIR_UNSUPPORTED -> ErrorBanner(
+            title = stringResource(R.string.error_pair_unsupported_title),
+            body = stringResource(R.string.error_pair_unsupported_hint),
+        )
+
+        // E30: cùng layout S5, copy nói rõ cặp có thể cần 2 gói (zh->vi = zh + vi).
+        ResultStatus.ERROR_LANG_MODEL_MISSING -> WarningBanner(
+            title = stringResource(R.string.error_need_model_short),
+            body = stringResource(R.string.error_lang_model_missing_hint),
+        )
+
         ResultStatus.ERROR_NO_NETWORK_LONG -> WarningBanner(
             title = stringResource(R.string.error_need_network_long),
             body = stringResource(R.string.error_need_network_long_hint),
@@ -548,6 +599,12 @@ private fun ResultBody(state: ResultUiState) {
         ResultStatus.ERROR_SOURCE -> ErrorBanner(
             title = stringResource(R.string.error_source),
             body = stringResource(R.string.error_source_hint),
+        )
+
+        // E28: nguồn dịch miễn phí chết nhưng máy vẫn có mạng — không dùng copy "Bật mạng".
+        ResultStatus.ERROR_SOURCES_DOWN -> ErrorBanner(
+            title = stringResource(R.string.error_sources_down_title),
+            body = stringResource(R.string.error_sources_down_hint),
         )
 
         ResultStatus.ERROR_QUOTA -> WarningBanner(
@@ -618,7 +675,8 @@ private fun TranslationBody(state: ResultUiState) {
         // BUG-09: khối định nghĩa EN phải render cho MỌI WORD (không phụ thuộc senses/status) —
         // trước đây nhánh fallback (senses rỗng) bỏ qua khối này.
         if (state.examples.isEmpty()) {
-            if (state.englishDefinitions.isNotEmpty()) {
+            // F14: WORD nguồn ZH/KO/JA không hiện khối "Nghĩa tiếng Anh".
+            if (state.englishDefinitions.isNotEmpty() && state.showsEnglishDetails) {
                 // Designer §4.1b: nhãn cách nghĩa tiếng Việt 12dp (Column đã spacedBy(8.dp)),
                 // định nghĩa đánh số 1. 2. và tối đa 2 dòng.
                 // E22: không có nghĩa tiếng Việt -> nhãn "Chưa có nghĩa tiếng Việt" thay "Nghĩa tiếng Anh".
@@ -811,10 +869,6 @@ private fun ActionRow(
         // S11: chỉ còn nút X ở header; không có hành động nào khác.
         return
     }
-    val savedStateDescription = stringResource(
-        if (state.isSaved) R.string.a11y_saved_word else R.string.a11y_unsaved_word,
-    )
-
     if (state.editing) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -841,7 +895,10 @@ private fun ActionRow(
     ) {
         when (status) {
             // UX-02 §5: hành động chính nằm trái nhất. S5: Tải gói offline · Thử lại · Copy.
-            ResultStatus.ERROR_NO_NETWORK_SHORT -> {
+            ResultStatus.ERROR_NO_NETWORK_SHORT,
+            ResultStatus.ERROR_MODEL_MISSING,
+            ResultStatus.ERROR_LANG_MODEL_MISSING,
+            -> {
                 FilledTonalButton(onClick = actions.onDownloadModel) {
                     Text(stringResource(R.string.action_download_model))
                 }
@@ -849,7 +906,10 @@ private fun ActionRow(
                 CopyButton(onCopy = actions.onCopy, enabled = interactive)
             }
 
-            ResultStatus.ERROR_NO_NETWORK_LONG, ResultStatus.ERROR_SOURCE -> {
+            ResultStatus.ERROR_NO_NETWORK_LONG,
+            ResultStatus.ERROR_SOURCE,
+            ResultStatus.ERROR_SOURCES_DOWN,
+            -> {
                 RetryButton(onRetry = actions.onRetry)
                 CopyButton(onCopy = actions.onCopy, enabled = interactive)
             }
@@ -863,6 +923,15 @@ private fun ActionRow(
             }
 
             // S13/E20: lỗi key -> mở Cài đặt sửa key, vẫn cho Thử lại.
+            // E31 (F14): đổi ngôn ngữ đích trong Cài đặt rồi thử lại.
+            ResultStatus.ERROR_PAIR_UNSUPPORTED -> {
+                FilledTonalButton(onClick = actions.onOpenApiKeySettings) {
+                    Text(stringResource(R.string.settings_open_settings))
+                }
+                RetryButton(onRetry = actions.onRetry)
+                CopyButton(onCopy = actions.onCopy, enabled = interactive)
+            }
+
             ResultStatus.ERROR_KEY_INVALID -> {
                 FilledTonalButton(onClick = actions.onOpenApiKeySettings) {
                     Text(stringResource(R.string.settings_open_settings))
@@ -877,25 +946,10 @@ private fun ActionRow(
             )
 
             else -> {
-                val showSave = state.isWord && (
-                    loading || status in setOf(
-                        ResultStatus.SUCCESS,
-                        ResultStatus.CACHED,
-                        ResultStatus.OFFLINE_RESULT,
-                        ResultStatus.TRUNCATED,
-                        ResultStatus.WORD_NOT_FOUND,
-                    )
-                    )
-                if (showSave) {
-                    SaveButton(
-                        state = state,
-                        onSave = actions.onSave,
-                        enabled = state.canSave && interactive,
-                        stateDescription = savedStateDescription,
-                    )
-                }
+                // User chốt 2026-11-04: bỏ tab Từ vựng → không còn nút "Lưu".
                 CopyButton(onCopy = actions.onCopy, enabled = state.canCopy && interactive)
-                if (!state.isWord) {
+                // BUG-24 (F14): TTS chỉ có giọng EN -> nguồn khác EN ẩn nút Nghe im lặng.
+                if (!state.isWord && state.ttsAvailableForSource) {
                     SpeakIconButton(state = state, onSpeak = onSpeak)
                 }
                 if (state.isOcr) {
@@ -905,38 +959,6 @@ private fun ActionRow(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun SaveButton(
-    state: ResultUiState,
-    onSave: () -> Unit,
-    enabled: Boolean,
-    stateDescription: String,
-) {
-    val ext = MaterialTheme.extendedColors
-    val saveColors = ButtonDefaults.filledTonalButtonColors(
-        containerColor = if (state.isSaved) ext.successContainer else MaterialTheme.colorScheme.secondaryContainer,
-        contentColor = if (state.isSaved) ext.success else MaterialTheme.colorScheme.onSecondaryContainer,
-    )
-    FilledTonalButton(
-        onClick = onSave,
-        enabled = enabled,
-        colors = saveColors,
-        modifier = Modifier.semantics { this.stateDescription = stateDescription },
-    ) {
-        if (state.isSaved) {
-            Icon(Icons.Filled.Star, contentDescription = null, modifier = Modifier.size(18.dp))
-        } else {
-            Icon(
-                painter = painterResource(R.drawable.ic_star_border),
-                contentDescription = null,
-                modifier = Modifier.size(18.dp),
-            )
-        }
-        Spacer(Modifier.width(8.dp))
-        Text(stringResource(if (state.isSaved) R.string.action_saved else R.string.action_save))
     }
 }
 

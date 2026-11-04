@@ -41,6 +41,7 @@ class ChainedTranslator(
 
     private suspend fun lookupSources(request: LookupRequest): TranslationOutcome {
         var bestFailure: TranslationOutcome.Failure? = null
+        var sawNonQuota = false
 
         for ((index, source) in sources.withIndex()) {
             val outcome = try {
@@ -64,6 +65,7 @@ class ChainedTranslator(
                         logger("source $index skipped: ${outcome.reason}")
                         continue
                     }
+                    if (outcome.reason != FailureReason.QUOTA) sawNonQuota = true
                     if (bestFailure == null || rank(outcome) > rank(bestFailure)) {
                         bestFailure = outcome
                     }
@@ -72,8 +74,21 @@ class ChainedTranslator(
         }
 
         // Không có provider nào được cấu hình -> để pipeline đi nhánh offline.
-        return bestFailure
-            ?: TranslationOutcome.Failure(HttpErrors.E4, FailureReason.NO_KEY)
+        val failure = bestFailure
+            ?: return TranslationOutcome.Failure(HttpErrors.E4, FailureReason.NO_KEY)
+
+        // Spec 1.16 / BUG-16: E19 chỉ khi **tất cả** nguồn keyless đều trả QUOTA. Chỉ cần một
+        // nguồn hỏng hạ tầng (5xx/timeout/IO) hoặc trả kết quả rác lẫn vào -> E28 "nguồn tạm
+        // không dùng được", không hứa "hết lượt" cho user.
+        if (failure.reason == FailureReason.QUOTA && sawNonQuota) {
+            logger("mixed quota+unavailable -> unavailable")
+            return TranslationOutcome.Failure(
+                failure.code,
+                FailureReason.UNAVAILABLE,
+                httpStatus = failure.httpStatus,
+            )
+        }
+        return failure
     }
 
     companion object {
@@ -87,6 +102,10 @@ class ChainedTranslator(
         FailureReason.HTTP ->
             if (failure.httpStatus == 401 || failure.httpStatus == 403) 8 else 6
         FailureReason.QUOTA -> 7
+        /** Cặp ngôn ngữ không hỗ trợ: vẫn thử nguồn kế trước, nhưng thấp hơn lỗi hạ tầng. */
+        FailureReason.PAIR_UNSUPPORTED -> 3
+        /** Nguồn hỏng hạ tầng khi có mạng (5xx/timeout/IO) — trên IO nhưng dưới QUOTA. */
+        FailureReason.UNAVAILABLE -> 6
         FailureReason.TIMEOUT -> 5
         FailureReason.IO -> 4
         FailureReason.EMPTY -> 3
