@@ -1,0 +1,26 @@
+11-04 18:24:59.417 E/AndroidRuntime(21832): FATAL EXCEPTION: DefaultDispatcher-worker-5
+11-04 18:24:59.417 E/AndroidRuntime(21832): Process: vn.bubbledict, PID: 21832
+11-04 18:24:59.417 E/AndroidRuntime(21832): android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views. Expected: main Calling: DefaultDispatcher-worker-5
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:11023)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.ViewRootImpl.invalidateChildInParent(ViewRootImpl.java:2520)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.ViewRootImpl.invalidateChild(ViewRootImpl.java:2515)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.View.invalidateInternal(View.java:20874)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.View.invalidate(View.java:20834)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.View.setFlags(View.java:18328)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at android.view.View.setVisibility(View.java:13548)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at vn.bubbledict.platform.BubbleService$onStartCommand$1.invokeSuspend(BubbleService.kt:112)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:99)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:113)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:589)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:823)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:720)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:707)
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@42698a0, Dispatchers.IO]
+11-04 18:24:40.377 I/BubbleService(21832): bubble hidden by overlay
+11-04 18:24:59.299 I/BubbleService(21832): bubble shown
+11-04 18:24:59.334 I/BubbleService(21832): bubble shown
+11-04 18:24:59.417 E/AndroidRuntime(21832): 	at vn.bubbledict.platform.BubbleService$onStartCommand$1.invokeSuspend(BubbleService.kt:112)
+11-04 18:24:59.538 W/ActivityManager(  592): Scheduling restart of crashed service vn.bubbledict/.platform.BubbleService in 1000ms for start-requested
+11-04 18:25:01.096 I/ActivityManager(  592):   Force stopping service ServiceRecord{2793cd0 u0 vn.bubbledict/.platform.BubbleService c:vn.bubbledict}

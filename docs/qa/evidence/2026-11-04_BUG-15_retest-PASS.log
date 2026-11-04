@@ -1,0 +1,19 @@
+=== BUG-15 retest — build APK 18:47:53 (lastUpdateTime 18:48:15), 18:49–18:50 ===
+window: mAttrs=(448,455)(100x100); bubble content (461,468)-(535,542); center=(498,505); r=37px (28dp)
+
+CA 1 — tap VÀNH (498,461): cách tâm 44px > r=37px, nằm trong window
+  topResumedActivity = vn.bubbledict/.ui.main.MainActivity  (KHÔNG phải RegionSelect)
+  logcat 'RegionSelectActivity' lines = 0
+  overlay mViewVisibility = 0x0 (vẫn hiện)
+  => PASS: vành nuốt chạm, không làm gì
+
+CA 2 — tap TÂM (498,505):
+  topResumedActivity = com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity (consent của RegionSelect)
+  logcat 'RegionSelectActivity' lines = 8
+  overlay mViewVisibility = 0x4 (bubble hidden by overlay)
+  => PASS: tap tâm vẫn mở luồng chụp bình thường
+=== BUG-15 final retest — APK 18:48:35 (lastUpdateTime=18:50:20), 18:51 ===
+window=(448,455)(100x100); bubble content (461,468)-(535,542); center=(498,505); r=37px (28dp)
+CA VÀNH (498,461) cách tâm 44px: top = vn.bubbledict/.ui.main.MainActivity | logcat RegionSelectActivity = 0 | mViewVisibility = 0x0 => PASS
+CA TÂM (498,505): logcat RegionSelectActivity = 14 dòng | mViewVisibility = 0x4 (bubble hidden by overlay) => PASS
+Kết luận: BUG-15 đóng trên bản ứng viên bàn giao 18:48:35

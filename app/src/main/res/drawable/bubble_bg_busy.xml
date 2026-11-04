@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Designer bubble-region.md §2.2 / "Duyệt AC31(b)": khi busy thì tắt inner ring để chỉ còn
+     MỘT vòng trắng duy nhất (track 22% + arc 3dp đang quay). Nền gradient giữ nguyên.
+     Dùng tạm trong lúc busy, hết busy quay lại bubble_bg.xml. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:angle="270"
+                android:startColor="#4A5FA5"
+                android:endColor="#7C5AC8"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

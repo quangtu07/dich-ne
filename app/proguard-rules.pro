@@ -1,0 +1,1 @@
+# Không bật shrink ở MVP; giữ file để release build (BE-18) có chỗ khai báo.

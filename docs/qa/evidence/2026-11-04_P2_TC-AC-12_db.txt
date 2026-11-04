@@ -1,0 +1,4 @@
+-- DB extract, 2026-11-04 15:21-15:23, kiem 3 nut xoa --
+sau Xoa lich su : history=0 vocab=1 cache=3  (tu vung + cache giu nguyen)
+sau Xoa cache   : history=0 vocab=1 cache=0  (lich su + tu vung giu nguyen)
+sau Xoa tu vung : history=0 vocab=0 cache=0

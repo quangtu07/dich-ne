@@ -1,0 +1,9 @@
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+dist/*.apk
+dist/*.bak
+dist/keys/
+screenshots/

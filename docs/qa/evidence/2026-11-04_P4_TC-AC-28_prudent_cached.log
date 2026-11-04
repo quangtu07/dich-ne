@@ -1,0 +1,711 @@
+--------- beginning of main
+11-04 15:53:56.832 I/TopTaskTracker( 1289): onTaskRemoved: taskId=163
+11-04 15:53:56.832 I/TopTaskTracker( 1289): onTaskRemoved: taskId=163
+--------- beginning of system
+11-04 15:53:56.912 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=7741) has no WPC
+11-04 15:53:56.914 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:53:56.923 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:53:56.923 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+11-04 15:53:56.924 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:53:56.926 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:53:56.928 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:53:56.935 V/SplashScreenExceptionList(  592): SplashScreen checking exception for package vn.bubbledict (target sdk:35) -> false
+11-04 15:53:56.936 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+11-04 15:53:56.938 W/SplitSelectStateCtor( 1289): Missing session instanceIds
+11-04 15:53:56.938 D/StatsLog( 1289): LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-04 15:53:56.944 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+11-04 15:53:56.956 I/TopTaskTracker( 1289): onTaskMovedToFront: (moved taskInfo to front) taskId=164, baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity }
+11-04 15:53:56.964 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:53:56.965 V/WindowManagerShell(  838): Transition requested (#364): android.os.BinderProxy@9d3b138 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=164 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7656542 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@871b511} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{9bb7676 vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 364 }
+11-04 15:53:56.967 D/WindowManagerShell(  838): setLauncherKeepClearAreaHeight: visible=false, height=264
+11-04 15:53:56.967 I/GoogleTTSServiceImpl(15322): currentLocale = en-US
+11-04 15:53:56.969 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:53:56.974 I/GoogleTTSServiceImpl(15322): currentLocale = en-GB
+11-04 15:53:57.014 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:53:57.028 D/AutofillManager( 6872): Fill dialog is enabled:false, hints=[password, passwordAuto, creditCardNumber, creditCardSecurityCode, creditCardExpirationDate]
+11-04 15:53:57.038 W/WindowOnBackDispatcher( 6872): OnBackInvokedCallback is not enabled for the application.
+11-04 15:53:57.038 W/WindowOnBackDispatcher( 6872): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:53:57.057 D/CoreBackPreview(  592): Window{9216deb u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@7fc0760, mPriority=0, mIsAnimationCallback=false}
+11-04 15:53:57.063 I/EGL_emulation( 6872): Opening libGLESv1_CM_emulation.so
+11-04 15:53:57.063 I/EGL_emulation( 6872): Opening libGLESv2_emulation.so
+11-04 15:53:57.064 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=10 not found or not visible
+11-04 15:53:57.133 W/HWUI    ( 6872): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 15:53:57.134 W/HWUI    ( 6872): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-04 15:53:57.196 I/BistoHotwordHelper( 4776): (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+11-04 15:53:57.328 W/WindowOnBackDispatcher( 6872): OnBackInvokedCallback is not enabled for the application.
+11-04 15:53:57.328 W/WindowOnBackDispatcher( 6872): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:53:57.387 D/EGL_emulation( 1289): app_time_stats: avg=158.29ms min=45.56ms max=298.30ms count=6
+11-04 15:53:57.411 D/CoreBackPreview(  592): Window{41e7306 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@4ce9419, mPriority=0, mIsAnimationCallback=false}
+11-04 15:53:57.557 V/WindowManagerShell(  838): onTransitionReady(transaction=2542620657469)
+11-04 15:53:57.564 W/ziparchive(  592): Unable to open '/data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/base.dm': No such file or directory
+11-04 15:53:57.583 V/WindowManagerShell(  838): onTransitionReady (#364) android.os.BinderProxy@9d3b138: {id=364 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6608402} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=164)/@0x82d9477 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:53:57.583 V/WindowManagerShell(  838): Playing animation for (#364) android.os.BinderProxy@9d3b138@0
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultMixedHandler@c5e5b72
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@35dbc3
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.pip.PipTransition@bb62c40
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@78c8779
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.recents.RecentsTransitionHandler@8b2bcbe
+11-04 15:53:57.583 V/ShellRecents(  838): RecentsTransitionHandler.startAnimation: no controller found
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.splitscreen.StageCoordinator@290711f
+11-04 15:53:57.583 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.RemoteTransitionHandler@6f1cc6c
+11-04 15:53:57.583 V/WindowManagerShell(  838): Transition doesn't have explicit remote, search filters for match for {id=364 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6608402} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=164)/@0x82d9477 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:53:57.583 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@35a7ead, appThread = android.app.IApplicationThread$Stub$Proxy@6eed5e2, debugName = OverlaySwipeBack }}
+11-04 15:53:57.583 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d17977b, appThread = android.app.IApplicationThread$Stub$Proxy@7552998, debugName = LauncherToDream }}
+11-04 15:53:57.584 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@57f35f1, appThread = android.app.IApplicationThread$Stub$Proxy@2ff95d6, debugName = QuickstepLaunchHome }}
+11-04 15:53:57.584 V/WindowManagerShell(  838):  Delegate animation for (#364) to null
+11-04 15:53:57.584 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:53:57.584 V/WindowManagerShell(  838): start default transition animation, info = {id=364 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6608402} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=164)/@0x82d9477 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:53:57.584 V/WindowManagerShell(  838): loadAnimation: anim=android.view.animation.AnimationSet@add0113 animAttr=0x4 type=OPEN isEntrance=true
+11-04 15:53:57.584 V/WindowManagerShell(  838):  animated by com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:53:57.625 I/ActivityTaskManager(  592): Displayed vn.bubbledict/.ui.result.ResultActivity for user 0: +634ms
+11-04 15:53:57.625 V/WindowManager(  592): Sent Transition (#364) createdAt=11-04 15:53:56.928 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=164 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7656542 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{fefa9b6 Task{20d0c2e #164 type=standard A=10229:vn.bubbledict}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{784e6b7 vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 364 }
+11-04 15:53:57.625 V/WindowManager(  592):     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-04 15:53:57.625 V/WindowManager(  592):     info={id=364 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-04 15:53:57.625 V/WindowManager(  592):         {WCT{RemoteToken{fefa9b6 Task{20d0c2e #164 type=standard A=10229:vn.bubbledict}}} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=164)/@0x343e8ea sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}
+11-04 15:53:57.625 V/WindowManager(  592):     ]}
+11-04 15:53:57.646 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:53:57.664 D/EGL_emulation(  838): app_time_stats: avg=289.05ms min=8.06ms max=801.83ms count=4
+11-04 15:53:57.901 V/WindowManagerShell(  838): Transition animation finished (aborted=false), notifying core (#364) android.os.BinderProxy@9d3b138@0
+11-04 15:53:57.911 V/WindowManager(  592): Finish Transition (#364): created at 11-04 15:53:56.928 collect-started=0.018ms request-sent=7.345ms started=37.187ms ready=37.173ms sent=625.161ms finished=973.245ms
+11-04 15:53:57.914 V/WindowManagerShell(  838): Track 0 became idle
+11-04 15:53:57.914 V/WindowManagerShell(  838): All active transition animations finished
+11-04 15:53:58.068 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:53:58.248 I/ImeTracker(  592): vn.bubbledict:abec56eb: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:53:58.256 I/ImeTracker(  592): vn.bubbledict:abec56eb: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:53:58.258 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:53:58.259 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:53:58.259 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=vn.bubbledict, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:53:58.259 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:53:58.259 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:53:58.260 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: vn.bubbledict and userId: 0
+11-04 15:53:58.587 D/EGL_emulation( 1289): app_time_stats: avg=644.22ms min=52.54ms max=1766.27ms count=3
+11-04 15:53:58.970 D/EGL_emulation( 6872): app_time_stats: avg=269.35ms min=16.28ms max=727.22ms count=5
+11-04 15:53:58.974 I/Choreographer( 6872): Skipped 43 frames!  The application may be doing too much work on its main thread.
+11-04 15:53:59.079 I/HWUI    ( 6872): Davey! duration=839ms; Flags=0, FrameTimelineVsyncId=535980, IntendedVsync=7657290927489, Vsync=7657374260819, InputEventId=0, HandleInputStart=7657387350866, AnimationStart=7657387353205, PerformTraversalsStart=7657388205796, DrawStart=7657388267491, FrameDeadline=7657890927465, FrameInterval=7657387344021, FrameStartTime=16666666, SyncQueued=7657388535208, SyncStart=7657849716570, IssueDrawCommandsStart=7657849760943, SwapBuffers=7658572891666, FrameCompleted=7658591896934, DequeueBufferDuration=4761, QueueBufferDuration=448800, GpuCompleted=7658591896934, SwapBuffersCompleted=7658577068645, DisplayPresentTime=0, CommandSubmissionCompleted=7658572891666, 
+11-04 15:53:59.341 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:53:59.342 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:53:59.342 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:53:59.343 I/ChimeraSrvcProxy( 1065): NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl
+11-04 15:53:59.344 W/.gms.persistent( 1065): Large reply transaction of 1056768 bytes, interface descriptor , code 1
+11-04 15:53:59.345 I/BugleRcsEngine( 1467): handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[f1e53e06-3f81]>Handler" thread_id=62 ]
+11-04 15:53:59.348 I/BugleRcsEngine( 1467): Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=55 ]
+11-04 15:53:59.353 I/BugleRcsEngine( 1467): No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=62 ]
+11-04 15:53:59.463 I/putmethod.latin( 1348): Background concurrent mark compact GC freed 13MB AllocSpace bytes, 8(416KB) LOS objects, 49% free, 14MB/28MB, paused 487us,3.611ms total 122.736ms
+11-04 15:53:59.463 W/putmethod.latin( 1348): Reducing the number of considered missed Gc histogram windows from 233 to 100
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.466 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.467 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.468 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.469 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.470 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.471 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.472 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.473 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.474 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.475 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.476 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.477 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: pack_mapping_v1_lstm_20231127[42]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: scribe_latin_20231123_tflite_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: qrnn_en_us_reco_20231010_fst_20230613_recospec_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_conf_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_seg_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: transformer_latin_tflite_20231010_zip[63]
+11-04 15:53:59.478 W/SP      ( 1348): File ref is being finalized but wasn't closed, file: en_us_20230613_compact_fst_zip[63]
+11-04 15:54:00.002 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:00.002 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:00.002 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:00.002 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:00.002 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:00.002 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.002 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:00.002 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:54:00.002 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:54:00.003 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:00.003 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:00.003 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:00.003 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:00.003 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:00.003 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:00.003 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:00.003 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:54:00.004 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:00.004 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:54:00.020 D/EGL_emulation(  838): app_time_stats: avg=443.69ms min=61.95ms max=1763.10ms count=5
+11-04 15:54:00.021 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:54:00.021 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:54:00.023 D/EGL_emulation( 1289): app_time_stats: avg=1282.90ms min=22.77ms max=2543.04ms count=2
+11-04 15:54:01.115 W/BpBinder( 7848): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:54:01.115 W/ProcessState( 7848): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:54:01.132 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:54:01.132 I/Gralloc4( 7848): mapper 4.x is not supported
+--------- beginning of kernel
+11-04 15:54:01.285 I/servicemanager(    0): Caller(pid=7848,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:54:01.482 D/AndroidRuntime( 7850): >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+11-04 15:54:01.486 I/AndroidRuntime( 7850): Using default boot image
+11-04 15:54:01.486 I/AndroidRuntime( 7850): Leaving lock profiling enabled
+11-04 15:54:01.489 I/app_process( 7850): Core platform API reporting enabled, enforcing=false
+11-04 15:54:01.489 I/app_process( 7850): Using CollectorTypeCMC GC.
+11-04 15:54:01.538 W/BpBinder( 7852): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:54:01.539 W/ProcessState( 7852): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:54:01.559 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:54:01.559 I/Gralloc4( 7852): mapper 4.x is not supported
+11-04 15:54:01.712 I/servicemanager(    0): Caller(pid=7852,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:54:01.579 D/nativeloader( 7850): InitDefaultPublicLibraries for_preload=1: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libicu.so:libicui18n.so:libicuuc.so:libjnigraphics.so:liblog.so:libmediandk.so:libm.so:libnativehelper.so:libnativewindow.so:libOpenMAXAL.so:libOpenSLES.so:libRS.so:libstdc++.so:libsync.so:libvulkan.so:libwebviewchromium_plat_support.so:libz.so
+11-04 15:54:01.592 D/nativeloader( 7850): Load libicu_jni.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+11-04 15:54:01.592 D/app_process( 7850): u_setTimeZoneFilesDirectory("/apex/com.android.tzdata/etc/tz/versioned/8/icu") succeeded. 
+11-04 15:54:01.592 D/app_process( 7850): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat
+11-04 15:54:01.593 D/nativeloader( 7850): Load libjavacore.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+11-04 15:54:01.594 D/nativeloader( 7850): Load libopenjdk.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+11-04 15:54:01.596 W/app_process( 7850): Unexpected CPU variant for x86: x86_64.
+11-04 15:54:01.596 W/app_process( 7850): Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+11-04 15:54:01.598 W/app_process( 7850): ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])
+11-04 15:54:01.600 W/app_process( 7850): ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[]{PCL[/system/framework/android.test.runner.jar*2496447986]#PCL[/system/framework/android.test.base.jar*724373495]} | PCL[/system/framework/android.test.runner.jar*2496447986])
+11-04 15:54:01.620 D/nativeloader( 7850): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-04 15:54:01.621 D/AndroidRuntime( 7850): Calling main entry com.android.commands.uiautomator.Launcher
+11-04 15:54:01.624 D/UiAutomationConnection( 7850): Created on user UserHandle{0}
+11-04 15:54:01.624 I/UiAutomation( 7850): Initialized for user 0 on display 0
+11-04 15:54:01.624 W/UiAutomation( 7850): Created with deprecatead constructor, assumes DEFAULT_DISPLAY
+11-04 15:54:01.625 D/AccessibilityManagerService(  592): changeCurrentUserForTestAutomationIfNeededLocked(0): ignoring because device doesn't support visible background users
+11-04 15:54:01.625 I/UiAutomationManager(  592): Registering UiTestAutomationService (id=com.android.server.accessibility/UiAutomation, flags=0x0) when called by user 0
+11-04 15:54:01.626 W/MagnificationConnectionManager(  592): requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-04 15:54:01.627 I/AiAiEcho( 1403): Settings changed for uri: content://settings/secure/accessibility_enabled
+11-04 15:54:01.627 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.627 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.628 V/UiAutomation( 7850): Init UiAutomation@fe024e0[id=127, displayId=0, flags=0]
+11-04 15:54:01.628 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.628 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.628 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.628 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.629 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.629 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.629 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.629 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.629 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.629 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.629 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.629 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.629 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.630 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.630 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.630 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.630 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.630 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.630 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.630 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.630 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0 (types=[])
+11-04 15:54:01.630 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:54:01.630 D/SsMediaDataProvider(  838): Forwarding Smartspace updates []
+11-04 15:54:01.630 W/MagnificationConnectionManager(  592): requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-04 15:54:01.630 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.631 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.631 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.631 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.631 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:01.632 D/BatterySaverPolicy(  592): accessibility changed to true, updating policy.
+11-04 15:54:01.635 I/AiAiEcho( 1403): Settings changed for uri: content://settings/secure/accessibility_enabled
+11-04 15:54:01.636 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:54:01.636 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:54:01.637 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.637 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.638 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.638 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.638 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.638 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.638 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.638 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.638 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:54:01.639 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.639 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.639 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.639 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.639 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.639 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.639 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:54:01.639 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.640 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:01.640 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:01.640 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:01.640 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.640 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:01.640 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:01.640 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0 (types=[])
+11-04 15:54:01.640 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:54:01.640 D/SsMediaDataProvider(  838): Forwarding Smartspace updates []
+11-04 15:54:01.640 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:54:01.641 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:54:01.641 I/A       (24161): NGA disabled since it's running Panthera and at least one a11y feature is on.
+11-04 15:54:01.641 I/A       (24161): (REDACTED) Nga state changed to %s
+11-04 15:54:01.641 I/A       (24161): (REDACTED) isTngActive=%s
+11-04 15:54:01.643 I/A       ( 4776): (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+11-04 15:54:01.643 I/A       ( 4776): (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+11-04 15:54:01.643 I/A       ( 4776): Unsubscribed to apa or classic variant change.
+11-04 15:54:01.654 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:54:01.654 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.654 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.654 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:01.654 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:54:01.708 D/EGL_emulation( 1289): app_time_stats: avg=1683.99ms min=1683.99ms max=1683.99ms count=1
+11-04 15:54:01.714 D/BufferPoolAccessor2.0(  518): bufferpool2 0x70088ba86f08 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 264/276 (recycle/alloc) - 14/275 (fetch/transfer)
+11-04 15:54:02.654 D/EGL_emulation( 6872): app_time_stats: avg=1795.25ms min=14.97ms max=3575.52ms count=2
+11-04 15:54:02.738 W/AccessibilityNodeInfoDumper( 7850): Fetch time: 100ms
+11-04 15:54:02.739 W/MagnificationConnectionManager(  592): requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-04 15:54:02.739 D/AccessibilityManagerService(  592): restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-04 15:54:02.739 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.739 I/AiAiEcho( 1403): Settings changed for uri: content://settings/secure/accessibility_enabled
+11-04 15:54:02.740 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:02.740 D/AndroidRuntime( 7850): Shutting down VM
+11-04 15:54:02.740 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:02.740 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:02.740 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:54:02.740 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:54:02.740 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:54:02.740 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.740 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.740 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.740 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0 (types=[])
+11-04 15:54:02.743 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.743 D/SsMediaDataProvider(  838): Forwarding Smartspace updates []
+11-04 15:54:02.744 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:54:02.744 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:54:02.744 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:02.744 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:54:02.744 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:02.744 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:54:02.744 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:54:02.744 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:54:02.745 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.745 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.745 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.745 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.745 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.748 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.749 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.749 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.749 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.750 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:54:02.751 D/BatterySaverPolicy(  592): accessibility changed to false, updating policy.
+11-04 15:54:02.754 I/A       (24161): NGA enabled in interactor.
+11-04 15:54:02.754 I/A       (24161): (REDACTED) Nga state changed to %s
+11-04 15:54:02.754 I/A       (24161): (REDACTED) isTngActive=%s
+11-04 15:54:02.758 I/A       ( 4776): (REDACTED) on opa visibility changed %s
+11-04 15:54:02.759 I/A       ( 4776): (REDACTED) on opa visibility changed %s
+11-04 15:54:02.762 I/A       ( 4776): (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+11-04 15:54:02.762 I/A       ( 4776): Initializing all components
+11-04 15:54:02.762 I/A       ( 4776): (REDACTED) onIsEnabledChanged, isEnabled: %s
+11-04 15:54:02.762 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.762 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.763 I/A       ( 4776): (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+11-04 15:54:02.763 I/A       ( 4776): (REDACTED) State changed: %s => %s by %s and %s with %s
+11-04 15:54:02.763 I/A       ( 4776): (REDACTED) Recognizer choice: (recognizer_type: %s, recognizer_mode: %s, choice_reason: %s)
+11-04 15:54:02.763 I/A       ( 4776): (REDACTED) onActiveStateChangeEvent: %s => %s
+11-04 15:54:02.764 I/A       ( 4776): (REDACTED) #onActiveStateChangeEvent, newState: %s, previousState: %s.
+11-04 15:54:02.765 W/earchbox:search(24161): Missing inline cache for java.lang.Object com.google.android.apps.gsa.staticplugins.nga.t.s.apply(java.lang.Object)
+11-04 15:54:02.766 I/A       ( 4776): (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+11-04 15:54:02.766 D/EGL_emulation( 1289): app_time_stats: avg=496.20ms min=67.74ms max=924.66ms count=2
+11-04 15:54:02.768 I/A       ( 4776): Initialize
+11-04 15:54:02.768 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.768 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.768 I/A       ( 4776): (REDACTED) stopListening(%s, %s)
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 I/A       ( 4776): (REDACTED) Setting session to type: %s
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.769 I/A       ( 4776): (REDACTED) setNavBarVisible: %s
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 W/A       ( 4776): Disposing empty manager. Did you forgot to subscribe observables?
+11-04 15:54:02.770 I/NgaEntryPointEventSendr( 4776): setupConnection
+11-04 15:54:02.772 I/INV.SystemUI( 4776): showGestureNav
+11-04 15:54:02.772 I/INV.SystemUI( 4776): (REDACTED) setUiHints(hints = %s)
+11-04 15:54:02.777 I/INV.SystemUI( 4776): setUiHints: finished successfully
+11-04 15:54:02.781 I/NgaEntryPointEventSendr( 4776): (REDACTED) State changed: %s => %s
+11-04 15:54:02.781 I/NgaEntryPointEventSendr( 4776): onServiceConnected
+11-04 15:54:02.782 I/A       (24161): Calling beginBinderSession().
+11-04 15:54:02.782 I/A       (24161): beginBinderSession(): calling binder
+11-04 15:54:02.783 I/NgaEntryPointEventSendr( 4776): (REDACTED) State changed: %s => %s
+11-04 15:54:02.790 I/A       ( 4776): Successfully initialized all components
+11-04 15:54:02.803 W/A       (24161): (REDACTED) Queue length for executor %s is now %d. Perhaps some tasks are too long, or the pool is too small.
+11-04 15:54:02.817 D/ActivityManager(  592): sync unfroze 1642 com.google.android.gms for 6
+11-04 15:54:02.820 I/MicroDetectionState(24161): (REDACTED) Updating hotword opa ineligibility to %b
+11-04 15:54:02.821 I/A       (24161): getLocaleToModelSpecsMap
+11-04 15:54:02.824 I/A       (24161): Fetching latest config from MDD...
+11-04 15:54:02.824 I/A       (24161): (REDACTED) Found map of size: %d
+11-04 15:54:02.830 W/ActivityManager(  592): Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-04 15:54:02.830 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.832 W/ProcessStats(  592): Tracking association SourceState{cbfc808 com.google.android.googlequicksearchbox:search/10144 BTop #18302} whose proc state 2 is better than process ProcessState{54054c9 com.google.android.gms/10143 pkg=com.google.android.gms} proc state 14 (10 skipped)
+11-04 15:54:02.834 I/NgaEntryPointEventSendr( 4776): (REDACTED) State changed: %s => %s (%s)
+11-04 15:54:02.835 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.835 D/BoundBrokerSvc( 1642): onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-04 15:54:02.838 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.838 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.839 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.839 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.839 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.844 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.845 I/MicroDetectionWorker(24161): (REDACTED) Initializing MicroDataManager InitializeType-%d, isForced-%b, isActivePhoneEnrollment-%b isActiveGoogleHomeEnrollment-%b
+11-04 15:54:02.845 I/A       (24161): getLocaleToModelSpecsMap
+11-04 15:54:02.845 I/A       (24161): Fetching latest config from MDD...
+11-04 15:54:02.845 I/A       (24161): (REDACTED) Found map of size: %d
+11-04 15:54:02.845 I/MicroDataManager(24161): (REDACTED) Location for model with model type: %s and locale: %s, is : %s
+11-04 15:54:02.846 I/Icing   ( 1642): IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=null serviceId=36
+11-04 15:54:02.853 I/MicroDetectionState(24161): (REDACTED) #takeChangeMicroDetectorMode [mIsBargeInEnabled: %b, mCurrentDetectionMode: %s]
+11-04 15:54:02.853 I/MicroDetectionState(24161): (REDACTED) Should stop hotword detection immediately - %b
+11-04 15:54:02.857 I/MicroDetectionState(24161): (REDACTED) #takeChangeMicroDetectorMode [mIsBargeInEnabled: %b, mCurrentDetectionMode: %s]
+11-04 15:54:02.857 I/MicroDetectionState(24161): (REDACTED) Should stop hotword detection immediately - %b
+11-04 15:54:02.857 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.857 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.863 W/A       (24161): (REDACTED) %s task was not run. Callback from Service received after client was disposed.
+11-04 15:54:02.864 I/PBSessionCacheImpl(24161): (REDACTED) Deleted sessionId[%d] from persistence.
+11-04 15:54:02.870 W/SearchServiceCore(24161): Abort, client detached.
+11-04 15:54:02.886 D/BoundBrokerSvc( 1642): onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-04 15:54:02.886 D/BoundBrokerSvc( 1642): Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-04 15:54:02.914 I/MicroDetectionState(24161): (REDACTED) #takeChangeMicroDetectorMode [mIsBargeInEnabled: %b, mCurrentDetectionMode: %s]
+11-04 15:54:02.922 I/MicroDetectionState(24161): (REDACTED) Should stop hotword detection immediately - %b
+11-04 15:54:02.926 I/A       (24161): getLocaleToModelSpecsMap
+11-04 15:54:02.937 I/A       (24161): Fetching latest config from MDD...
+11-04 15:54:02.938 I/A       (24161): (REDACTED) Found map of size: %d
+11-04 15:54:02.940 I/Icing   ( 1642): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+11-04 15:54:02.950 E/native  ( 1642): E0000 00:00:1793782442.950249   32749 document-store.cc:1359] Failed to update per-doc-data with usage report
+11-04 15:54:02.950 I/Icing   ( 1642): Usage reports ok 0, Failed Usage reports 1, indexed 0, rejected 0
+11-04 15:54:02.956 I/Icing   ( 1642): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-04 15:54:03.770 I/logd    (    0): logdr: UID=0 GID=0 PID=7896 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns

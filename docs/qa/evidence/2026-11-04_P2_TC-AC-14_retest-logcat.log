@@ -1,0 +1,210 @@
+--------- beginning of main
+11-04 15:17:19.292 I/NearbyDiscovery( 1065): OffloadFastPairScanner: eventType=BLUETOOTH_OFF, isInternalReq=false, isOffloadScanning=false, isOffloadScanningAllowed=false [CONTEXT service_id=265 ]
+11-04 15:17:19.293 I/NearbyDiscovery( 1065): FastPairScanner: isScreenOn=true, isLocationEnabled=true, disableLocationRequirement=true, isDiscoveryScanningEnabled=true, during24GhzWifiWarmingUpPeriod=false [CONTEXT service_id=265 ]
+11-04 15:17:19.294 D/BluetoothAdapter( 1065): isLeEnabled(): OFF
+11-04 15:17:19.294 I/NearbyDiscovery( 1065): FastPairScanner: eventType=BLUETOOTH_OFF, intReq=false, scanning=false, scanAllowed=true, bleEnabled=false, lockScanRate=false, startScanningByLowPowerMode=false [CONTEXT service_id=265 ]
+11-04 15:17:19.304 I/PersonalSafety( 1065): Settings changed. [CONTEXT service_id=310 ]
+11-04 15:17:19.309 I/NearbyDiscovery( 1065): FastPairHandler: Received action android.bluetooth.adapter.action.BLE_STATE_CHANGED [CONTEXT service_id=265 ]
+11-04 15:17:19.315 I/PersonalSafety( 1065): Settings changed. [CONTEXT service_id=310 ]
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): FastPairHandler: Received action android.bluetooth.adapter.action.BLE_STATE_CHANGED [CONTEXT service_id=265 ]
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): OffloadFastPairScanner: eventType=BLE_OFF, isInternalReq=false, isOffloadScanning=false, isOffloadScanningAllowed=false [CONTEXT service_id=265 ]
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): FastPairScanner: isScreenOn=true, isLocationEnabled=true, disableLocationRequirement=true, isDiscoveryScanningEnabled=true, during24GhzWifiWarmingUpPeriod=false [CONTEXT service_id=265 ]
+11-04 15:17:19.315 D/BluetoothAdapter( 1065): isLeEnabled(): OFF
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): FastPairScanner: eventType=BLE_OFF, intReq=false, scanning=false, scanAllowed=true, bleEnabled=false, lockScanRate=false, startScanningByLowPowerMode=false [CONTEXT service_id=265 ]
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): FastPairScanner: isScreenOn=true, isLocationEnabled=true, disableLocationRequirement=true, isDiscoveryScanningEnabled=true, during24GhzWifiWarmingUpPeriod=false [CONTEXT service_id=265 ]
+11-04 15:17:19.315 I/NearbyDiscovery( 1065): OffloadFastPairScanner: isScanningAllowed, try startScanning. [CONTEXT service_id=265 ]
+11-04 15:17:19.316 D/BluetoothAdapter( 1065): isLeEnabled(): OFF
+11-04 15:17:19.316 I/NearbyDiscovery( 1065): OffloadFastPairScanner: BLE is not enabled, stop on going scan and try enable BLE, eventType=BLE_OFF [CONTEXT service_id=265 ]
+11-04 15:17:19.316 I/NearbyDiscovery( 1065): OffloadFastPairScanner: Skipping stop, already stopped scanning [CONTEXT service_id=265 ]
+11-04 15:17:19.316 I/NearbyDiscovery( 1065): BleRecoveryHelper: BLE is not always available, resets retry count and skip. eventType=BLE_OFF [CONTEXT service_id=265 ]
+11-04 15:17:19.339 I/ProximityAuth( 1065): [PhoneHubService] Bluetooth state has changed. Calling startService.
+11-04 15:17:19.345 I/Nearby  ( 1065): is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) [CONTEXT service_id=49 ]
+11-04 15:17:19.354 I/ProximityAuth( 1065): [PhoneHubService] Handling intent for PhoneHubChimeraService.
+11-04 15:17:19.354 I/Fido    ( 1065): [CableAuthenticatorChimeraService] Unregistering receiver.
+11-04 15:17:19.354 I/Fido    ( 1065): [CableAuthenticatorChimeraService] Registering broadcast receiver.
+11-04 15:17:19.355 I/NearbyDiscovery( 1065): DiscoveryService onStartCommand action: android.bluetooth.adapter.action.STATE_CHANGED [CONTEXT service_id=265 ]
+11-04 15:17:19.355 I/NearbyDiscovery( 1065): FastPair: onAdapterStateChange: state=10 [CONTEXT service_id=265 ]
+11-04 15:17:19.359 I/NearbyDiscovery( 1065): FastPairHandler: Received action android.bluetooth.adapter.action.STATE_CHANGED [CONTEXT service_id=265 ]
+11-04 15:17:19.362 I/NearbyDiscovery( 1065): DiscoveryService onStartCommand action: com.google.android.gms.nearby.discovery:ACTION_PERMISSION_CHANGE [CONTEXT service_id=265 ]
+11-04 15:17:19.363 I/NearbyFastPair( 1065): DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-04 15:17:19.363 I/NearbyFastPair( 1065): DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-04 15:17:19.363 I/Nearby  ( 1065): is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) [CONTEXT service_id=49 ]
+11-04 15:17:19.378 I/Nearby  ( 1065): is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) [CONTEXT service_id=49 ]
+11-04 15:17:19.380 I/ProximityAuth( 1065): [PhoneHubService] No enabled account, stopping service
+11-04 15:17:19.380 I/NearbyDiscovery( 1065): DiscoveryController, showNotification, itemSize=0 [CONTEXT service_id=265 ]
+11-04 15:17:19.380 I/NearbyDiscovery( 1065): Show notifications: 0 total, no changes since last shown, no-op. [CONTEXT service_id=265 ]
+11-04 15:17:19.393 I/ProximityAuth( 1065): [PhoneHubService] Destroying PhoneHubChimeraService.
+11-04 15:17:19.393 W/ProximityAuth( 1065): [PhoneHubNotificationProcessor] shutdown(): context is null.
+11-04 15:17:19.393 I/ProximityAuth( 1065): [PhoneHubService] All devices have disconnected. Performing cleanup...
+11-04 15:17:19.393 W/ChimeraUtils( 1065): Module com.google.android.gms.auth_proximity missing resource null(0)
+--------- beginning of system
+11-04 15:17:19.407 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=19243) has no WPC
+11-04 15:17:19.408 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:17:19.408 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:17:19.408 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+11-04 15:17:19.408 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:17:19.410 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:17:19.410 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:17:19.412 D/KeyguardService(  838): setOccluded(false)
+11-04 15:17:19.412 D/KeyguardViewMediator(  838): setOccluded(false)
+11-04 15:17:19.413 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-04 15:17:19.413 D/WindowManagerShell(  838): onActivityRestartAttempt: ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}
+11-04 15:17:19.418 D/KeyguardViewMediator(  838): handleSetOccluded(false)
+11-04 15:17:19.418 D/KeyguardViewMediator(  838): KeyguardViewMediator queue processing message: SET_OCCLUDED
+11-04 15:17:19.483 D/ShortcutService(  592): received package broadcast intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 (has extras) }
+11-04 15:17:19.483 D/ShortcutService(  592): changing package: com.google.android.bluetooth userId0
+11-04 15:17:19.483 I/AppWidgetServiceImpl(  592): Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-04 15:17:19.483 D/ShortcutService(  592): handlePackageChanged: com.google.android.bluetooth user=0
+11-04 15:17:19.483 D/ShortcutService(  592): rescanPackageIfNeeded 0@com.google.android.bluetooth, forceRescan=true , isNewApp=true
+11-04 15:17:19.483 D/ShortcutService(  592): Package com.google.android.bluetooth has 0 manifest shortcut(s), and 0 share target(s)
+11-04 15:17:19.490 D/ActivityManager(  592): sync unfroze 1181 com.google.android.permissioncontroller for 6
+11-04 15:17:19.497 D/CarrierSvcBindHelper(  995): onPackageModified: com.google.android.bluetooth
+11-04 15:17:19.500 D/CarrierSvcBindHelper(  995): No carrier app for: 0
+11-04 15:17:19.500 I/RoleService(  592): Granting default roles...
+11-04 15:17:19.500 D/ControlsListingControllerImpl(  838): ServiceConfig reloaded, count: 0
+11-04 15:17:19.503 E/SmsApplication(  995): com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+11-04 15:17:19.503 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 10135, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.504 W/MagnificationConnectionManager(  592): requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-04 15:17:19.505 I/AiAiEcho( 1403): Settings changed for uri: content://settings/secure/accessibility_enabled
+11-04 15:17:19.508 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:17:19.508 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:17:19.508 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:17:19.508 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.508 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.508 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:17:19.508 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:17:19.509 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:17:19.509 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:17:19.509 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:17:19.509 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:17:19.509 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:17:19.509 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:17:19.509 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0 (types=[])
+11-04 15:17:19.509 D/SsMediaDataProvider(  838): Forwarding Smartspace updates []
+11-04 15:17:19.511 W/Role    (  592): Default holder doesn't have required signing certificate: com.google.android.retaildemo:6547c73dee150c103980bfdffe55cc9a011d785dd694a5f99afd8205bcaf1f80
+11-04 15:17:19.511 E/RoleControllerServiceImpl(  592): Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-04 15:17:19.511 E/CellBroadcastUtils(  995): getDefaultCellBroadcastReceiverPackageName: no package found
+11-04 15:17:19.512 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_SMS, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.512 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_SMS, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.512 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_WAP_PUSH, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.512 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 1001, code = SEND_SMS, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.512 W/AppOpService(  592): Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+11-04 15:17:19.515 I/netd    (  395): tetherGetStats() -> {[]} <0.33ms>
+11-04 15:17:19.516 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:17:19.516 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:17:19.516 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:17:19.516 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:17:19.516 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:17:19.516 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:17:19.516 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:17:19.516 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:17:19.518 D/ImsResolver(  995): maybeAddedImsService, packageName: com.google.android.bluetooth
+11-04 15:17:19.524 W/ProcessStats(  592): Tracking association SourceState{44f2eec system/1000 ImpFg #13979} whose proc state 5 is better than process ProcessState{9840cbd com.google.android.permissioncontroller/10193 pkg=com.google.android.permissioncontroller} proc state 14 (6 skipped)
+11-04 15:17:19.525 W/Role    (  592): Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-04 15:17:19.526 I/PermissionControllerServiceImpl( 1181): Updating user sensitive for uid 1002
+11-04 15:17:19.535 D/PackageUpdatedTask( 1289): Package updated: mOp=UPDATE packages=[com.google.android.bluetooth]
+11-04 15:17:19.536 I/AiAiEcho( 1403): AppFetcherImpl onPackageChanged com.google.android.bluetooth.
+11-04 15:17:19.537 I/AiAiEcho( 1403): AppIndexer Package:[com.google.android.bluetooth] UserProfile:[0] Enabled:[true].
+11-04 15:17:19.537 I/AiAiEcho( 1403): AppFetcherImplV2 updateApps package:[com.google.android.bluetooth], userId:[0], reason:[package is updated.].
+11-04 15:17:19.549 W/AllAppsList( 1289): updatePromiseInstallInfo: no Activities matched updated package, removing all apps from package=com.google.android.bluetooth
+11-04 15:17:19.578 I/system_server(  592): Background concurrent mark compact GC freed 23MB AllocSpace bytes, 37(1012KB) LOS objects, 43% free, 30MB/54MB, paused 685us,1.610ms total 382.614ms
+11-04 15:17:19.586 I/BpBinder(  592): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:17:19.596 E/RoleControllerServiceImpl(  592): Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+11-04 15:17:19.605 E/RoleControllerServiceImpl(  592): Default/fallback role holder package doesn't qualify for the role, package: com.google.android.devicelockcontroller, role: android.app.role.SYSTEM_FINANCED_DEVICE_CONTROLLER
+11-04 15:17:19.619 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/InputDevices/InputDevices.apk' with 1 weak references
+11-04 15:17:19.620 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk' with 1 weak references
+11-04 15:17:19.620 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+11-04 15:17:19.622 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/PrebuiltGmail/PrebuiltGmail.apk' with 1 weak references
+11-04 15:17:19.622 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/GoogleTTS/GoogleTTS.apk' with 1 weak references
+11-04 15:17:19.623 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Drive/Drive.apk' with 1 weak references
+11-04 15:17:19.624 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/CalendarGooglePrebuilt/CalendarGooglePrebuilt.apk' with 1 weak references
+11-04 15:17:19.624 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/AccessibilityMenu/AccessibilityMenu.apk' with 1 weak references
+11-04 15:17:19.624 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '/product/overlay/AccessibilityMenu__sdk_gphone64_x86_64__auto_generated_rro_product.apk' with 1 weak references
+11-04 15:17:19.624 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/talkback/talkback.apk' with 1 weak references
+11-04 15:17:19.624 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '/vendor/overlay/EmulatorTalkBackOverlay/EmulatorTalkBackOverlay.apk' with 1 weak references
+11-04 15:17:19.645 D/EGL_emulation(17114): app_time_stats: avg=61.16ms min=8.69ms max=134.11ms count=11
+11-04 15:17:19.859 W/BpBinder(19261): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:17:19.860 W/ProcessState(19261): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:17:19.874 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:17:19.874 I/Gralloc4(19261): mapper 4.x is not supported
+--------- beginning of kernel
+11-04 15:17:20.027 I/servicemanager(    0): Caller(pid=19261,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:17:19.982 I/Bugle   ( 1627): BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of buoi@37883f6
+11-04 15:17:20.003 I/StylusModule( 1348): StylusModule.onUpdateToolType():770 Update tool type = 0
+11-04 15:17:20.004 D/AutofillManagerService(  592): onBackKeyPressed()
+11-04 15:17:20.419 V/WindowManagerShell(  838): Transition requested (#272): android.os.BinderProxy@8159b82 TransitionRequestInfo { type = CLOSE, triggerTask = null, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 272 }
+11-04 15:17:20.459 W/Looper  (  838): Slow dispatch took 41ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda1@f210293 m=0
+11-04 15:17:20.483 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:17:20.484 V/WindowManager(  592): Sent Transition (#272) createdAt=11-04 15:17:20.417 via request=TransitionRequestInfo { type = CLOSE, triggerTask = null, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 272 }
+11-04 15:17:20.484 V/WindowManager(  592):     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-04 15:17:20.484 V/WindowManager(  592):     info={id=272 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[
+11-04 15:17:20.484 V/WindowManager(  592):         {null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{5805e4c u0 vn.bubbledict/.ui.result.ResultActivity)/@0xae7eb13 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 bc=fffafafa component=vn.bubbledict/.ui.result.ResultActivity}
+11-04 15:17:20.484 V/WindowManager(  592):     ]}
+11-04 15:17:20.485 V/WindowManagerShell(  838): onTransitionReady(transaction=2542620651492)
+11-04 15:17:20.488 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:17:20.489 V/WindowManagerShell(  838): onTransitionReady (#272) android.os.BinderProxy@8159b82: {id=272 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{5805e4c u0 vn.bubbledict/.ui.result.ResultActivity)/@0x8912d0 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 bc=fffafafa component=vn.bubbledict/.ui.result.ResultActivity}]}
+11-04 15:17:20.489 V/WindowManagerShell(  838): Playing animation for (#272) android.os.BinderProxy@8159b82@0
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultMixedHandler@c5e5b72
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@35dbc3
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.pip.PipTransition@bb62c40
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@78c8779
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.recents.RecentsTransitionHandler@8b2bcbe
+11-04 15:17:20.489 V/ShellRecents(  838): RecentsTransitionHandler.startAnimation: no controller found
+11-04 15:17:20.489 V/WindowManagerShell(  838):  try handler com.android.wm.shell.splitscreen.StageCoordinator@290711f
+11-04 15:17:20.490 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.RemoteTransitionHandler@6f1cc6c
+11-04 15:17:20.490 V/WindowManagerShell(  838): Transition doesn't have explicit remote, search filters for match for {id=272 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{5805e4c u0 vn.bubbledict/.ui.result.ResultActivity)/@0x8912d0 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 bc=fffafafa component=vn.bubbledict/.ui.result.ResultActivity}]}
+11-04 15:17:20.490 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@c3f9775, appThread = android.app.IApplicationThread$Stub$Proxy@b7530a, debugName = OverlaySwipeBack }}
+11-04 15:17:20.490 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d17977b, appThread = android.app.IApplicationThread$Stub$Proxy@7552998, debugName = LauncherToDream }}
+11-04 15:17:20.490 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@57f35f1, appThread = android.app.IApplicationThread$Stub$Proxy@2ff95d6, debugName = QuickstepLaunchHome }}
+11-04 15:17:20.490 V/WindowManagerShell(  838):  Delegate animation for (#272) to null
+11-04 15:17:20.490 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:17:20.490 V/WindowManagerShell(  838): start default transition animation, info = {id=272 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{5805e4c u0 vn.bubbledict/.ui.result.ResultActivity)/@0x8912d0 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 bc=fffafafa component=vn.bubbledict/.ui.result.ResultActivity}]}
+11-04 15:17:20.490 V/WindowManagerShell(  838): loadAnimation: anim=android.view.animation.AnimationSet@b48bfc animAttr=0x7 type=CLOSE isEntrance=false
+11-04 15:17:20.491 V/WindowManagerShell(  838):  animated by com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:17:20.614 I/ImeTracker(  592): vn.bubbledict:b6b8565d: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:17:20.614 I/ImeTracker(  592): vn.bubbledict:b6b8565d: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:17:20.614 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:17:20.615 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:17:20.615 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=vn.bubbledict, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:17:20.615 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:17:20.615 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:17:20.617 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: vn.bubbledict and userId: 0
+11-04 15:17:20.668 D/EGL_emulation(  838): app_time_stats: avg=454.33ms min=21.97ms max=1856.22ms count=5
+11-04 15:17:20.723 W/Looper  (  838): Slow delivery took 38ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:17:20.740 W/Looper  (  838): Drained
+11-04 15:17:20.758 V/WindowManagerShell(  838): Transition animation finished (aborted=false), notifying core (#272) android.os.BinderProxy@8159b82@0
+11-04 15:17:20.772 V/WindowManager(  592): Finish Transition (#272): created at 11-04 15:17:20.417 collect-started=0.02ms request-sent=0.066ms started=41.943ms ready=65.025ms sent=67.103ms finished=349.972ms
+11-04 15:17:20.782 D/VRI[ResultActivity](17114): visibilityChanged oldVisibility=true newVisibility=false
+11-04 15:17:20.787 V/WindowManagerShell(  838): Track 0 became idle
+11-04 15:17:20.787 V/WindowManagerShell(  838): All active transition animations finished
+11-04 15:17:20.810 D/VRI[ResultActivity](17114): visibilityChanged oldVisibility=true newVisibility=false
+11-04 15:17:20.828 W/WindowOnBackDispatcher(17114): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@7d30bcb
+11-04 15:17:20.835 D/CoreBackPreview(  592): Window{9dc256f u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity EXITING}: Setting back callback null
+11-04 15:17:20.845 W/InputManager-JNI(  592): Input channel object '9dc256f vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+11-04 15:17:20.850 W/WindowOnBackDispatcher(17114): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@e088cab
+11-04 15:17:20.851 D/CoreBackPreview(  592): Window{7b1338 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback null
+11-04 15:17:20.852 W/InputManager-JNI(  592): Input channel object '7b1338 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+11-04 15:17:20.885 W/InputManager-JNI(  592): Input channel object 'e8dfd24 Toast (client)' was disposed without first being removed with the input manager!
+11-04 15:17:20.898 W/NotificationService(  592): Toast already killed. pkg=vn.bubbledict token=android.os.BinderProxy@35f16c1
+11-04 15:17:20.905 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:17:21.177 D/EGL_emulation(17114): app_time_stats: avg=4108.31ms min=88.98ms max=11836.14ms count=3
+11-04 15:17:22.319 D/InetDiagMessage(  592): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-04 15:17:22.320 D/InetDiagMessage(  592): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-04 15:17:22.320 D/InetDiagMessage(  592): Destroyed live tcp sockets for uids={10111} in 2ms
+11-04 15:17:22.321 D/InetDiagMessage(  592): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-04 15:17:22.322 D/InetDiagMessage(  592): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-04 15:17:22.322 D/InetDiagMessage(  592): Destroyed live tcp sockets for uids={20111} in 2ms
+11-04 15:17:22.900 W/rules.WifiRx( 2606): FenceState currentState is not true
+11-04 15:17:22.915 I/netd    (  395): tetherGetStats() -> {[]} <1.32ms>
+11-04 15:17:23.145 D/EGL_emulation(17114): app_time_stats: avg=67.22ms min=4.26ms max=1075.25ms count=24
+11-04 15:17:23.214 D/BufferPoolAccessor2.0(  518): bufferpool2 0x70088ba82bf8 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 374/384 (recycle/alloc) - 16/383 (fetch/transfer)
+11-04 15:17:23.664 W/BpBinder(19425): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:17:23.664 W/ProcessState(19425): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:17:23.731 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:17:23.731 I/Gralloc4(19425): mapper 4.x is not supported
+11-04 15:17:23.877 I/servicemanager(    0): Caller(pid=19425,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.

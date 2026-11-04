@@ -1,0 +1,6 @@
+=== AC17 offline state ===
+Wed Nov  4 03:14:47 PM +07 2026
+airplane_mode_on=1
+wifi_on=0
+--- ping:
+connect: Network is unreachable

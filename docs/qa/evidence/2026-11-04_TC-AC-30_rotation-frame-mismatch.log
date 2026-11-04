@@ -1,0 +1,7 @@
+=== AC30 rotation check — build 18:26:53 (lastUpdateTime 18:27:34) ===
+=== PORTRAIT (cur=540x1200) ===
+    mAttrs={(461,826)(74x74) gr=TOP START CENTER sim={adjust=pan} ty=APPLICATION_OVERLAY fmt=TRANSLUCENT surfaceInsets=Rect(26, 26 - 26, 26)
+    Frames: parent=[0,68][540,1168] display=[-100000,-100000][100000,100000] frame=[461,894][535,968] last=[461,894][535,968] insetsChanged=false
+Kỳ vọng: mAttrs x=1200? no — portrait width 540: x=461 (540-74-5), y=826 (0.75*1200-74)
+Thực tế frame=[461,894][535,968] => lệch +68px theo y (parent frame bắt đầu y=68 do status bar)
+

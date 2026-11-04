@@ -1,0 +1,13 @@
+    mDisplayId=0 rootTaskId=173 mSession=Session{3f935fd 31286:u0a10229} mClient=android.os.BinderProxy@26219a4
+    mOwnerUid=10229 showForAllUsers=false package=vn.bubbledict appop=SYSTEM_ALERT_WINDOW
+    mAttrs={(440,123)(116x116) gr=TOP START CENTER sim={adjust=pan} layoutInDisplayCutoutMode=shortEdges ty=APPLICATION_OVERLAY fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE LAYOUT_IN_SCREEN LAYOUT_NO_LIMITS HARDWARE_ACCELERATED
+      pfl=FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      fitSides=
+      frameRateBoostOnTouch=true
+      dvrrWindowFrameRateHint=true}
+--
+    mDisplayId=0 rootTaskId=173 mSession=Session{3f567b0 838:u0a10181} mClient=android.os.BinderProxy@376a78d
+    mOwnerUid=10181 showForAllUsers=true package=com.android.systemui appop=SYSTEM_ALERT_WINDOW
+11-04 18:39:50.471 31286 31286 I BubbleService: frame offset dx=0 dy=341

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nghia Bong app icon — background. viewport 108x108 = 108dp adaptive layer.
+     Trace tu docs/design/icon/app_icon_512.png (ban da duyet). Nguon: app-icon.md §20. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear"
+                android:startX="6" android:startY="2" android:endX="102" android:endY="106"
+                android:startColor="#4A5FA5" android:endColor="#7C5AC8" />
+        </aapt:attr>
+    </path>
+</vector>

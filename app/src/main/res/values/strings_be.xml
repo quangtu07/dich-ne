@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chuỗi do BE sở hữu cho F2/F3 (bong bóng + chụp màn hình + OCR).
+     File riêng để không đụng strings.xml của FE. -->
+<resources>
+    <string name="bubble_notification_channel">Bong bóng dịch</string>
+    <string name="bubble_notification_title">Bong bóng đang bật</string>
+    <string name="bubble_notification_text">Bấm bong bóng để chụp vùng chữ cần dịch</string>
+
+    <string name="capture_notification_channel">Chụp màn hình</string>
+    <string name="capture_notification_title">Đang chờ chọn vùng</string>
+    <string name="capture_notification_text">Chọn vùng chữ trên màn hình để OCR</string>
+
+    <string name="region_title">Kéo chọn vùng chữ cần dịch</string>
+    <string name="region_confirm">Dịch vùng này</string>
+    <string name="region_cancel">Huỷ</string>
+    <string name="region_error_no_permission">Chưa được phép chụp màn hình</string>
+    <string name="region_error_capture">Không chụp được màn hình. Thử lại hoặc dùng bôi đen text.</string>
+    <string name="region_error_empty">Không đọc được vùng này</string>
+    <!-- E13 conditional (spec 1.10): hiện OCR bundled map mọi lỗi init -> E23, chuỗi này dự phòng
+         nếu sau này chuyển sang model tải on-demand. E23 dùng region_timeout_title/body (strings.xml). -->
+    <string name="region_error_ocr">Nhận dạng chữ bị lỗi, thử chọn vùng khác</string>
+
+    <!-- F12: banner cập nhật (FE hiển thị; BE trả mã lỗi tương ứng). -->
+    <string name="update_banner_title">Đã có bản cập nhật</string>
+    <string name="update_banner_action">Cập nhật</string>
+    <string name="update_downloading">Đang tải bản cập nhật…</string>
+    <string name="update_error_network">Không kiểm tra được cập nhật. Kiểm tra mạng rồi thử lại.</string>
+    <string name="update_error_manifest">Thông tin cập nhật không hợp lệ. Thử lại sau.</string>
+    <string name="update_error_download">Tải bản cập nhật thất bại. Thử lại.</string>
+    <string name="update_error_checksum">File tải về không khớp mã kiểm tra nên đã bị chặn. Thử lại.</string>
+    <string name="update_error_permission">Cho phép "Cài từ nguồn không xác định" cho Dịch Nè để cập nhật.</string>
+</resources>

@@ -1,0 +1,8 @@
+-- DB extract, 2026-11-04 15:18, sau retest BUG-01/AC17 --
+cache rows: 2
+(11, 'SENTENCE', 'CACHE', 'CACHED', None, 'The quick brown fox jumps over the lazy dog.', 'Con cáo nâu nhanh chóng nhảy qua con chó lười')
+(12, 'SENTENCE', 'CACHE', 'CACHED', None, 'The quick brown fox jumps over the lazy dog.', 'Con cáo nâu nhanh chóng nhảy qua con chó lười')
+(13, 'WORD', 'MLKIT', 'OK', None, 'perspicacious', 'sáng suốt')
+(14, 'WORD', 'CACHE', 'CACHED', None, 'perspicacious', 'sáng suốt')
+cache: ('the quick brown fox jumps over the lazy dog.', 'SENTENCE', 'MLKIT', 1793780089296)
+cache: ('perspicacious', 'WORD', 'MLKIT', 1793780206122)

@@ -1,0 +1,8 @@
+{
+  "versionCode": 3,
+  "versionName": "1.0.2",
+  "apkUrl": "http://192.168.100.106:8770/nghia-bong-1.0.2.apk",
+  "sha256": "630e72b1c98040dfc2457d5488b5349726ead1ecef0ec1e65c09dd4773849eca",
+  "notes": "Ban test F12 cho QA - khong phat cho user",
+  "publishedAt": "2026-11-04T19:32:00+07:00"
+}

@@ -1,0 +1,307 @@
+--------- beginning of main
+11-04 15:51:35.068 D/MediaCodecList( 6496): codecHandlesFormat: no format, so no extra checks
+11-04 15:51:35.068 D/CCodec  ( 6496): allocate(c2.android.avc.encoder)
+11-04 15:51:35.069 I/Codec2Client( 6496): Available Codec2 services: "default" "software"
+11-04 15:51:35.094 I/CCodec  ( 6496): setting up 'default' as default (vendor) store
+11-04 15:51:35.125 I/mediaswcodec(  518): missing struct descriptor #Param::CoreIndex(--004) for field values of struct #Param::CoreIndex(F-12004)
+11-04 15:51:35.125 I/mediaswcodec(  518): missing struct descriptor #Param::CoreIndex(--1812) for field values of struct #Param::CoreIndex(F-11812)
+11-04 15:51:35.125 I/mediaswcodec(  518): missing struct descriptor #Param::CoreIndex(--004) for field values of struct #Param::CoreIndex(F-12004)
+11-04 15:51:35.125 I/mediaswcodec(  518): missing struct descriptor #Param::CoreIndex(--1812) for field values of struct #Param::CoreIndex(F-11812)
+11-04 15:51:35.130 I/CCodec  ( 6496): Created component [c2.android.avc.encoder]
+11-04 15:51:35.138 W/WindowOnBackDispatcher( 5830): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@864bdf1
+11-04 15:51:35.144 W/InputManager-JNI(  592): Input channel object 'a24396a vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+11-04 15:51:35.149 W/WindowOnBackDispatcher( 5830): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@1208522
+11-04 15:51:35.154 W/InputManager-JNI(  592): Input channel object '789bd3f vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+--------- beginning of system
+11-04 15:51:35.159 W/Looper  (  838): Drained
+11-04 15:51:35.196 D/CCodecConfig( 6496): read media type: video/avc
+11-04 15:51:35.207 W/WindowManager(  592): Failed looking up window session=Session{220bfe8 5830:u0a10229} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6311 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:1020 android.view.IWindowSession$Stub.onTransact:1199 
+11-04 15:51:35.207 I/WindowManager(  592): setOnBackInvokedCallback(): No window state for package:vn.bubbledict
+11-04 15:51:35.207 W/WindowManager(  592): Failed looking up window session=Session{220bfe8 5830:u0a10229} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6311 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:1020 android.view.IWindowSession$Stub.onTransact:1199 
+11-04 15:51:35.207 I/WindowManager(  592): setOnBackInvokedCallback(): No window state for package:vn.bubbledict
+11-04 15:51:35.216 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: algo.buffers.max-count.values
+11-04 15:51:35.216 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: output.subscribed-indices.values
+11-04 15:51:35.216 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: input.buffers.allocator-ids.values
+11-04 15:51:35.218 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: output.buffers.allocator-ids.values
+11-04 15:51:35.218 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+11-04 15:51:35.219 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: output.buffers.pool-ids.values
+11-04 15:51:35.220 D/ReflectedParamUpdater( 6496): extent() != 1 for single value type: algo.buffers.pool-ids.values
+11-04 15:51:35.222 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=6515) has no WPC
+11-04 15:51:35.222 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:51:35.222 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:51:35.223 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+11-04 15:51:35.223 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:51:35.223 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:51:35.223 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:51:35.224 D/ReflectedParamUpdater( 6496): ignored struct field coding.gop.values
+11-04 15:51:35.229 D/ReflectedParamUpdater( 6496): ignored struct field coding.qp.values
+11-04 15:51:35.229 D/CCodecConfig( 6496): ignoring local param raw.color (0xc2001809) as it is already supported
+11-04 15:51:35.239 V/SplashScreenExceptionList(  592): SplashScreen checking exception for package vn.bubbledict (target sdk:35) -> false
+11-04 15:51:35.240 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+11-04 15:51:35.244 I/CCodecConfig( 6496): query failed after returning 13 values (BAD_INDEX)
+11-04 15:51:35.244 D/CCodecConfig( 6496): c2 config diff is Dict {
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 algo.bitrate-mode.value = 3
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::i32 coded.average-qp.value = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.bitrate.value = 64000
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::float coded.frame-rate.value = 1
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.picture-type.value = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.pl.level = 20492
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.pl.profile = 20481
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.vui.color.matrix = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.vui.color.primaries = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.vui.color.range = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coded.vui.color.transfer = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coding.intra-refresh.mode = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::float coding.intra-refresh.period = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 coding.request-sync-frame.value = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::i64 coding.sync-frame-interval.value = 1000000
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 input.delay.value = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   string input.media-type.value = "video/raw"
+11-04 15:51:35.244 D/CCodecConfig( 6496):   string output.media-type.value = "video/avc"
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.color.matrix = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.color.primaries = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.color.range = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.color.transfer = 0
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.size.height = 16
+11-04 15:51:35.244 D/CCodecConfig( 6496):   c2::u32 raw.size.width = 16
+11-04 15:51:35.244 D/CCodecConfig( 6496): }
+11-04 15:51:35.245 W/ColorUtils( 6496): expected specified color aspects (0:0:0:0)
+11-04 15:51:35.261 D/CodecSeeding( 6496): Seed: codec c2.android.avc.encoder, mediatype video/avc, overrideable 1
+11-04 15:51:35.261 D/CodecProperties( 6496): setTuningValue(vq-target-bpp,0)
+11-04 15:51:35.261 D/CodecProperties( 6496): setTuningValue(vq-target-bpp-1080p,1.90)
+11-04 15:51:35.261 D/CodecProperties( 6496): setTuningValue(vq-target-bpp-720p,2.25)
+11-04 15:51:35.261 D/CodecProperties( 6496): setTuningValue(vq-target-bpp-540p,2.65)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-bpp-480p,3.00)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-bpp-320x240,0)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-qpmax,-1)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-qpmax-1080p,45)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-qpmax-720p,43)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-qpmax-540p,42)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-target-qpmax-480p,38)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-bitrate-phaseout,1.75)
+11-04 15:51:35.262 D/CodecProperties( 6496): setTuningValue(vq-boost-missing-qp,0.20)
+11-04 15:51:35.262 D/CodecProperties( 6496): setFeatureValue(intra-refresh,0)
+11-04 15:51:35.262 D/CodecProperties( 6496): setFeatureValue(qp-bounds,0)
+11-04 15:51:35.262 D/CodecProperties( 6496): setFeatureValue(_vq_eligible.device,1)
+11-04 15:51:35.262 D/CodecProperties( 6496): setFeatureValue(_quality.target,1)
+11-04 15:51:35.262 D/CodecSeeding( 6496): Seed: codec c2.android.avc.encoder, mediatype video/avc, overrideable 0
+11-04 15:51:35.262 D/MediaCodec( 6496): shapeMediaFormat: deltas(1): AMessage(what = 0x00000000) = {
+11-04 15:51:35.262 D/MediaCodec( 6496):     int32_t android._encoding-quality-level = 0
+11-04 15:51:35.262 D/MediaCodec( 6496):   }
+11-04 15:51:35.266 D/CCodec  ( 6496): [c2.android.avc.encoder] buffers are bound to CCodec for this session
+11-04 15:51:35.268 V/WindowManagerShell(  838): Transition requested (#352): android.os.BinderProxy@afc5f0 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=158 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7514846 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@c69769} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{ae6a5ee vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 352 }
+11-04 15:51:35.270 D/CCodecConfig( 6496): no c2 equivalents for color-format
+11-04 15:51:35.270 D/CCodecConfig( 6496): no c2 equivalents for max-bframes
+11-04 15:51:35.270 D/CCodecConfig( 6496): no c2 equivalents for flags
+11-04 15:51:35.270 D/CCodecConfig( 6496): no c2 equivalents for encoder
+11-04 15:51:35.278 D/CCodecConfig( 6496): c2 config diff is   c2::u32 coded.bitrate.value = 8000000
+11-04 15:51:35.278 D/CCodecConfig( 6496):   c2::float coded.frame-rate.value = 60
+11-04 15:51:35.278 D/CCodecConfig( 6496):   c2::i64 coding.sync-frame-interval.value = 10000000
+11-04 15:51:35.278 D/CCodecConfig( 6496):   c2::u32 raw.size.height = 1200
+11-04 15:51:35.278 D/CCodecConfig( 6496):   c2::u32 raw.size.width = 540
+11-04 15:51:35.278 W/ColorUtils( 6496): expected specified color aspects (0:0:0:0)
+11-04 15:51:35.279 D/CCodec  ( 6496): encoding statistics level = 0
+11-04 15:51:35.279 D/CCodec  ( 6496): setup formats input: AMessage(what = 0x00000000) = {
+11-04 15:51:35.279 D/CCodec  ( 6496):   Rect crop(0, 0, 539, 1199)
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-standard = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-range = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-transfer = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t frame-rate = 60
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t height = 1200
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t intra-refresh-period = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   string mime = "video/raw"
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t video-qp-average = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t width = 540
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t android._dataspace = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t using-sw-read-often = 1
+11-04 15:51:35.279 D/CCodec  ( 6496):   int64_t android._C2MemoryUsage = 1
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-format = 2130708361
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t android._color-format = 2130708361
+11-04 15:51:35.279 D/CCodec  ( 6496): }
+11-04 15:51:35.279 D/CCodec  ( 6496): setup formats output: AMessage(what = 0x00000000) = {
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t bitrate = 8000000
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t bitrate-mode = 1
+11-04 15:51:35.279 D/CCodec  ( 6496):   Rect crop(0, 0, 539, 1199)
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-standard = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-range = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t color-transfer = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t frame-rate = 60
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t height = 1200
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t intra-refresh-period = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t level = 4096
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t max-bitrate = 8000000
+11-04 15:51:35.279 D/CCodec  ( 6496):   string mime = "video/avc"
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t profile = 65536
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t video-qp-average = 0
+11-04 15:51:35.279 D/CCodec  ( 6496):   int32_t width = 540
+11-04 15:51:35.279 D/CCodec  ( 6496): }
+11-04 15:51:35.279 I/CCodecConfig( 6496): query failed after returning 14 values (BAD_INDEX)
+11-04 15:51:35.279 D/CCodec  ( 6496): hidl based PersistentSurface created
+11-04 15:51:35.280 D/CCodec  ( 6496): input format changed to AMessage(what = 0x00000000) = {
+11-04 15:51:35.280 D/CCodec  ( 6496):   Rect crop(0, 0, 539, 1199)
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t color-standard = 1
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t color-range = 2
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t color-transfer = 3
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t frame-rate = 60
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t height = 1200
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t intra-refresh-period = 0
+11-04 15:51:35.280 D/CCodec  ( 6496):   string mime = "video/raw"
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t video-qp-average = 0
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t width = 540
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t android._dataspace = 260
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t using-sw-read-often = 1
+11-04 15:51:35.280 D/CCodec  ( 6496):   int64_t android._C2MemoryUsage = 1
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t color-format = 2130708361
+11-04 15:51:35.280 D/CCodec  ( 6496):   int32_t android._color-format = 2130708361
+11-04 15:51:35.280 D/CCodec  ( 6496): }
+11-04 15:51:35.280 D/GraphicBufferSource( 6496): setting dataspace: 0x104, acquired=0
+11-04 15:51:35.280 D/CCodec  ( 6496): ISConfig not changed
+11-04 15:51:35.282 W/Codec2Client( 6496): query -- param skipped: index = 1342179345.
+11-04 15:51:35.282 W/Codec2Client( 6496): query -- param skipped: index = 2415921170.
+11-04 15:51:35.282 D/CCodecBufferChannel( 6496): [c2.android.avc.encoder#114] Using basic input block pool with poolID 1 => got 1 - OK (0)
+11-04 15:51:35.283 D/C2Store ( 6496): Using DMABUF Heaps
+11-04 15:51:35.285 D/EGL_emulation( 1289): app_time_stats: avg=1778.61ms min=1.95ms max=8689.40ms count=5
+11-04 15:51:35.292 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:51:35.292 I/TopTaskTracker( 1289): onTaskRemoved: taskId=157
+11-04 15:51:35.292 I/TopTaskTracker( 1289): onTaskRemoved: taskId=157
+11-04 15:51:35.292 I/TopTaskTracker( 1289): onTaskMovedToFront: (moved taskInfo to front) taskId=158, baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity }
+11-04 15:51:35.293 W/SplitSelectStateCtor( 1289): Missing session instanceIds
+11-04 15:51:35.293 D/StatsLog( 1289): LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-04 15:51:35.294 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+11-04 15:51:35.316 I/CCodecBufferChannel( 6496): [c2.android.avc.encoder#114] Created output block pool with allocatorID 16 => poolID 78 - OK
+11-04 15:51:35.322 D/WindowManagerShell(  838): setLauncherKeepClearAreaHeight: visible=false, height=264
+11-04 15:51:35.325 D/CCodecBufferChannel( 6496): [c2.android.avc.encoder#114] Configured output block pool ids 78 => OK
+11-04 15:51:35.328 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:51:35.328 I/GoogleTTSServiceImpl(15322): currentLocale = en-US
+11-04 15:51:35.330 W/ResourceManagerServiceUtils(  512): Ignoring request to add new resource entry with value <= 0
+11-04 15:51:35.334 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:51:35.334 I/GoogleTTSServiceImpl(15322): currentLocale = en-GB
+11-04 15:51:35.356 D/ScreenRecord( 6496): raw video output to tty (fd=1)
+11-04 15:51:35.356 D/ScreenRecord( 6496): tty successfully configured for raw
+11-04 15:51:35.380 D/AutofillManager( 5830): Fill dialog is enabled:false, hints=[password, passwordAuto, creditCardNumber, creditCardSecurityCode, creditCardExpirationDate]
+--------- beginning of kernel
+11-04 15:51:35.564 I/servicemanager(    0): Caller(pid=6496,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:35.417 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:35.418 I/Gralloc4( 6496): mapper 4.x is not supported
+11-04 15:51:35.424 W/WindowOnBackDispatcher( 5830): OnBackInvokedCallback is not enabled for the application.
+11-04 15:51:35.424 W/WindowOnBackDispatcher( 5830): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:51:35.425 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=10 not found or not visible
+11-04 15:51:35.439 D/CoreBackPreview(  592): Window{78f67ef u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@91ff594, mPriority=0, mIsAnimationCallback=false}
+11-04 15:51:35.464 I/EGL_emulation( 5830): Opening libGLESv1_CM_emulation.so
+11-04 15:51:35.476 I/EGL_emulation( 5830): Opening libGLESv2_emulation.so
+11-04 15:51:35.502 W/HWUI    ( 5830): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 15:51:35.504 W/HWUI    ( 5830): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-04 15:51:35.529 D/GraphicBufferSource( 6496): got buffer with new dataSpace 0x104
+11-04 15:51:35.529 D/C2NodeImpl( 6496): dataspace changed to 0x104 pixel format: 0x1
+11-04 15:51:35.532 D/SimpleC2Component(  518): Using output block pool with poolID 78 => got 78 - 0
+11-04 15:51:35.532 D/SimpleC2Component(  518): applied 2 configUpdates => BAD_INDEX (6)
+11-04 15:51:35.532 D/C2SoftAvcEnc(  518): Params width 540 height 1200 level 41 colorFormat 0 bframes 0
+11-04 15:51:35.842 W/WindowOnBackDispatcher( 5830): OnBackInvokedCallback is not enabled for the application.
+11-04 15:51:35.842 W/WindowOnBackDispatcher( 5830): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:51:35.912 D/EGL_emulation( 1289): app_time_stats: avg=129.03ms min=7.83ms max=388.08ms count=7
+11-04 15:51:35.932 D/CoreBackPreview(  592): Window{f6f27da u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@3e6d83d, mPriority=0, mIsAnimationCallback=false}
+11-04 15:51:36.043 D/CCodecConfig( 6496): c2 config diff is   Buffer coded.init-data.value = {
+11-04 15:51:36.043 D/CCodecConfig( 6496):     00000000:  00 00 00 01 67 42 c0 29  8d 68 08 80 97 ef 90 80  ....gB.).h......
+11-04 15:51:36.043 D/CCodecConfig( 6496):     00000010:  80 80 83 c2 21 1a 80 00  00 00 01 68 ce 01 a8 35  ....!......h...5
+11-04 15:51:36.043 D/CCodecConfig( 6496):     00000020:  c8                                                .
+11-04 15:51:36.043 D/CCodecConfig( 6496):   }
+11-04 15:51:36.436 W/ziparchive(  592): Unable to open '/data/app/~~dxh3AqyPHg3Ga6I1IdaTkg==/vn.bubbledict-stpmCuu9EOz8pY9jW-8-Ew==/base.dm': No such file or directory
+11-04 15:51:36.437 V/WindowManagerShell(  838): onTransitionReady(transaction=2542620656975)
+11-04 15:51:36.440 V/WindowManagerShell(  838): onTransitionReady (#352) android.os.BinderProxy@afc5f0: {id=352 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@39b32fa} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=158)/@0x8e3511c sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:51:36.440 V/WindowManagerShell(  838): Playing animation for (#352) android.os.BinderProxy@afc5f0@0
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultMixedHandler@c5e5b72
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@35dbc3
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.pip.PipTransition@bb62c40
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@78c8779
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.recents.RecentsTransitionHandler@8b2bcbe
+11-04 15:51:36.440 V/ShellRecents(  838): RecentsTransitionHandler.startAnimation: no controller found
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.splitscreen.StageCoordinator@290711f
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.RemoteTransitionHandler@6f1cc6c
+11-04 15:51:36.440 V/WindowManagerShell(  838): Transition doesn't have explicit remote, search filters for match for {id=352 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@39b32fa} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=158)/@0x8e3511c sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:51:36.440 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@35a7ead, appThread = android.app.IApplicationThread$Stub$Proxy@6eed5e2, debugName = OverlaySwipeBack }}
+11-04 15:51:36.440 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d17977b, appThread = android.app.IApplicationThread$Stub$Proxy@7552998, debugName = LauncherToDream }}
+11-04 15:51:36.440 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@57f35f1, appThread = android.app.IApplicationThread$Stub$Proxy@2ff95d6, debugName = QuickstepLaunchHome }}
+11-04 15:51:36.440 V/WindowManagerShell(  838):  Delegate animation for (#352) to null
+11-04 15:51:36.440 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:51:36.440 V/WindowManagerShell(  838): start default transition animation, info = {id=352 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@39b32fa} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=158)/@0x8e3511c sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:51:36.440 V/WindowManagerShell(  838): loadAnimation: anim=android.view.animation.AnimationSet@9f910ab animAttr=0x4 type=OPEN isEntrance=true
+11-04 15:51:36.454 I/HWUI    ( 5830): Davey! duration=855ms; Flags=1, FrameTimelineVsyncId=528472, IntendedVsync=7514990933181, Vsync=7515307599835, InputEventId=0, HandleInputStart=7515448665159, AnimationStart=7515448666402, PerformTraversalsStart=7515448666936, DrawStart=7515717365144, FrameDeadline=7515007599847, FrameInterval=7515309427235, FrameStartTime=16666666, SyncQueued=7515779907260, SyncStart=7515850883090, IssueDrawCommandsStart=7515850958913, SwapBuffers=7515851186996, FrameCompleted=7515917535602, DequeueBufferDuration=3450, QueueBufferDuration=178454, GpuCompleted=7515917535602, SwapBuffersCompleted=7515857315741, DisplayPresentTime=126033246641008, CommandSubmissionCompleted=7515851186996, 
+11-04 15:51:36.524 V/WindowManagerShell(  838):  animated by com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:51:36.524 W/Looper  (  838): Slow dispatch took 85ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@fd984c6 m=0
+11-04 15:51:36.574 W/Looper  (  838): Slow delivery took 56ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:51:36.623 W/Looper  (  838): Drained
+11-04 15:51:36.634 I/ActivityTaskManager(  592): Displayed vn.bubbledict/.ui.result.ResultActivity for user 0: +1s144ms
+11-04 15:51:36.637 W/Looper  (  592): Slow dispatch took 201ms android.fg h=android.os.Handler c=com.android.server.wm.ActivityMetricsLogger$$ExternalSyntheticLambda0@dec632c m=0
+11-04 15:51:36.638 V/WindowManager(  592): Sent Transition (#352) createdAt=11-04 15:51:35.229 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=158 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7514846 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{3e5d1f5 Task{cd6ca82 #158 type=standard A=10229:vn.bubbledict}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{7513b8a vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 352 }
+11-04 15:51:36.644 V/WindowManager(  592):     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-04 15:51:36.644 V/WindowManager(  592):     info={id=352 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-04 15:51:36.644 V/WindowManager(  592):         {WCT{RemoteToken{3e5d1f5 Task{cd6ca82 #158 type=standard A=10229:vn.bubbledict}}} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=158)/@0x5d0d700 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}
+11-04 15:51:36.644 V/WindowManager(  592):     ]}
+11-04 15:51:36.644 W/Looper  (  592): Slow delivery took 207ms android.fg h=android.os.Handler c=com.android.server.wm.TransitionController$Logger@47695fb m=0
+11-04 15:51:36.696 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:51:36.712 W/BpBinder( 6536): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:36.716 W/ProcessState( 6536): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:36.746 D/EGL_emulation(  838): app_time_stats: avg=477.78ms min=11.61ms max=1676.35ms count=4
+11-04 15:51:36.818 W/Looper  (  838): Slow dispatch took 31ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:51:36.880 D/TransportRuntime.SQLiteEventStore( 5830): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:51:36.947 W/Looper  (  838): Slow delivery took 41ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:51:36.949 D/TransportRuntime.JobInfoScheduler( 5830): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:51:36.975 V/WindowManagerShell(  838): Transition animation finished (aborted=false), notifying core (#352) android.os.BinderProxy@afc5f0@0
+11-04 15:51:37.013 V/WindowManagerShell(  838): Track 0 became idle
+11-04 15:51:37.013 V/WindowManagerShell(  838): All active transition animations finished
+11-04 15:51:37.013 W/Looper  (  838): Slow dispatch took 37ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.DefaultTransitionHandler$$ExternalSyntheticLambda0@f3ea7b4 m=0
+11-04 15:51:37.034 V/WindowManager(  592): Finish Transition (#352): created at 11-04 15:51:35.229 collect-started=0.03ms request-sent=10.937ms started=39.508ms ready=66.384ms sent=1201.229ms finished=1747.146ms
+11-04 15:51:37.095 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:37.095 I/Gralloc4( 6536): mapper 4.x is not supported
+11-04 15:51:37.239 I/servicemanager(    0): Caller(pid=6536,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:37.504 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:51:37.969 D/EGL_emulation( 5830): app_time_stats: avg=395.15ms min=13.49ms max=1300.53ms count=4
+11-04 15:51:37.972 I/Choreographer( 5830): Skipped 75 frames!  The application may be doing too much work on its main thread.
+11-04 15:51:37.992 D/native  ( 5830): I1104 15:51:37.990414    6557 mergeddicttrans.cc:1860] The current system has NMT.
+11-04 15:51:37.992 D/native  ( 5830): I1104 15:51:37.992906    6557 mergeddicttrans.cc:1866] Sentence #0: gloomy
+11-04 15:51:37.993 D/native  ( 5830): I1104 15:51:37.993107    6557 mergeddicttrans.cc:1912] To fallback to PB.
+11-04 15:51:37.993 D/native  ( 5830): I1104 15:51:37.993123    6557 mergeddicttrans.cc:1585] Sentence #0: gloomy
+11-04 15:51:37.993 D/native  ( 5830): I1104 15:51:37.993376    6557 mergeddicttrans.cc:1571] PBMT preproc: gloomy
+11-04 15:51:37.993 I/ImeTracker(  592): vn.bubbledict:d41bc1c9: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:51:37.993 I/ImeTracker(  592): vn.bubbledict:d41bc1c9: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:51:37.993 D/native  ( 5830): I1104 15:51:37.993883    6557 mergeddicttrans.cc:1588] PBMT trans: ảm đạm
+11-04 15:51:38.020 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:51:38.021 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:51:38.022 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=vn.bubbledict, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:51:38.022 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:51:38.022 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:51:38.024 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: vn.bubbledict and userId: 0
+11-04 15:51:38.210 D/TransportRuntime.SQLiteEventStore( 5830): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:51:38.212 D/TransportRuntime.JobInfoScheduler( 5830): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:51:38.324 W/BpBinder( 6556): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:38.326 W/ProcessState( 6556): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:38.378 I/HWUI    ( 5830): Davey! duration=1533ms; Flags=0, FrameTimelineVsyncId=528629, IntendedVsync=7516024266473, Vsync=7516174266467, InputEventId=0, HandleInputStart=7516176076702, AnimationStart=7516176077828, PerformTraversalsStart=7516238485980, DrawStart=7516238536079, FrameDeadline=7516274266463, FrameInterval=7516175731248, FrameStartTime=16666666, SyncQueued=7516238900876, SyncStart=7516276470529, IssueDrawCommandsStart=7516276516685, SwapBuffers=7517574075884, FrameCompleted=7517595262832, DequeueBufferDuration=4942, QueueBufferDuration=486977, GpuCompleted=7517595262832, SwapBuffersCompleted=7517578564311, DisplayPresentTime=0, CommandSubmissionCompleted=7517574075884, 
+11-04 15:51:38.931 I/servicemanager(    0): Caller(pid=6556,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:38.782 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:38.782 I/Gralloc4( 6556): mapper 4.x is not supported
+11-04 15:51:38.971 I/HWUI    ( 5830): Davey! duration=703ms; Flags=0, FrameTimelineVsyncId=529011, IntendedVsync=7517774266403, Vsync=7517940933063, InputEventId=0, HandleInputStart=7517964369321, AnimationStart=7517964370904, PerformTraversalsStart=7517977375706, DrawStart=7517977463195, FrameDeadline=7518024266393, FrameInterval=7517944532990, FrameStartTime=16666666, SyncQueued=7517977994149, SyncStart=7518003038344, IssueDrawCommandsStart=7518010425868, SwapBuffers=7518167717035, FrameCompleted=7518503028352, DequeueBufferDuration=326746643, QueueBufferDuration=496490, GpuCompleted=7518424477378, SwapBuffersCompleted=7518503028352, DisplayPresentTime=0, CommandSubmissionCompleted=7518167717035, 
+11-04 15:51:39.005 D/EGL_emulation( 1289): app_time_stats: avg=3720.61ms min=3720.61ms max=3720.61ms count=1
+11-04 15:51:39.116 D/ActivityManager(  592): sync unfroze 1370 com.google.android.apps.wellbeing for 10
+11-04 15:51:39.117 D/ActivityManager(  592): sync unfroze 12441 com.android.keychain for 10
+11-04 15:51:39.117 D/ActivityManager(  592): sync unfroze 2606 com.google.android.settings.intelligence for 10
+11-04 15:51:39.239 D/ActivityManager(  592): sync unfroze 996 com.android.settings for 10
+11-04 15:51:39.242 W/system_server(  592): Long monitor contention with owner ActivityManager (636) at void com.android.server.am.BroadcastQueueModernImpl.updateRunningList()(BroadcastQueueModernImpl.java:450) waiters=0 in void com.android.server.am.ProcessServiceRecord.onProcessUnfrozen() for 124ms
+11-04 15:51:39.246 W/Looper  (  592): Drained
+11-04 15:51:39.375 D/BufferPoolAccessor2.0(  518): evictor expired: 1, evicted: 0
+11-04 15:51:40.445 D/BufferPoolAccessor2.0(  518): bufferpool2 0x70088ba86f08 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 15/17 (recycle/alloc) - 3/17 (fetch/transfer)
+11-04 15:51:43.147 W/BpBinder( 6608): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:43.148 W/ProcessState( 6608): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:43.186 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:43.187 I/Gralloc4( 6608): mapper 4.x is not supported
+11-04 15:51:43.338 I/servicemanager(    0): Caller(pid=6608,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:45.389 D/BufferPoolAccessor2.0(  518): evictor expired: 1, evicted: 1
+11-04 15:51:45.608 W/BpBinder( 6611): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:45.609 W/ProcessState( 6611): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:45.768 I/servicemanager(    0): Caller(pid=6611,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:45.619 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:45.619 I/Gralloc4( 6611): mapper 4.x is not supported
+11-04 15:51:45.967 W/BpBinder( 6616): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:45.967 W/ProcessState( 6616): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:45.984 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:45.985 I/Gralloc4( 6616): mapper 4.x is not supported
+11-04 15:51:46.137 I/servicemanager(    0): Caller(pid=6616,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.

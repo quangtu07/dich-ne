@@ -1,0 +1,9 @@
+-- DB history extract, run 2026-11-04 15:12 --
+(1, 'WORD', 'MLKIT', 'OK', None, 'comprehension', 'hiểu', 1793779323208)
+(2, 'WORD', 'MLKIT', 'OK', None, 'comprehension', 'hiểu', 1793779465219)
+(3, 'WORD', None, 'ERROR', 'E3a', 'comprehension', None, 1793779504787)
+(4, 'WORD', None, 'ERROR', 'E3a', 'comprehension', None, 1793779584439)
+(5, 'WORD', None, 'ERROR', 'E3a', 'comprehension', None, 1793779644129)
+(6, 'WORD', 'MLKIT', 'OK', None, 'comprehension', 'hiểu', 1793779672546)
+(7, 'WORD', 'MLKIT', 'OK', None, 'perspicacious', 'sáng suốt', 1793779806066)
+cache rows: 0 (ky vong >0 sau luot thanh cong; thuc te 0)

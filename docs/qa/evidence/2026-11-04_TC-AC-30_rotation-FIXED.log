@@ -1,0 +1,17 @@
+=== AC30 retest — APK 18:32:10 (lastUpdateTime=18:32:52), build sau fix BUG-12 ===
+
+PORTRAIT (cur=540x1200):
+  mAttrs={(461,826)(74x74)} gr=TOP START CENTER layoutInDisplayCutoutMode=shortEdges
+  Frames: parent=[0,0][540,1200] frame=[461,826][535,900]  <-- BẰNG mAttrs, đúng cạnh phải 4dp + 25% đáy
+  logcat: BubbleService: frame offset dx=0 dy=0
+
+LANDSCAPE (cmd window user-rotation lock 1 -> cur=1200x540):
+  mAttrs={(1121,331)(74x74)}
+  Frames: parent=[0,0][1200,540] frame=[1121,331][1195,405]  <-- BẰNG mAttrs; 1195 <= 1200, cách mép phải 5px (4dp)
+  pixel: bubble bbox=(1122,332)-(1193,403) -> trọn vòng tròn trong màn
+  logcat: BubbleService: frame offset dx=0 dy=0 (tính lại sau xoay)
+
+LOCK 0 -> về portrait:
+  mAttrs={(461,826)} frame=[461,826][535,900]  <-- khôi phục đúng
+
+crash/FATAL: 0

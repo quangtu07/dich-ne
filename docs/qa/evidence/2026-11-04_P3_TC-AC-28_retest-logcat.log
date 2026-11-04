@@ -1,0 +1,147 @@
+--------- beginning of system
+11-04 15:46:57.002 W/vold    (  194): There is no valid blk device path for data partition
+11-04 15:46:57.010 W/StorageManagerService(  592): Failed to get storage write record
+11-04 15:46:57.012 I/SmartStorageMaintIdler(  592): Got smart storage maintenance service completion callback
+--------- beginning of main
+11-04 15:46:57.012 I/ImeTracker(  592): com.google.android.apps.nexuslauncher:225941dd: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:46:57.012 I/ImeTracker(  592): com.google.android.apps.nexuslauncher:225941dd: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:46:57.016 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:46:57.027 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:46:57.027 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:46:57.027 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:46:57.032 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:46:57.032 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+11-04 15:46:57.072 W/WindowOnBackDispatcher( 3724): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@cd85593
+11-04 15:46:57.087 W/InputManager-JNI(  592): Input channel object 'e72daad vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+11-04 15:46:57.092 W/WindowOnBackDispatcher( 3724): sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@206c489
+11-04 15:46:57.106 W/WindowManager(  592): Failed looking up window session=Session{4a4cbe0 3724:u0a10229} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6311 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:1020 android.view.IWindowSession$Stub.onTransact:1199 
+11-04 15:46:57.107 I/WindowManager(  592): setOnBackInvokedCallback(): No window state for package:vn.bubbledict
+11-04 15:46:57.111 D/CoreBackPreview(  592): Window{4ead656 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback null
+11-04 15:46:57.172 I/BistoHotwordHelper( 4776): (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+11-04 15:46:57.218 W/InputManager-JNI(  592): Input channel object '4ead656 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity (client)' was disposed without first being removed with the input manager!
+11-04 15:46:57.299 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=4087) has no WPC
+11-04 15:46:57.300 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:46:57.300 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:46:57.300 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+11-04 15:46:57.303 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:46:57.304 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:46:57.304 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:46:57.322 I/TopTaskTracker( 1289): onTaskRemoved: taskId=150
+11-04 15:46:57.322 I/TopTaskTracker( 1289): onTaskRemoved: taskId=150
+11-04 15:46:57.375 V/SplashScreenExceptionList(  592): SplashScreen checking exception for package vn.bubbledict (target sdk:35) -> false
+11-04 15:46:57.384 V/WindowManagerShell(  838): Transition requested (#338): android.os.BinderProxy@e18fcb0 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=151 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7236989 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@dc16729} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{b7d9aae vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 338 }
+11-04 15:46:57.446 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+11-04 15:46:57.446 W/system_server(  592): Long monitor contention with owner binder:592_12 (1537) at int com.android.server.wm.ActivityStarter.execute()(ActivityStarter.java:825) waiters=0 in void com.android.server.wm.WindowAnimator.lambda$new$1(long) for 138ms
+11-04 15:46:57.450 W/Looper  (  838): Slow dispatch took 66ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda1@a30104f m=0
+11-04 15:46:57.450 W/Looper  (  838): Slow delivery took 53ms wmshell.main h=android.os.Handler c=null m=10
+11-04 15:46:57.482 W/SplitSelectStateCtor( 1289): Missing session instanceIds
+11-04 15:46:57.482 D/StatsLog( 1289): LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-04 15:46:57.483 W/Looper  (  838): Drained
+11-04 15:46:57.484 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:46:57.491 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+11-04 15:46:57.502 I/TopTaskTracker( 1289): onTaskMovedToFront: (moved taskInfo to front) taskId=151, baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity }
+11-04 15:46:57.532 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:46:57.533 I/GoogleTTSServiceImpl(15322): currentLocale = en-US
+11-04 15:46:57.541 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:46:57.541 I/GoogleTTSServiceImpl(15322): currentLocale = en-GB
+11-04 15:46:57.669 D/AutofillManager( 3724): Fill dialog is enabled:false, hints=[password, passwordAuto, creditCardNumber, creditCardSecurityCode, creditCardExpirationDate]
+11-04 15:46:57.794 D/EGL_emulation( 1289): app_time_stats: avg=117.89ms min=42.26ms max=408.68ms count=7
+11-04 15:46:57.818 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=10 not found or not visible
+11-04 15:46:57.819 W/WindowOnBackDispatcher( 3724): OnBackInvokedCallback is not enabled for the application.
+11-04 15:46:57.819 W/WindowOnBackDispatcher( 3724): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:46:57.912 D/CoreBackPreview(  592): Window{7e5e881 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@ba10afe, mPriority=0, mIsAnimationCallback=false}
+11-04 15:46:57.916 I/EGL_emulation( 3724): Opening libGLESv1_CM_emulation.so
+11-04 15:46:57.916 I/EGL_emulation( 3724): Opening libGLESv2_emulation.so
+11-04 15:46:57.948 W/HWUI    ( 3724): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 15:46:57.997 W/HWUI    ( 3724): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-04 15:46:58.209 I/Choreographer( 3724): Skipped 31 frames!  The application may be doing too much work on its main thread.
+11-04 15:46:58.209 W/WindowOnBackDispatcher( 3724): OnBackInvokedCallback is not enabled for the application.
+11-04 15:46:58.209 W/WindowOnBackDispatcher( 3724): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:46:58.324 D/CoreBackPreview(  592): Window{a4d4714 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@35f425f, mPriority=0, mIsAnimationCallback=false}
+11-04 15:46:58.590 V/WindowManagerShell(  838): onTransitionReady(transaction=2542620656201)
+11-04 15:46:58.591 V/WindowManagerShell(  838): onTransitionReady (#338) android.os.BinderProxy@e18fcb0: {id=338 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@d8cb3ba} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=151)/@0x78933dc sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:46:58.591 V/WindowManagerShell(  838): Playing animation for (#338) android.os.BinderProxy@e18fcb0@0
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultMixedHandler@c5e5b72
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@35dbc3
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.pip.PipTransition@bb62c40
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@78c8779
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.recents.RecentsTransitionHandler@8b2bcbe
+11-04 15:46:58.591 V/ShellRecents(  838): RecentsTransitionHandler.startAnimation: no controller found
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.splitscreen.StageCoordinator@290711f
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.RemoteTransitionHandler@6f1cc6c
+11-04 15:46:58.591 V/WindowManagerShell(  838): Transition doesn't have explicit remote, search filters for match for {id=338 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@d8cb3ba} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=151)/@0x78933dc sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:46:58.591 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@35a7ead, appThread = android.app.IApplicationThread$Stub$Proxy@6eed5e2, debugName = OverlaySwipeBack }}
+11-04 15:46:58.591 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d17977b, appThread = android.app.IApplicationThread$Stub$Proxy@7552998, debugName = LauncherToDream }}
+11-04 15:46:58.591 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@57f35f1, appThread = android.app.IApplicationThread$Stub$Proxy@2ff95d6, debugName = QuickstepLaunchHome }}
+11-04 15:46:58.591 V/WindowManagerShell(  838):  Delegate animation for (#338) to null
+11-04 15:46:58.591 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:46:58.591 V/WindowManagerShell(  838): start default transition animation, info = {id=338 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@d8cb3ba} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=151)/@0x78933dc sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:46:58.591 V/WindowManagerShell(  838): loadAnimation: anim=android.view.animation.AnimationSet@f87626b animAttr=0x4 type=OPEN isEntrance=true
+11-04 15:46:58.595 V/WindowManagerShell(  838):  animated by com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:46:58.615 W/ziparchive(  592): Unable to open '/data/app/~~H-rUIXNSctAMT-PxEQhXJQ==/vn.bubbledict-6qB_kwwlHWoNJn5lJPM5Qw==/base.dm': No such file or directory
+11-04 15:46:58.616 I/ActivityTaskManager(  592): Displayed vn.bubbledict/.ui.result.ResultActivity for user 0: +1s277ms
+11-04 15:46:58.616 V/WindowManager(  592): Sent Transition (#338) createdAt=11-04 15:46:57.304 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=151 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7236989 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{4391e57 Task{7c6e350 #151 type=standard A=10229:vn.bubbledict}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{1da9d44 vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 338 }
+11-04 15:46:58.616 V/WindowManager(  592):     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-04 15:46:58.616 V/WindowManager(  592):     info={id=338 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-04 15:46:58.616 V/WindowManager(  592):         {WCT{RemoteToken{4391e57 Task{7c6e350 #151 type=standard A=10229:vn.bubbledict}}} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=151)/@0x67ed90a sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}
+11-04 15:46:58.616 V/WindowManager(  592):     ]}
+11-04 15:46:58.625 I/HWUI    ( 3724): Davey! duration=871ms; Flags=1, FrameTimelineVsyncId=518521, IntendedVsync=7237290944289, Vsync=7237807610935, InputEventId=0, HandleInputStart=7237816162742, AnimationStart=7237816164150, PerformTraversalsStart=7237816164650, DrawStart=7238082258539, FrameDeadline=7237307610955, FrameInterval=7237815563243, FrameStartTime=16666666, SyncQueued=7238140385007, SyncStart=7238143250587, IssueDrawCommandsStart=7238143514366, SwapBuffers=7238143642091, FrameCompleted=7238165801312, DequeueBufferDuration=3306, QueueBufferDuration=316641, GpuCompleted=7238165801312, SwapBuffersCompleted=7238154868128, DisplayPresentTime=16960825855817, CommandSubmissionCompleted=7238143642091, 
+11-04 15:46:58.626 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:46:58.655 D/TransportRuntime.SQLiteEventStore( 3724): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:46:58.690 W/Looper  (  838): Slow delivery took 36ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:46:58.700 D/TransportRuntime.JobInfoScheduler( 3724): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:46:58.740 W/Looper  (  838): Drained
+11-04 15:46:58.903 W/Looper  (  838): Slow dispatch took 81ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:46:58.966 W/Looper  (  838): Slow dispatch took 32ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:46:58.966 V/WindowManagerShell(  838): Transition animation finished (aborted=false), notifying core (#338) android.os.BinderProxy@e18fcb0@0
+11-04 15:46:58.993 V/WindowManager(  592): Finish Transition (#338): created at 11-04 15:46:57.304 collect-started=0.018ms request-sent=78.572ms started=144.915ms ready=194.293ms sent=1285.66ms finished=1675.182ms
+11-04 15:46:58.994 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:46:59.000 V/WindowManagerShell(  838): Track 0 became idle
+11-04 15:46:59.000 V/WindowManagerShell(  838): All active transition animations finished
+11-04 15:46:59.000 W/Looper  (  838): Slow dispatch took 34ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.DefaultTransitionHandler$$ExternalSyntheticLambda0@b7ba47 m=0
+11-04 15:46:59.056 D/native  ( 3724): I1104 15:46:59.056401    4122 mergeddicttrans.cc:1860] The current system has NMT.
+11-04 15:46:59.056 D/native  ( 3724): I1104 15:46:59.056746    4122 mergeddicttrans.cc:1866] Sentence #0: lucid
+11-04 15:46:59.056 D/native  ( 3724): I1104 15:46:59.056837    4122 mergeddicttrans.cc:1912] To fallback to PB.
+11-04 15:46:59.056 D/native  ( 3724): I1104 15:46:59.056852    4122 mergeddicttrans.cc:1585] Sentence #0: lucid
+11-04 15:46:59.174 D/native  ( 3724): I1104 15:46:59.174925    4122 mergeddicttrans.cc:1571] PBMT preproc: lucid
+11-04 15:46:59.175 D/native  ( 3724): I1104 15:46:59.175305    4122 mergeddicttrans.cc:1588] PBMT trans: Lucid
+11-04 15:46:59.507 I/ImeTracker(  592): vn.bubbledict:6ca26f57: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:46:59.507 I/ImeTracker(  592): vn.bubbledict:6ca26f57: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:46:59.509 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:46:59.523 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:46:59.523 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=vn.bubbledict, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:46:59.525 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:46:59.526 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:46:59.526 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: vn.bubbledict and userId: 0
+11-04 15:46:59.558 D/TransportRuntime.SQLiteEventStore( 3724): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:46:59.560 D/TransportRuntime.JobInfoScheduler( 3724): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:47:00.099 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:47:00.100 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:47:00.100 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:47:00.100 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:47:00.100 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:47:00.100 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:47:00.100 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:47:00.100 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:47:00.101 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:47:00.101 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:47:00.101 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:47:00.101 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:47:00.101 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:47:00.101 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:47:00.114 D/EGL_emulation( 1289): app_time_stats: avg=1116.94ms min=15.53ms max=2218.35ms count=2
+11-04 15:47:00.116 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:47:00.162 D/EGL_emulation(  838): app_time_stats: avg=60138.04ms min=60138.04ms max=60138.04ms count=1
+11-04 15:47:00.555 D/EGL_emulation( 3724): app_time_stats: avg=307.03ms min=23.09ms max=904.03ms count=6
+11-04 15:47:01.213 D/BufferPoolAccessor2.0(  518): bufferpool2 0x70088ba8ee38 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 97/104 (recycle/alloc) - 12/104 (fetch/transfer)
+11-04 15:47:04.623 W/BpBinder( 4195): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:47:04.623 W/ProcessState( 4195): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+--------- beginning of kernel
+11-04 15:47:04.798 I/servicemanager(    0): Caller(pid=4195,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:47:04.655 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:47:04.655 I/Gralloc4( 4195): mapper 4.x is not supported

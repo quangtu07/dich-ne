@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dịch Nè</string>
+    <string name="action_translate">Dịch</string>
+
+    <!-- Tab chính -->
+    <string name="tab_history">Lịch sử</string>
+    <string name="tab_vocab">Từ vựng</string>
+    <string name="tab_settings">Cài đặt</string>
+
+    <!-- Kiểu kết quả (UX-02 §10) -->
+    <string name="result_type_word">Từ</string>
+    <string name="result_type_sentence">Câu</string>
+    <string name="result_type_passage">Đoạn</string>
+    <string name="result_type_ocr">OCR</string>
+    <string name="lang_pair">EN → VI</string>
+
+    <!-- Hành động -->
+    <string name="action_close">Đóng</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_saved">Đã lưu</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_listen">Nghe</string>
+    <string name="action_stop">Dừng</string>
+    <string name="action_retry">Thử lại</string>
+    <string name="action_download_model">Tải gói offline</string>
+    <string name="action_edit_text">Sửa text</string>
+    <string name="action_see_more">Xem thêm</string>
+    <string name="action_collapse">Thu gọn</string>
+    <string name="action_clear">Xoá hết</string>
+    <string name="action_translate_now">Dịch</string>
+
+    <!-- Chip trạng thái (S1–S10) -->
+    <string name="result_chip_cached">Kết quả đã lưu</string>
+    <string name="result_chip_offline">Kết quả offline</string>
+    <string name="result_offline_note">Dịch trên máy, có thể kém chính xác hơn</string>
+    <string name="result_chip_truncated">Đã rút gọn còn %1$s ký tự đầu</string>
+    <string name="result_status_downloading">Đang tải gói dịch…</string>
+    <string name="result_chip_not_in_dict">Không có trong từ điển</string>
+    <string name="result_synonyms">Từ gần nghĩa: %1$s</string>
+    <string name="result_cached_at">Tra lúc %1$s</string>
+
+    <!-- Lỗi -->
+    <string name="error_need_network_long">Cần mạng để dịch đoạn này</string>
+    <string name="error_need_network_long_hint">Bản dịch offline chỉ đủ cho từ và câu ngắn.</string>
+    <string name="error_need_model_short">Chưa tải gói offline để tra từ</string>
+    <string name="error_need_model_short_hint">Bật mạng, hoặc tải gói dịch offline (≈30MB) để tra từ khi không có mạng.</string>
+    <string name="error_source">Không tra được lúc này</string>
+    <string name="error_source_hint">Lỗi kết nối, hết hạn mức, hoặc quá thời gian chờ. Thử lại sau ít phút.</string>
+    <string name="error_empty">Không có kết quả cho đoạn này</string>
+    <!-- E1/AC6: toast khi bôi đen chuỗi rỗng hoặc chỉ khoảng trắng (BUG-02). -->
+    <string name="error_empty_text">Không có nội dung để dịch</string>
+    <!-- E22 (spec 1.8): ML Kit trả output không phải tiếng Việt -> không hiện làm nghĩa. -->
+    <string name="result_no_vi_meaning">Chưa có nghĩa tiếng Việt</string>
+    <string name="result_no_meaning">Chưa tra được nghĩa</string>
+    <!-- E20: key sai 401/403 — hiếm khi thấy vì pipeline rơi tiếp nguồn khác. -->
+    <string name="error_key_invalid_title">API key không hợp lệ</string>
+    <string name="error_key_invalid_body">Đang dùng nguồn miễn phí/offline. Kiểm tra lại key trong Cài đặt để dịch chất lượng cao hơn.</string>
+    <!-- E19/AC25 (spec 1.5): hết lượt dịch keyless, KHÔNG báo "cần mạng". -->
+    <string name="error_quota_title">Hết lượt dịch miễn phí hôm nay</string>
+    <string name="error_quota_body">Thử lại sau, hoặc nhập API key để dịch chất lượng cao hơn.</string>
+    <string name="action_enter_key">Nhập API key</string>
+    <!-- F11 privacy: công tắc nguồn online trong Settings. -->
+    <string name="settings_online_sources">Cho phép nguồn online</string>
+    <!-- AC27 (spec 1.6): email liên hệ MyMemory tuỳ chọn — trống = 5k ký tự/ngày ẩn danh. -->
+    <string name="settings_free_source">Nguồn miễn phí</string>
+    <string name="settings_free_source_on">Còn lượt hôm nay</string>
+    <string name="settings_free_source_quota">Hết lượt hôm nay · về 0h</string>
+    <string name="settings_free_source_off">Đang tắt</string>
+    <string name="contact_email_invalid">Email không hợp lệ</string>
+    <string name="result_english_meanings">Nghĩa tiếng Anh</string>
+    <string name="settings_contact_email">Email liên hệ (tuỳ chọn)</string>
+    <string name="settings_contact_email_empty">Chưa đặt · 5.000 ký tự/ngày ẩn danh</string>
+    <string name="settings_contact_email_set">Đã đặt · 50.000 ký tự/ngày</string>
+    <string name="contact_email_title">Email liên hệ MyMemory</string>
+    <string name="contact_email_body">Để trống: dịch ẩn danh 5.000 ký tự/ngày. Nhập email: MyMemory cho 50.000 ký tự/ngày. Email chỉ gửi tới MyMemory, không lưu khi bạn xoá.</string>
+    <string name="contact_email_label">Email</string>
+    <string name="contact_email_save">Lưu</string>
+    <string name="contact_email_clear">Xoá email</string>
+    <string name="contact_email_saved_toast">Đã lưu email liên hệ</string>
+    <!-- F11: provider có key (Groq/OpenAI-compatible) — tuỳ chọn nâng chất lượng. -->
+    <string name="settings_provider">Nguồn dịch có key (tuỳ chọn)</string>
+    <string name="settings_provider_hint">Tuỳ chọn: dùng cho từ đơn và bản dịch chất lượng cao hơn.</string>
+    <string name="provider_preset_gemini">Gemini</string>
+    <string name="provider_preset_openai">Groq/OpenAI</string>
+    <string name="settings_provider_title">Nguồn dịch có key</string>
+    <string name="provider_base_url">Base URL</string>
+    <string name="provider_model">Model</string>
+    <string name="provider_key">API key</string>
+    <string name="provider_key_support">Key chỉ lưu trên máy (EncryptedSharedPreferences), không ghi log.</string>
+    <string name="provider_save">Lưu</string>
+    <string name="provider_saved_toast">Đã lưu nguồn có key</string>
+    <string name="provider_deleted_toast">Đã xoá key nguồn phụ</string>
+    <string name="provider_delete_key">Xoá key</string>
+    <string name="settings_online_sources_hint">Khi bật, text đang tra được gửi tới nguồn dịch bên thứ ba (MyMemory/Gemini). Tắt: chỉ cache + ML Kit trên máy.</string>
+    <string name="error_loading">Đang tra…</string>
+
+    <!-- TTS (F10, E14–E17) -->
+    <string name="voice_us">US</string>
+    <string name="voice_uk">UK</string>
+    <string name="voice_uk_hint">Máy chưa có giọng Anh-Anh.</string>
+    <string name="tts_missing_uk_title">Máy chưa có giọng Anh-Anh</string>
+    <string name="tts_missing_uk_body">Cài thêm gói giọng trong phần cài đặt chuyển văn bản thành tiếng nói của máy.</string>
+    <string name="tts_open_settings">Mở cài đặt giọng</string>
+    <string name="tts_use_us">Đọc bằng Anh-Mỹ</string>
+    <string name="tts_dialog_close">Đóng</string>
+    <string name="tts_fallback">Máy chưa có giọng đã chọn, đang đọc bằng giọng còn lại.</string>
+    <string name="tts_error">Không phát âm được, thử lại</string>
+    <string name="tts_truncated">Chỉ đọc phần đầu (text quá dài)</string>
+    <string name="tts_missing_generic_title">Máy chưa cài giọng đọc tiếng Anh</string>
+    <string name="tts_missing_generic">Máy chưa có giọng đọc tiếng Anh.</string>
+
+    <!-- OCR (E11) -->
+    <string name="ocr_review_label">Text nhận dạng được</string>
+    <string name="ocr_recognized_hint">Nhận dạng từ ảnh, có thể sai chính tả.</string>
+    <string name="ocr_no_text_hint">Chưa có text để dịch</string>
+    <string name="ocr_edit_title">Sửa text nhận dạng</string>
+
+    <!-- Snackbar -->
+    <string name="copy_done_word">Đã copy nghĩa</string>
+    <string name="copy_done_sentence">Đã copy bản dịch</string>
+    <string name="save_done">Đã lưu vào Từ vựng</string>
+    <string name="result_save_failed">Chưa lưu được, thử lại.</string>
+    <string name="unsave_done">Đã bỏ lưu</string>
+    <string name="undo">Hoàn tác</string>
+
+    <!-- Accessibility (UX-02 §9) -->
+    <string name="a11y_close_sheet">Đóng cửa sổ kết quả</string>
+    <string name="a11y_save_word">Lưu từ</string>
+    <string name="a11y_saved_word">Đã lưu, bấm để bỏ lưu</string>
+    <string name="a11y_unsaved_word">Chưa lưu</string>
+    <string name="a11y_copy">Copy nội dung</string>
+    <!-- F12: banner cập nhật (APK cài ngoài Play) -->
+    <!-- F12: chỉ thêm chuỗi FE cần; chuỗi trạng thái dùng chung nằm ở strings_be.xml
+         (update_banner_action, update_downloading, update_error_download/checksum/permission). -->
+    <string name="update_banner_title_version">Bản mới %1$s</string>
+    <string name="update_banner_body">Bấm Cập nhật để tải và cài bản mới.</string>
+    <string name="update_banner_retry">Thử lại</string>
+    <string name="update_banner_skip">Bỏ qua</string>
+    <string name="update_banner_open_settings">Mở cài đặt</string>
+    <!-- UX-05 §4: màn chọn vùng OCR (FE-08) -->
+    <string name="region_hint">Kéo chọn vùng chữ</string>
+    <string name="region_retake">Chụp lại</string>
+    <string name="region_translate">Dịch</string>
+    <string name="region_too_small">Chọn vùng lớn hơn</string>
+    <string name="region_dark_title">Không đọc được vùng này</string>
+    <string name="region_dark_body">App này có thể chặn chụp màn hình. Thử dùng menu \"Dịch\" khi bôi đen được text.</string>
+    <string name="region_empty_title">Không tìm thấy chữ</string>
+    <string name="region_empty_body">Kéo lại vùng chứa chữ, hoặc chọn vùng lớn hơn.</string>
+    <string name="region_retry_title">Nhận dạng chữ bị lỗi</string>
+    <string name="region_retry_body">Thử chụp lại hoặc chọn vùng khác.</string>
+    <string name="region_close">Đóng</string>
+    <string name="region_a11y_selection">Vùng chọn</string>
+    <string name="region_no_perm_title">Chưa có quyền chụp màn hình</string>
+    <string name="region_no_perm_body">Bấm bong bóng lại để Android hỏi lại quyền chụp màn hình.</string>
+    <string name="region_no_perm_ok">Đã hiểu</string>
+    <!-- §4.3c: màn chặn khi huỷ consent / SecurityException -->
+    <string name="region_blocked_title">Chưa chụp được màn hình</string>
+    <string name="region_blocked_body">Bạn đã huỷ quyền chụp màn hình. Bấm Thử lại để cấp lại quyền, hoặc dùng menu \"Dịch\" khi bôi đen được text.</string>
+    <string name="region_blocked_body_security">Không lấy được quyền chụp màn hình. Bấm Thử lại để cấp lại quyền, hoặc dùng menu \"Dịch\" khi bôi đen được text.</string>
+    <string name="region_blocked_retry">Thử lại</string>
+    <string name="region_blocked_close">Đóng</string>
+    <!-- §4.3b: AC31 progress + E23 timeout trong RegionSelect -->
+    <string name="region_processing">Đang nhận dạng chữ…</string>
+    <string name="region_timeout_title">Nhận dạng quá lâu</string>
+    <string name="region_timeout_body">Quá 10 giây chưa nhận dạng xong. Chọn lại vùng nhỏ hơn, hoặc bấm Huỷ rồi thử lại.</string>
+
+
+    <string name="a11y_listen_us">Nghe phát âm, giọng Anh-Mỹ</string>
+    <string name="a11y_listen_uk">Nghe phát âm, giọng Anh-Anh</string>
+    <string name="a11y_stop">Dừng đọc</string>
+    <string name="a11y_voice_us">Giọng Anh-Mỹ (US)</string>
+    <string name="a11y_voice_uk">Giọng Anh-Anh (UK)</string>
+    <string name="a11y_voice_missing">chưa cài trên máy</string>
+    <string name="a11y_loading">Đang tra kết quả</string>
+
+    <!-- Empty state 3 tab (UX-01) -->
+    <string name="history_empty_title">Chưa có lượt tra nào</string>
+    <string name="history_today">Hôm nay</string>
+    <string name="history_yesterday">Hôm qua</string>
+    <string name="history_deleted_item">Đã xoá lượt tra</string>
+    <string name="history_error_chip">Lỗi</string>
+    <string name="history_loading">Đang tải lịch sử…</string>
+    <string name="history_empty_body">Bôi đen text ở app khác rồi chọn \"Dịch\" trong menu.</string>
+    <string name="vocab_empty_title">Chưa lưu từ nào</string>
+    <string name="vocab_loading">Đang tải từ vựng…</string>
+    <string name="vocab_empty_body">Bấm Lưu khi xem nghĩa để thêm vào đây.</string>
+
+    <!-- Tab Cài đặt (placeholder chờ BE-06/BE-09/BE-13) -->
+    <string name="settings_bubble">Bật bong bóng nổi</string>
+    <string name="settings_bubble_hint">Cần quyền hiển thị trên app khác (F2)</string>
+    <string name="bubble_need_overlay">Cần quyền hiển thị trên app khác để bật bong bóng</string>
+    <string name="bubble_need_notification">Cần quyền thông báo để bong bóng chạy nền</string>
+    <string name="bubble_start_failed">Không bật được bong bóng</string>
+    <string name="settings_target_lang">Ngôn ngữ đích</string>
+    <string name="settings_target_lang_value">Tiếng Việt</string>
+    <string name="settings_voice">Giọng đọc</string>
+    <string name="settings_voice_value">Anh-Mỹ (US) · đổi trong cửa sổ kết quả</string>
+    <string name="settings_delete_history">Xoá lịch sử</string>
+    <string name="settings_delete_history_hint">Có xác nhận · từ đã lưu vẫn giữ</string>
+    <string name="settings_delete_vocab">Xoá từ vựng</string>
+    <string name="settings_delete_vocab_hint">Có xác nhận</string>
+    <string name="settings_dev">Dev</string>
+
+    <!-- Màn dev -->
+    <string name="dev_title">Dev · ResultSheet</string>
+    <string name="dev_tts_title">Dev · TTS voice</string>
+
+    <!-- FE-01: top bar + tìm kiếm + overflow -->
+    <string name="action_search">Tìm kiếm</string>
+    <string name="action_more">Tuỳ chọn</string>
+    <string name="action_close_search">Đóng tìm kiếm</string>
+    <string name="history_search_hint">Tìm trong lịch sử</string>
+    <string name="vocab_search_hint">Tìm trong từ vựng</string>
+    <string name="menu_delete_all">Xoá toàn bộ</string>
+    <string name="menu_sort_new">Mới lưu trước</string>
+    <string name="menu_sort_az">A → Z</string>
+    <string name="vocab_count">Từ vựng · %1$d</string>
+
+    <!-- UX-03: Cài đặt -->
+    <string name="settings_section_bubble">BONG BÓNG NỔI</string>
+    <string name="settings_bubble_on_hint">Bong bóng hiện trên mọi app. Kéo để đổi chỗ, nhấn giữ để tắt.</string>
+    <string name="settings_overlay_permission">Quyền hiển thị trên app khác</string>
+    <string name="settings_notification_permission">Quyền thông báo</string>
+    <string name="settings_permission_granted">Đã cấp</string>
+    <string name="settings_permission_missing">Chưa cấp</string>
+    <string name="settings_permission_blocked">Bị chặn</string>
+    <string name="settings_permission_blocked_hint">Bật lại trong cài đặt hệ thống</string>
+    <string name="settings_notification_warning">Chưa bật thông báo: Android có thể tắt bong bóng khi chạy nền.</string>
+    <string name="settings_open_settings">Mở cài đặt</string>
+
+    <string name="settings_section_translate">DỊCH</string>
+    <string name="settings_target_lang_future">Sẽ có ở bản sau</string>
+    <string name="settings_api_key">API key Gemini</string>
+    <string name="settings_api_key_missing">Chưa có key</string>
+    <string name="settings_api_key_missing_hint">Cần key để tra từ/câu khi có mạng</string>
+    <string name="settings_api_key_saved">Đã lưu</string>
+    <string name="settings_api_key_saved_hint">Chỉ lưu trên máy</string>
+    <string name="settings_model">Tải gói dịch offline</string>
+    <string name="settings_model_not_downloaded">Chưa tải · khoảng 30MB</string>
+    <string name="settings_model_downloading">Đang tải %1$d%% · %2$s/%3$s</string>
+    <string name="settings_model_ready">Đã tải · dùng được khi mất mạng</string>
+    <string name="settings_model_failed">Tải lỗi · kiểm tra Wi-Fi rồi thử lại</string>
+    <string name="settings_model_retry">Thử lại</string>
+    <string name="settings_model_downloading_indeterminate">Đang tải gói dịch…</string>
+    <string name="model_download_failed">Tải gói offline lỗi. Kiểm tra mạng và thử lại.</string>
+
+    <string name="settings_section_tts">PHÁT ÂM</string>
+    <string name="settings_voice_default">Giọng đọc mặc định</string>
+    <string name="settings_voice_uk_missing">Máy chưa có giọng Anh-Anh</string>
+    <string name="settings_download_voice">Tải giọng</string>
+
+    <string name="settings_section_data">DỮ LIỆU</string>
+    <string name="settings_delete_cache">Xoá cache kết quả</string>
+    <string name="settings_section_about">GIỚI THIỆU</string>
+    <string name="settings_version">Phiên bản</string>
+
+    <!-- Màn API key -->
+    <string name="api_key_title">API key Gemini</string>
+    <string name="api_key_label">API key Gemini</string>
+    <string name="api_key_support">Key lấy ở Google AI Studio. Chỉ lưu trên máy, không gửi đi đâu ngoài Google.</string>
+    <string name="api_key_show">Hiện</string>
+    <string name="api_key_hide">Ẩn</string>
+    <string name="api_key_save">Lưu</string>
+    <string name="api_key_check">Kiểm tra key</string>
+    <string name="api_key_checking">Đang kiểm tra…</string>
+    <string name="api_key_check_ok">Key dùng được</string>
+    <string name="api_key_check_failed">Key không dùng được</string>
+    <string name="api_key_check_failed_hint">Kiểm tra lại key, hoặc hạn mức đã hết.</string>
+    <string name="api_key_delete">Xoá key</string>
+    <string name="api_key_delete_title">Xoá API key?</string>
+    <string name="api_key_delete_body">App sẽ không tra được từ/câu khi có mạng cho tới khi nhập key mới.</string>
+    <string name="api_key_saved_toast">Đã lưu key</string>
+    <string name="api_key_save_failed">Không lưu được key. Thử lại.</string>
+    <string name="api_key_deleted_toast">Đã xoá key</string>
+    <string name="api_key_empty_error">Chưa nhập key</string>
+
+    <!-- Màn gói dịch offline -->
+    <string name="model_title">Gói dịch offline</string>
+    <string name="model_desc_size">Dung lượng khoảng 30MB. Tải một lần, dùng khi mất mạng.</string>
+    <string name="model_desc_quality">Chất lượng đủ cho từ và câu ngắn.</string>
+    <string name="model_desc_private">Model tải về máy và dịch ngay trên máy, không upload nội dung.</string>
+    <string name="model_download">Tải xuống</string>
+    <string name="model_downloaded">Đã tải</string>
+    <string name="model_delete">Xoá gói</string>
+    <string name="model_wifi_hint">Nên dùng Wi-Fi (≈30MB)</string>
+    <string name="model_downloading_hint">Có thể mất vài phút. Giữ app mở cho tới khi tải xong.</string>
+    <string name="model_progress">Đang tải %1$d%% · %2$s/%3$s</string>
+    <string name="model_downloading_button">Đang tải…</string>
+
+    <!-- 3 màn giải thích quyền -->
+    <string name="perm_allow">Cho phép</string>
+    <string name="perm_later">Để sau</string>
+    <string name="perm_where_label">Tắt ở đâu</string>
+    <string name="perm_overlay_title">Bong bóng cần hiện trên màn hình đang đọc</string>
+    <string name="perm_overlay_body">Để bong bóng nằm trên app khác, Android cần bạn cấp quyền hiển thị trên ứng dụng khác. App không đọc nội dung màn hình khi bạn không bấm bong bóng.</string>
+    <string name="perm_overlay_where">Cài đặt điện thoại → Ứng dụng → bubble-dict → Hiển thị trên ứng dụng khác.</string>
+    <string name="perm_overlay_revoke">Tắt quyền</string>
+    <string name="perm_screenshot_title">Cần chụp màn hình để đọc chữ trong vùng bạn chọn</string>
+    <string name="perm_screenshot_body">Chỉ chụp khi bạn bấm bong bóng. Ảnh được xử lý ngay trên máy và không gửi lên máy chủ nào.</string>
+    <string name="perm_screenshot_where">Không có công tắc thường trực: Android sẽ hỏi lại mỗi phiên làm việc. Huỷ ở hộp thoại là đủ.</string>
+    <string name="perm_screenshot_continue">Tiếp tục</string>
+    <string name="perm_notification_title">Báo khi đang xử lý ảnh</string>
+    <string name="perm_notification_body">Bong bóng chạy nền cần một thông báo nhỏ để Android không tắt nó. Không có thông báo quảng cáo.</string>
+    <string name="perm_notification_where">Cài đặt điện thoại → Ứng dụng → bubble-dict → Thông báo.</string>
+
+    <!-- Dialog xoá dữ liệu -->
+    <string name="delete_history_title">Xoá toàn bộ lịch sử?</string>
+    <string name="delete_history_body">Toàn bộ lượt tra sẽ bị xoá. Từ đã lưu trong Từ vựng vẫn còn.</string>
+    <string name="delete_vocab_title">Xoá toàn bộ từ vựng?</string>
+    <string name="delete_vocab_body">Danh sách từ đã lưu sẽ bị xoá. Không hoàn tác được.</string>
+    <string name="delete_cache_title">Xoá cache kết quả?</string>
+    <string name="delete_cache_body">Xoá %1$s kết quả đã lưu để tra nhanh lại. Lịch sử và từ vựng không bị ảnh hưởng.</string>
+    <string name="common_cancel">Huỷ</string>
+    <string name="common_delete">Xoá</string>
+    <string name="deleted_history_toast">Đã xoá lịch sử</string>
+    <string name="deleted_vocab_toast">Đã xoá từ vựng</string>
+    <string name="deleted_cache_toast">Đã xoá cache</string>
+
+    <!-- Dev -->
+    <string name="dev_settings_title">Dev · Settings</string>
+    <string name="dev_history_title">Dev · Lịch sử</string>
+    <string name="dev_pending_data">Chưa nối dữ liệu lịch sử/từ vựng (BE-05)</string>
+    <string name="dev_pending_key_test">Kiểm tra key sẽ do BE-08 nối</string>
+    <string name="dev_pending_model">Tải gói offline sẽ do BE-09 nối</string>
+</resources>

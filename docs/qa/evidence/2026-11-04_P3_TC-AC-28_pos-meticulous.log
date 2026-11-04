@@ -1,0 +1,360 @@
+--------- beginning of system
+11-04 15:48:54.606 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=4892) has no WPC
+11-04 15:48:54.607 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:48:54.607 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:48:54.607 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+--------- beginning of main
+11-04 15:48:54.608 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:48:54.608 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:48:54.608 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:48:54.611 V/SplashScreenExceptionList(  592): SplashScreen checking exception for package vn.bubbledict (target sdk:35) -> false
+11-04 15:48:54.612 V/WindowManagerShell(  838): Transition requested (#342): android.os.BinderProxy@bd01c31 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=153 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7354218 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@f191f16} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{62f2097 vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 342 }
+11-04 15:48:54.613 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+11-04 15:48:54.614 W/SplitSelectStateCtor( 1289): Missing session instanceIds
+11-04 15:48:54.614 D/StatsLog( 1289): LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-04 15:48:54.614 D/WindowManagerShell(  838): setLauncherKeepClearAreaHeight: visible=false, height=264
+11-04 15:48:54.615 I/AppsFilter(  592): interaction: PackageSetting{6df5dfc com.android.microdroid.empty_payload/10202} -> PackageSetting{123177e vn.bubbledict/10229} BLOCKED
+11-04 15:48:54.615 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:48:54.616 I/TopTaskTracker( 1289): onTaskMovedToFront: (moved taskInfo to front) taskId=153, baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity }
+11-04 15:48:54.618 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:48:54.623 D/Zygote  (  396): Forked child process 4895
+11-04 15:48:54.623 I/AppWidgetServiceImpl(  592): Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+11-04 15:48:54.624 I/AppWidgetServiceImpl(  592): Updating package stopped masked state for uid 10229 package vn.bubbledict isStopped false
+11-04 15:48:54.628 I/ActivityManager(  592): Start proc 4895:vn.bubbledict/u0a229 for next-top-activity {vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}
+11-04 15:48:54.634 I/netd    (  395): tetherGetStats() -> {[]} <0.44ms>
+11-04 15:48:54.654 I/vn.bubbledict( 4895): Late-enabling -Xcheck:jni
+11-04 15:48:54.671 I/vn.bubbledict( 4895): Using CollectorTypeCMC GC.
+11-04 15:48:54.672 W/vn.bubbledict( 4895): Unexpected CPU variant for x86: x86_64.
+11-04 15:48:54.672 W/vn.bubbledict( 4895): Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+11-04 15:48:54.675 I/adbd    ( 6324): jdwp connection from 4895
+11-04 15:48:54.680 D/nativeloader( 4895): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-04 15:48:54.711 W/ziparchive( 4895): Unable to open '/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.dm': No such file or directory
+11-04 15:48:54.712 W/ziparchive( 4895): Unable to open '/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.dm': No such file or directory
+11-04 15:48:54.724 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=10 not found or not visible
+11-04 15:48:54.724 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=153 not found or not visible
+11-04 15:48:55.013 D/nativeloader( 4895): Configuring clns-7 for other apk /data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/lib/x86_64:/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/vn.bubbledict
+11-04 15:48:55.015 D/CompatChangeReporter( 4895): Compat change id reported: 202956589; UID 10229; state: ENABLED
+11-04 15:48:55.020 V/GraphicsEnvironment( 4895): Currently set values for:
+11-04 15:48:55.020 V/GraphicsEnvironment( 4895):   angle_gl_driver_selection_pkgs=[]
+11-04 15:48:55.020 V/GraphicsEnvironment( 4895):   angle_gl_driver_selection_values=[]
+11-04 15:48:55.020 V/GraphicsEnvironment( 4895): Global.Settings values are invalid: number of packages: 0, number of values: 0
+11-04 15:48:55.021 V/GraphicsEnvironment( 4895): Neither updatable production driver nor prerelease driver is supported.
+11-04 15:48:55.046 D/CompatChangeReporter( 4895): Compat change id reported: 279646685; UID 10229; state: ENABLED
+11-04 15:48:55.069 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+11-04 15:48:55.069 D/CompatChangeReporter(  592): Compat change id reported: 324203798; UID 10229; state: ENABLED
+11-04 15:48:55.174 D/EGL_emulation( 1289): app_time_stats: avg=229.02ms min=21.22ms max=1130.88ms count=7
+11-04 15:48:55.275 I/TextToSpeech( 4895): Sucessfully bound to com.google.android.tts
+11-04 15:48:55.299 D/CompatChangeReporter( 4895): Compat change id reported: 309578419; UID 10229; state: ENABLED
+11-04 15:48:55.303 D/TextToSpeechManagerPerUserService(  592): Trying to start connection to TTS engine: com.google.android.tts
+11-04 15:48:55.317 D/ActivityManager(  592): sync unfroze 15322 com.google.android.tts for 6
+11-04 15:48:55.329 W/HWUI    ( 4895): Unknown dataspace 0
+11-04 15:48:55.336 I/GoogleTtsServicePeer(15322): Creating Google TTS service, version googletts.google-speech-apk_20240319.00_p0.617183227
+11-04 15:48:55.336 I/ExoPlayerImpl(15322): Init 3e7aa72 [AndroidXMedia3/1.3.0] [emu64xa, sdk_gphone64_x86_64, Google, 35]
+11-04 15:48:55.345 I/ExoPlayerImpl(15322): Init 5be7ec3 [AndroidXMedia3/1.3.0] [emu64xa, sdk_gphone64_x86_64, Google, 35]
+11-04 15:48:55.392 I/PipelineReaderImpl(15322): Initializing en-us-x-iog-seanet-embedded from disk
+11-04 15:48:55.789 W/WindowOnBackDispatcher( 4895): OnBackInvokedCallback is not enabled for the application.
+11-04 15:48:55.789 W/WindowOnBackDispatcher( 4895): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:48:55.795 D/CoreBackPreview(  592): Window{650d760 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@fb2f9b6, mPriority=0, mIsAnimationCallback=false}
+11-04 15:48:55.806 I/EGL_emulation( 4895): Opening libGLESv1_CM_emulation.so
+11-04 15:48:55.808 I/EGL_emulation( 4895): Opening libGLESv2_emulation.so
+11-04 15:48:55.887 W/HWUI    ( 4895): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 15:48:55.898 W/HWUI    ( 4895): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-04 15:48:55.989 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:48:55.990 I/Gralloc4( 4895): mapper 4.x is not supported
+--------- beginning of kernel
+11-04 15:48:56.140 I/servicemanager(    0): Caller(pid=4895,uid=10229,sid=u:r:untrusted_app:s0:c229,c256,c512,c768) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:48:56.052 E/tflite  (15322): third_party/tensorflow/lite/core/subgraph.cc:1059 tensor.data.raw != nullptr was not true.
+11-04 15:48:56.066 I/Choreographer( 4895): Skipped 36 frames!  The application may be doing too much work on its main thread.
+11-04 15:48:56.067 W/WindowOnBackDispatcher( 4895): OnBackInvokedCallback is not enabled for the application.
+11-04 15:48:56.067 W/WindowOnBackDispatcher( 4895): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:48:56.095 I/vn.bubbledict( 4895): Compiler allocated 5174KB to compile void android.view.ViewRootImpl.performTraversals()
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Common causes for lock verification issues are non-optimized dex code
+11-04 15:48:56.180 W/vn.bubbledict( 4895): and incorrect proguard optimizations.
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:48:56.180 W/vn.bubbledict( 4895): Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+11-04 15:48:56.273 D/CoreBackPreview(  592): Window{67238ea u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@df6b7, mPriority=0, mIsAnimationCallback=false}
+11-04 15:48:56.285 I/ComposerWrapperImpl(15322): Done initializing en-us-x-iog-seanet-embedded
+11-04 15:48:56.286 D/TextToSpeechManagerPerUserService(  592): Connected successfully to TTS engine: com.google.android.tts
+11-04 15:48:56.287 I/TextToSpeech( 4895): Connected to TTS engine
+11-04 15:48:56.294 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:48:56.294 I/GoogleTTSServiceImpl(15322): currentLocale = en-US
+11-04 15:48:56.301 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:48:56.301 I/GoogleTTSServiceImpl(15322): For default lang en-us is name en-US-language (en-us-x-iog-server)
+11-04 15:48:56.301 I/TextToSpeech( 4895): Setting up the connection to TTS engine...
+11-04 15:48:56.466 V/WindowManagerShell(  838): onTransitionReady(transaction=2542620656388)
+11-04 15:48:56.472 W/ziparchive(  592): Unable to open '/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.dm': No such file or directory
+11-04 15:48:56.481 I/FontLog ( 1065): Received query Noto Color Emoji Compat, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+11-04 15:48:56.482 V/WindowManagerShell(  838): onTransitionReady (#342) android.os.BinderProxy@bd01c31: {id=342 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@63b2f33} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=153)/@0x9c91284 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:48:56.482 V/WindowManagerShell(  838): Playing animation for (#342) android.os.BinderProxy@bd01c31@0
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultMixedHandler@c5e5b72
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@35dbc3
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.pip.PipTransition@bb62c40
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@78c8779
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.recents.RecentsTransitionHandler@8b2bcbe
+11-04 15:48:56.482 V/ShellRecents(  838): RecentsTransitionHandler.startAnimation: no controller found
+11-04 15:48:56.482 V/WindowManagerShell(  838):  try handler com.android.wm.shell.splitscreen.StageCoordinator@290711f
+11-04 15:48:56.483 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.RemoteTransitionHandler@6f1cc6c
+11-04 15:48:56.483 V/WindowManagerShell(  838): Transition doesn't have explicit remote, search filters for match for {id=342 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@63b2f33} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=153)/@0x9c91284 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:48:56.483 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@35a7ead, appThread = android.app.IApplicationThread$Stub$Proxy@6eed5e2, debugName = OverlaySwipeBack }}
+11-04 15:48:56.483 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d17977b, appThread = android.app.IApplicationThread$Stub$Proxy@7552998, debugName = LauncherToDream }}
+11-04 15:48:56.483 V/WindowManagerShell(  838):  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@57f35f1, appThread = android.app.IApplicationThread$Stub$Proxy@2ff95d6, debugName = QuickstepLaunchHome }}
+11-04 15:48:56.483 V/WindowManagerShell(  838):  Delegate animation for (#342) to null
+11-04 15:48:56.483 V/WindowManagerShell(  838):  try handler com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:48:56.483 V/WindowManagerShell(  838): start default transition animation, info = {id=342 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@63b2f33} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=153)/@0x9c91284 sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}]}
+11-04 15:48:56.483 V/WindowManagerShell(  838): loadAnimation: anim=android.view.animation.AnimationSet@406d2f0 animAttr=0x4 type=OPEN isEntrance=true
+11-04 15:48:56.485 I/FontLog ( 1065): Query [emojicompat-emoji-font] resolved to {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} [CONTEXT service_id=132 ]
+11-04 15:48:56.485 I/FontLog ( 1065): Fetch {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+11-04 15:48:56.486 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:48:56.486 I/GoogleTTSServiceImpl(15322): currentLocale = en-US
+11-04 15:48:56.487 W/RankedDispatcher(15322): The requested voice is not available for this app identifier
+11-04 15:48:56.488 I/GoogleTTSServiceImpl(15322): currentLocale = en-GB
+11-04 15:48:56.511 V/WindowManagerShell(  838):  animated by com.android.wm.shell.transition.DefaultTransitionHandler@8c52235
+11-04 15:48:56.512 W/Looper  (  838): Slow delivery took 44ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda7@1ef8b8f m=0
+11-04 15:48:56.519 D/EGL_emulation(  838): app_time_stats: avg=627.64ms min=55.02ms max=2284.03ms count=4
+11-04 15:48:56.522 I/ActivityTaskManager(  592): Displayed vn.bubbledict/.ui.result.ResultActivity for user 0: +1s857ms
+11-04 15:48:56.522 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:48:56.522 V/WindowManager(  592): Sent Transition (#342) createdAt=11-04 15:48:54.608 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=153 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7354218 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{3d3fba7 Task{e544383 #153 type=standard A=10229:vn.bubbledict}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{2193854 vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 342 }
+11-04 15:48:56.522 V/WindowManager(  592):     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-04 15:48:56.522 V/WindowManager(  592):     info={id=342 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-04 15:48:56.522 V/WindowManager(  592):         {WCT{RemoteToken{3d3fba7 Task{e544383 #153 type=standard A=10229:vn.bubbledict}}} m=OPEN f=TRANSLUCENT leash=Surface(name=Task=153)/@0x93aedbc sb=Rect(0, 0 - 540, 1200) eb=Rect(0, 0 - 540, 1200) d=0 taskParent=-1}
+11-04 15:48:56.522 V/WindowManager(  592):     ]}
+11-04 15:48:56.533 I/FontLog ( 1065): Pulling font file for id = 136, cache size = 7 [CONTEXT service_id=132 ]
+11-04 15:48:56.535 I/FontLog ( 1065): Pulling font file for id = 136, cache size = 7 [CONTEXT service_id=132 ]
+11-04 15:48:56.539 I/HWUI    ( 4895): Davey! duration=986ms; Flags=1, FrameTimelineVsyncId=521170, IntendedVsync=7355057606245, Vsync=7355657606221, InputEventId=0, HandleInputStart=7355672911252, AnimationStart=7355672912595, PerformTraversalsStart=7355672913003, DrawStart=7356000651265, FrameDeadline=7355074272911, FrameInterval=7355672664457, FrameStartTime=16666666, SyncQueued=7356027389450, SyncStart=7356057773021, IssueDrawCommandsStart=7356057843662, SwapBuffers=7356060181010, FrameCompleted=7356074428296, DequeueBufferDuration=2436, QueueBufferDuration=315481, GpuCompleted=7356074428296, SwapBuffersCompleted=7356065506990, DisplayPresentTime=0, CommandSubmissionCompleted=7356060181010, 
+11-04 15:48:56.787 W/Looper  (  838): Slow delivery took 71ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@ad5f09a m=0
+11-04 15:48:56.807 W/Looper  (  838): Drained
+11-04 15:48:56.820 D/TransportRuntime.JobInfoScheduler( 4895): Scheduling upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) with jobId=1213538953 in 86400000ms(Backend next call timestamp 0). Attempt 1
+11-04 15:48:56.820 D/CompatChangeReporter( 4895): Compat change id reported: 311402873; UID 10229; state: ENABLED
+11-04 15:48:56.821 D/CompatChangeReporter( 4895): Compat change id reported: 323349338; UID 10229; state: ENABLED
+11-04 15:48:56.821 D/CompatChangeReporter(  592): Compat change id reported: 311402873; UID 10229; state: ENABLED
+11-04 15:48:56.822 D/CompatChangeReporter(  592): Compat change id reported: 323349338; UID 10229; state: ENABLED
+11-04 15:48:56.822 V/WindowManagerShell(  838): Transition animation finished (aborted=false), notifying core (#342) android.os.BinderProxy@bd01c31@0
+11-04 15:48:56.830 V/WindowManagerShell(  838): Track 0 became idle
+11-04 15:48:56.830 V/WindowManagerShell(  838): All active transition animations finished
+11-04 15:48:56.830 W/Looper  (  838): Drained
+11-04 15:48:56.851 V/WindowManager(  592): Finish Transition (#342): created at 11-04 15:48:54.608 collect-started=0.015ms request-sent=3.535ms started=4.485ms ready=461.902ms sent=1856.474ms finished=2220.663ms
+11-04 15:48:56.906 I/ImeTracker(  592): vn.bubbledict:cf6c9922: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-04 15:48:56.910 I/ImeTracker(  592): vn.bubbledict:cf6c9922: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-04 15:48:56.967 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onFinishInput():3157 
+11-04 15:48:56.971 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+11-04 15:48:56.971 I/GoogleInputMethodService( 1348): GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=vn.bubbledict, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-04 15:48:56.971 I/GoogleInputMethodService( 1348): GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+11-04 15:48:56.971 I/AndroidIME( 1348): InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+11-04 15:48:56.972 W/PackageConfigPersister(  592): App-specific configuration not found for packageName: vn.bubbledict and userId: 0
+11-04 15:48:57.146 W/vn.bubbledict( 4895): Verification of void com.google.android.gms.common.internal.BaseGmsClient.dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[]) took 144.090ms (2637.22 bytecodes/s) (8992B approximate peak alloc)
+11-04 15:48:57.159 I/Choreographer(  838): Skipped 36 frames!  The application may be doing too much work on its main thread.
+11-04 15:48:57.172 I/BistoHotwordHelper( 4776): (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+11-04 15:48:57.206 W/LibraryVersion( 4895): Failed to get app version for libraryName: shared-installation-id
+11-04 15:48:57.208 W/LibraryVersion( 4895): Failed to get app version for libraryName: shared-remote-config
+11-04 15:48:57.222 D/CompatChangeReporter( 4895): Compat change id reported: 270674727; UID 10229; state: ENABLED
+11-04 15:48:57.452 W/UserManagerService(  592): Requested status bar icon for non-badged user 0
+11-04 15:48:57.612 I/HWUI    (  838): Davey! duration=705ms; Flags=0, FrameTimelineVsyncId=521348, IntendedVsync=7356157606201, Vsync=7356757606177, InputEventId=0, HandleInputStart=7356766273380, AnimationStart=7356766274572, PerformTraversalsStart=7356766394264, DrawStart=7356766414019, FrameDeadline=7356990939501, FrameInterval=7356766007240, FrameStartTime=16666666, SyncQueued=7356766615033, SyncStart=7357051099342, IssueDrawCommandsStart=7357051172566, SwapBuffers=7357079446568, FrameCompleted=7357148073967, DequeueBufferDuration=4360, QueueBufferDuration=4509929, GpuCompleted=7357091097664, SwapBuffersCompleted=7357148073967, DisplayPresentTime=0, CommandSubmissionCompleted=7357079446568, 
+11-04 15:48:57.612 D/EGL_emulation(  838): app_time_stats: avg=239.11ms min=70.82ms max=639.51ms count=4
+11-04 15:48:57.768 D/EGL_emulation( 4895): app_time_stats: avg=395.43ms min=30.69ms max=1099.76ms count=3
+11-04 15:48:57.770 I/Choreographer( 4895): Skipped 53 frames!  The application may be doing too much work on its main thread.
+11-04 15:48:57.906 I/HWUI    ( 4895): Davey! duration=1251ms; Flags=0, FrameTimelineVsyncId=521333, IntendedVsync=7356140939535, Vsync=7356340939527, InputEventId=0, HandleInputStart=7356341564929, AnimationStart=7356341565978, PerformTraversalsStart=7356342883885, DrawStart=7356342921120, FrameDeadline=7356240939531, FrameInterval=7356341098106, FrameStartTime=16666666, SyncQueued=7356355205808, SyncStart=7356355235966, IssueDrawCommandsStart=7356355274399, SwapBuffers=7357372054851, FrameCompleted=7357392743197, DequeueBufferDuration=3585, QueueBufferDuration=163072, GpuCompleted=7357392743197, SwapBuffersCompleted=7357374876808, DisplayPresentTime=0, CommandSubmissionCompleted=7357372054851, 
+11-04 15:48:58.056 D/EGL_emulation( 1289): app_time_stats: avg=434.89ms min=15.15ms max=3543.74ms count=10
+11-04 15:48:58.065 D/MLKit RemoteConfigRestC( 4895): Got remote config.
+11-04 15:48:58.140 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:58.181 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:58.218 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:58.235 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:58.261 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:58.291 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:58.302 I/HWUI    ( 4895): Davey! duration=1190ms; Flags=0, FrameTimelineVsyncId=521554, IntendedVsync=7356490939521, Vsync=7357374272819, InputEventId=0, HandleInputStart=7357377441306, AnimationStart=7357377442859, PerformTraversalsStart=7357381808140, DrawStart=7357381870750, FrameDeadline=7357557606145, FrameInterval=7357377191768, FrameStartTime=16666666, SyncQueued=7357382350382, SyncStart=7357519645568, IssueDrawCommandsStart=7357519695839, SwapBuffers=7357625853971, FrameCompleted=7357818314015, DequeueBufferDuration=167695594, QueueBufferDuration=599091, GpuCompleted=7357780319385, SwapBuffersCompleted=7357818314015, DisplayPresentTime=0, CommandSubmissionCompleted=7357625853971, 
+11-04 15:48:58.394 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:58.396 D/nativeloader( 4895): Load /data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.apk!/lib/x86_64/libtranslate_jni.so using ns clns-7 from class loader (caller=/data/app/~~uM2Qzm0kshKvtAUoy4r6fw==/vn.bubbledict-CiKdpuTSz-uVGNzxWKud6Q==/base.apk!classes9.dex): ok
+11-04 15:48:58.405 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:58.405 I/native  ( 4895): I0000 00:00:1793782138.405931    5031 package.cc:81] Load: No checksum: /data/user/0/vn.bubbledict/no_backup/com.google.mlkit.translate.models/en_vi/merged_dict_en_vi_25_both.bin
+11-04 15:48:58.431 I/native  ( 4895): I0000 00:00:1793782138.431794    5031 package.cc:81] Load: No checksum: /data/user/0/vn.bubbledict/no_backup/com.google.mlkit.translate.models/en_vi/merged_dict_en_vi_25_from_en.bin
+11-04 15:48:58.431 I/native  ( 4895): I0000 00:00:1793782138.431973    5031 package.cc:81] Load: No checksum: /data/user/0/vn.bubbledict/no_backup/com.google.mlkit.translate.models/en_vi/merged_dict_en_vi_25_update.bin
+11-04 15:48:58.443 E/native  ( 4895): E0000 00:00:1793782138.443018    5031 varwidtharray.h:243] Unable to mlock filter data: -1
+11-04 15:48:58.444 E/native  ( 4895): E0000 00:00:1793782138.444777    5031 varwidtharray.h:243] Unable to mlock filter data: -1
+11-04 15:48:58.444 E/native  ( 4895): E0000 00:00:1793782138.444829    5031 varwidtharray.h:243] Unable to mlock filter data: -1
+11-04 15:48:58.444 I/native  ( 4895): I0000 00:00:1793782138.444861    5031 offline_lm_approx_map.cc:47] 3466384 bytes actually loaded.
+11-04 15:48:58.473 W/native  ( 4895): W0000 00:00:1793782138.473338    5031 universal_preproc_segment_mobile.cc:39] unknown argument: 'SAFT_SLIM'
+11-04 15:48:58.473 W/native  ( 4895): W0000 00:00:1793782138.473542    5031 universal_preproc_segment_mobile.cc:39] unknown argument: 'SAFT_SLIM'
+11-04 15:48:58.473 W/native  ( 4895): W0000 00:00:1793782138.473565    5031 universal_preproc_segment_mobile.cc:39] unknown argument: 'SAFT_SLIM'
+11-04 15:48:58.473 W/native  ( 4895): W0000 00:00:1793782138.473576    5031 universal_preproc_segment_mobile.cc:39] unknown argument: 'SAFT_SLIM'
+11-04 15:48:58.523 I/native  ( 4895): I0000 00:00:1793782138.523882    5031 offline_feature_functions.cc:109] offline lm loaded for language: VIETNAMESE
+11-04 15:48:58.524 I/native  ( 4895): I0000 00:00:1793782138.524009    5031 offline_feature_functions.cc:109] offline lm loaded for language: VIETNAMESE
+11-04 15:48:58.524 I/native  ( 4895): I0000 00:00:1793782138.524100    5031 offline_feature_functions.cc:109] offline lm loaded for language: VIETNAMESE
+11-04 15:48:58.524 I/native  ( 4895): I0000 00:00:1793782138.524167    5031 offline_feature_functions.cc:109] offline lm loaded for language: VIETNAMESE
+11-04 15:48:58.527 I/native  ( 4895): I0000 00:00:1793782138.526975    5031 inference_session_encoder_util.cc:86] Creating sessions for 4 pipelines...
+11-04 15:48:58.527 I/native  ( 4895): I0000 00:00:1793782138.527030    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'encoder_embed_ids_0'...
+11-04 15:48:58.527 I/tflite  ( 4895): Initialized TensorFlow Lite runtime.
+11-04 15:48:58.527 I/tflite  ( 4895): Created TensorFlow Lite XNNPACK delegate for CPU.
+11-04 15:48:58.527 I/native  ( 4895): I0000 00:00:1793782138.527531    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'encoder_swizzled_birnn_0'...
+11-04 15:48:58.527 I/native  ( 4895): I0000 00:00:1793782138.527804    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'encoder_swizzled_birnn_1'...
+11-04 15:48:58.528 I/native  ( 4895): I0000 00:00:1793782138.528086    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'encoder_swizzled_birnn_2'...
+11-04 15:48:58.528 I/native  ( 4895): I0000 00:00:1793782138.528885    5031 decoder.cc:121] Creating decoder
+11-04 15:48:58.532 I/native  ( 4895): I0000 00:00:1793782138.532150    5031 inference_session_encoder_util.cc:86] Creating sessions for 3 pipelines...
+11-04 15:48:58.532 I/native  ( 4895): I0000 00:00:1793782138.532215    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'decoder_init_0'...
+11-04 15:48:58.532 I/native  ( 4895): I0000 00:00:1793782138.532601    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'decoder_step_embed_ids_0'...
+11-04 15:48:58.532 I/native  ( 4895): I0000 00:00:1793782138.532714    5031 inference_session_encoder_util.cc:90] Creating session for pipeline 'decoder_step_0'...
+11-04 15:48:58.563 W/native  ( 4895): W0000 00:00:1793782138.563785    5031 preproc_subsentence_splitter.cc:274] Option 'split_hierarchically' is ignored.
+11-04 15:48:58.595 I/native  ( 4895): I0000 00:00:1793782138.595422    5031 wordpiece_preprocessor.cc:48] Model loaded from pb string. Verifying symbols.
+11-04 15:48:58.597 I/native  ( 4895): I0000 00:00:1793782138.597099    5031 wordpiece_preprocessor.cc:83] Symbols=5998 chars=401
+11-04 15:48:58.602 I/native  ( 4895): I0000 00:00:1793782138.602843    5031 preproc_subsentence_splitter.cc:342] Final todo: upp_offline:b2a:lc:subsentence_splitter_tokenizer
+11-04 15:48:58.610 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:58.622 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:58.625 I/native  ( 4895): I0000 00:00:1793782138.625934    5031 wordpiece_preprocessor.cc:48] Model loaded from pb string. Verifying symbols.
+11-04 15:48:58.627 I/native  ( 4895): I0000 00:00:1793782138.627042    5031 wordpiece_preprocessor.cc:83] Symbols=5998 chars=401
+11-04 15:48:58.640 I/native  ( 4895): I0000 00:00:1793782138.640534    5031 wordpiece_preprocessor.cc:48] Model loaded from pb string. Verifying symbols.
+11-04 15:48:58.641 I/native  ( 4895): I0000 00:00:1793782138.641269    5031 wordpiece_preprocessor.cc:83] Symbols=3998 chars=401
+11-04 15:48:58.643 I/native  ( 4895): I0000 00:00:1793782138.643097    5031 uniform_model.cc:316] Instantiating UniformModel for language=en src_script= tgt_script= top_k=1 model_store= version=, method_type=METHOD_UNSPECIFIED service=translate_ondevice model_path= resource_to_file_handle_map.size=0 rapid_response=
+11-04 15:48:58.645 D/BufferPoolAccessor2.0(  518): bufferpool2 0x70088ba8ee38 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 42/45 (recycle/alloc) - 3/45 (fetch/transfer)
+11-04 15:48:58.640 W/pool-6-thread-1( 4895): type=1400 audit(0.0:181): avc:  denied  { read } for  name="version" dev="proc" ino=4026532032 scontext=u:r:untrusted_app:s0:c229,c256,c512,c768 tcontext=u:object_r:proc_version:s0 tclass=file permissive=0 app=vn.bubbledict
+11-04 15:48:58.646 I/native  ( 4895): I1104 15:48:58.646952    5031 builtin.cc:17] Registering prefix: /memfile//
+11-04 15:48:58.647 I/native  ( 4895): I1104 15:48:58.647006    5031 builtin.cc:17] Registering prefix: /memfile//
+11-04 15:48:58.647 I/native  ( 4895): I1104 15:48:58.647043    5031 icutranslitruleloader.cc:52] Mounting default icu rules
+11-04 15:48:58.647 I/native  ( 4895): I1104 15:48:58.647286    5031 uniform_model.cc:66] Read the config for 85 input language-scripts from: /memfile/nlp/sweet/translit/api/config/default.binarypb
+11-04 15:48:58.647 I/native  ( 4895): I1104 15:48:58.647340    5031 uniform_model.cc:66] Read the config for 4 input language-scripts from: /memfile/nlp/sweet/translit/api/config/translate_ondevice.binarypb
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648241    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648384    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648496    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648527    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648542    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648554    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648565    5031 uniform_model.cc:316] Instantiating UniformModel for language=vi src_script= tgt_script= top_k=1 model_store= version=, method_type=METHOD_UNSPECIFIED service=translate_ondevice model_path= resource_to_file_handle_map.size=0 rapid_response=
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648637    5031 uniform_model.cc:66] Read the config for 85 input language-scripts from: /memfile/nlp/sweet/translit/api/config/default.binarypb
+11-04 15:48:58.648 I/native  ( 4895): I1104 15:48:58.648680    5031 uniform_model.cc:66] Read the config for 4 input language-scripts from: /memfile/nlp/sweet/translit/api/config/translate_ondevice.binarypb
+11-04 15:48:58.649 I/native  ( 4895): I1104 15:48:58.649388    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.649 I/native  ( 4895): I1104 15:48:58.649435    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.649 I/native  ( 4895): I1104 15:48:58.649450    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.649466    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650437    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650453    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650467    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650485    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650507    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650524    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650541    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650557    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650577    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650593    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650608    5031 uniform_model.cc:151] Resolved Method Type: METHOD_ICU
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650707    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650747    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650760    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650773    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650789    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650805    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650819    5031 uniform_model.cc:316] Instantiating UniformModel for language=vi src_script= tgt_script= top_k=1 model_store= version=, method_type=METHOD_UNSPECIFIED service=translate_ondevice model_path= resource_to_file_handle_map.size=0 rapid_response=
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650890    5031 uniform_model.cc:66] Read the config for 85 input language-scripts from: /memfile/nlp/sweet/translit/api/config/default.binarypb
+11-04 15:48:58.650 I/native  ( 4895): I1104 15:48:58.650940    5031 uniform_model.cc:66] Read the config for 4 input language-scripts from: /memfile/nlp/sweet/translit/api/config/translate_ondevice.binarypb
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651616    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651637    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651650    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651662    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651674    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651685    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651697    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651713    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651725    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651741    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651757    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651778    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651810    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651823    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651834    5031 uniform_model.cc:151] Resolved Method Type: METHOD_ICU
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651870    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651884    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651896    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651907    5031 uniform_model.cc:316] Instantiating UniformModel for language=vi src_script= tgt_script= top_k=1 model_store=compact version=, method_type=METHOD_UNSPECIFIED service=translate_ondevice model_path= resource_to_file_handle_map.size=0 rapid_response=
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651960    5031 uniform_model.cc:66] Read the config for 85 input language-scripts from: /memfile/nlp/sweet/translit/api/config/default.binarypb
+11-04 15:48:58.651 I/native  ( 4895): I1104 15:48:58.651984    5031 uniform_model.cc:66] Read the config for 4 input language-scripts from: /memfile/nlp/sweet/translit/api/config/translate_ondevice.binarypb
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652769    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652844    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652864    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652877    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652890    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652902    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652920    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652933    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652945    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652958    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652970    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.652 I/native  ( 4895): I1104 15:48:58.652983    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653001    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653013    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653025    5031 uniform_model.cc:151] Resolved Method Type: METHOD_ICU
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653038    5031 uniform_model.cc:137] Resolved Model Store: compact
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653063    5031 locale_tag.cc:201] Consider adding a default script entry for 'vi' in //nlp/sweet/translit/api/locale_tag.cc.
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653077    5031 uniform_model.cc:235] Resolved Model Path: /memfile/translit/nlp/sweet/translit/api/models/compact/vi
+11-04 15:48:58.653 I/native  ( 4895): I1104 15:48:58.653090    5031 icu_rewrite.cc:83] No ICU translit ID available for language: 'vi'. Using the generic rule 'Any-Latin' for romanization.
+11-04 15:48:59.001 I/native  ( 4895): I1104 15:48:59.001859    5031 dictionary.cc:274] Dictionary build date: 20191024
+11-04 15:48:59.003 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:59.005 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:59.018 D/native  ( 4895): I1104 15:48:59.018628    5031 mergeddicttrans.cc:1860] The current system has NMT.
+11-04 15:48:59.018 D/native  ( 4895): I1104 15:48:59.018688    5031 mergeddicttrans.cc:1866] Sentence #0: meticulous
+11-04 15:48:59.018 D/native  ( 4895): I1104 15:48:59.018725    5031 mergeddicttrans.cc:1522] STT before postprocess: meticulous -> tỉ mỉ
+11-04 15:48:59.022 D/TransportRuntime.SQLiteEventStore( 4895): Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-04 15:48:59.024 D/TransportRuntime.JobInfoScheduler( 4895): Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-04 15:48:59.034 I/resolv  (  395): GetAddrInfoHandler::run: {115 115 115 983155 10229 0}
+11-04 15:48:59.034 I/resolv  (  395): res_nmkquery: (QUERY, IN, AAAA)
+11-04 15:48:59.034 I/resolv  (  395): res_nmkquery: (QUERY, IN, A)
+11-04 15:48:59.034 I/resolv  (  395): resolv_cache_lookup: FOUND IN CACHE entry=0x7e411a6d3650
+11-04 15:48:59.034 I/resolv  (  395): doQuery: rcode=0, ancount=2, return value=95
+11-04 15:48:59.034 I/resolv  (  395): resolv_cache_lookup: FOUND IN CACHE entry=0x7e41ba6db6d0
+11-04 15:48:59.034 I/resolv  (  395): doQuery: rcode=0, ancount=2, return value=71
+11-04 15:48:59.037 D/TrafficStats( 4895): tagSocket(147) with statsTag=0xffffffff, statsUid=-1
+11-04 15:48:59.923 D/EGL_emulation( 4895): app_time_stats: avg=375.14ms min=86.45ms max=1418.53ms count=5
+11-04 15:49:00.002 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:49:00.002 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:49:00.002 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:49:00.002 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:49:00.003 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:49:00.003 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:49:00.003 I/AiAiEcho( 1403): Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-04 15:49:00.003 I/AiAiEcho( 1403): EchoTargets: 
+11-04 15:49:00.003 I/AiAiEcho( 1403): Filtered by AiAi flag check: 
+11-04 15:49:00.003 I/AiAiEcho( 1403): [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:49:00.003 I/AiAiEcho( 1403): Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-04 15:49:00.003 I/AiAiEcho( 1403): #remoteViewsTwiddler: feature disabled.
+11-04 15:49:00.003 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-04 15:49:00.003 I/AiAiEcho( 1403): #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-04 15:49:00.004 D/SsBaseTemplateCard( 1289): No text view can be set up
+11-04 15:49:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:49:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:49:00.004 D/SsBaseTemplateCard( 1289): Passed-in item info is null
+11-04 15:49:00.004 I/SsBaseTemplateCard( 1289): Secondary card pane is null
+11-04 15:49:00.026 W/PageIndicator(  838): Total number of pages invalid: 0. Assuming 1 page.
+11-04 15:49:00.078 D/EGL_emulation(  838): app_time_stats: avg=2465.81ms min=2465.81ms max=2465.81ms count=1
+11-04 15:49:00.082 D/EGL_emulation( 1289): app_time_stats: avg=1201.68ms min=16.15ms max=4692.93ms count=4
+11-04 15:49:00.371 D/ProfileInstaller( 4895): Installing profile for vn.bubbledict
+11-04 15:49:01.118 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:49:01.118 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:49:01.119 I/BugleRcsEngine( 1467): handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[f1e53e06-3f81]>Handler" thread_id=62 ]
+11-04 15:49:01.120 W/IPCThreadState(  592): Sending oneway calls to frozen process.
+11-04 15:49:01.122 I/BugleRcsEngine( 1467): Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=55 ]
+11-04 15:49:01.128 I/ChimeraSrvcProxy( 1065): NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl
+11-04 15:49:01.128 W/.gms.persistent( 1065): Large reply transaction of 1056768 bytes, interface descriptor , code 1
+11-04 15:49:01.134 I/BugleRcsEngine( 1467): No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=62 ]
+11-04 15:49:01.245 I/system_server(  592): Background concurrent mark compact GC freed 22MB AllocSpace bytes, 63(1496KB) LOS objects, 45% free, 28MB/52MB, paused 501us,1.382ms total 131.184ms
+11-04 15:49:01.246 I/BpBinder(  592): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:49:01.248 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~H-rUIXNSctAMT-PxEQhXJQ==/vn.bubbledict-6qB_kwwlHWoNJn5lJPM5Qw==/base.apk' with 1 weak references
+11-04 15:49:01.264 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk' with 1 weak references
+11-04 15:49:01.264 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/InputDevices/InputDevices.apk' with 1 weak references
+11-04 15:49:01.264 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/AccessibilityMenu/AccessibilityMenu.apk' with 1 weak references
+11-04 15:49:01.264 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '/product/overlay/AccessibilityMenu__sdk_gphone64_x86_64__auto_generated_rro_product.apk' with 1 weak references
+11-04 15:49:01.265 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/talkback/talkback.apk' with 1 weak references
+11-04 15:49:01.265 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '/vendor/overlay/EmulatorTalkBackOverlay/EmulatorTalkBackOverlay.apk' with 1 weak references
+11-04 15:49:01.265 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+11-04 15:49:01.265 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/GoogleTTS/GoogleTTS.apk' with 1 weak references
+11-04 15:49:01.265 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/PrebuiltGmail/PrebuiltGmail.apk' with 1 weak references
+11-04 15:49:01.266 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Drive/Drive.apk' with 1 weak references
+11-04 15:49:01.266 W/system_server(  592): ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/CalendarGooglePrebuilt/CalendarGooglePrebuilt.apk' with 1 weak references
+11-04 15:49:02.180 W/BpBinder( 5061): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:49:02.180 W/ProcessState( 5061): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:49:02.198 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:49:02.198 I/Gralloc4( 5061): mapper 4.x is not supported
+11-04 15:49:02.351 I/servicemanager(    0): Caller(pid=5061,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:49:02.719 W/BpBinder( 5066): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:49:02.719 W/ProcessState( 5066): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:49:02.743 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:49:02.743 I/Gralloc4( 5066): mapper 4.x is not supported
+11-04 15:49:02.896 I/servicemanager(    0): Caller(pid=5066,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.

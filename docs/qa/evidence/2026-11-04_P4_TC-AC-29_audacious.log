@@ -1,0 +1,82 @@
+--------- beginning of system
+11-04 15:51:55.739 W/ActivityTaskManager(  592): callingPackage for (uid=0, pid=6869) has no WPC
+11-04 15:51:55.739 D/CompatChangeReporter(  592): Compat change id reported: 151861875; UID 10229; state: ENABLED
+11-04 15:51:55.740 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+11-04 15:51:55.740 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+11-04 15:51:55.740 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+--------- beginning of main
+11-04 15:51:55.741 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:51:55.741 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-04 15:51:55.742 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-04 15:51:55.745 V/SplashScreenExceptionList(  592): SplashScreen checking exception for package vn.bubbledict (target sdk:35) -> false
+11-04 15:51:55.746 V/WindowManagerShell(  838): Transition requested (#356): android.os.BinderProxy@1df0717 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=160 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity } baseActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} topActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} origActivity=null realActivity=ComponentInfo{vn.bubbledict/vn.bubbledict.ui.result.ResultActivity} numActivities=1 lastActiveTime=7535352 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@2e93704} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 68 - 0, 0) topActivityInfo=ActivityInfo{d27d4ed vn.bubbledict.ui.result.ResultActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=540 topActivityLetterboxHeight=1200 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 356 }
+11-04 15:51:55.747 I/ActivityTaskManager(  592): START u0 {act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10000000 cmp=vn.bubbledict/.ui.result.ResultActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+11-04 15:51:55.747 V/GrammaticalInflectionUtils(  592): AttributionSource: AttributionSource { uid = 10229, packageName = null, attributionTag = null, token = android.os.Binder@fd3f9b8, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-04 15:51:55.747 W/SplitSelectStateCtor( 1289): Missing session instanceIds
+11-04 15:51:55.748 D/StatsLog( 1289): LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-04 15:51:55.748 D/WindowManagerShell(  838): setLauncherKeepClearAreaHeight: visible=false, height=264
+11-04 15:51:55.749 I/AppsFilter(  592): interaction: PackageSetting{6df5dfc com.android.microdroid.empty_payload/10202} -> PackageSetting{a8c13d9 vn.bubbledict/10229} BLOCKED
+11-04 15:51:55.750 I/TopTaskTracker( 1289): onTaskMovedToFront: (moved taskInfo to front) taskId=160, baseIntent=Intent { act=android.intent.action.PROCESS_TEXT typ=text/plain flg=0x10800000 cmp=vn.bubbledict/.ui.result.ResultActivity }
+11-04 15:51:55.753 I/AppWidgetServiceImpl(  592): Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+11-04 15:51:55.753 I/AppWidgetServiceImpl(  592): Updating package stopped masked state for uid 10229 package vn.bubbledict isStopped false
+11-04 15:51:55.756 D/Zygote  (  396): Forked child process 6872
+11-04 15:51:55.757 I/ActivityManager(  592): Start proc 6872:vn.bubbledict/u0a229 for next-top-activity {vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}
+11-04 15:51:55.766 I/netd    (  395): tetherGetStats() -> {[]} <0.50ms>
+11-04 15:51:55.785 I/vn.bubbledict( 6872): Late-enabling -Xcheck:jni
+11-04 15:51:55.786 I/BpBinder(  466): onLastStrongRef automatically unlinking death recipients: 
+11-04 15:51:55.822 I/vn.bubbledict( 6872): Using CollectorTypeCMC GC.
+11-04 15:51:55.822 W/vn.bubbledict( 6872): Unexpected CPU variant for x86: x86_64.
+11-04 15:51:55.822 W/vn.bubbledict( 6872): Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+11-04 15:51:55.825 I/adbd    ( 6324): jdwp connection from 6872
+11-04 15:51:55.833 D/nativeloader( 6872): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-04 15:51:55.855 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=10 not found or not visible
+11-04 15:51:55.858 W/ActivityTaskManager(  592): takeTaskSnapshot: taskId=160 not found or not visible
+11-04 15:51:55.861 W/ziparchive( 6872): Unable to open '/data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/base.dm': No such file or directory
+11-04 15:51:55.861 W/ziparchive( 6872): Unable to open '/data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/base.dm': No such file or directory
+11-04 15:51:56.146 D/nativeloader( 6872): Configuring clns-7 for other apk /data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/lib/x86_64:/data/app/~~1nHYGbgQHHwRhqViaK_FwA==/vn.bubbledict-qiM_sIe9fA4DYfqiHltc1A==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/vn.bubbledict
+11-04 15:51:56.147 D/CompatChangeReporter( 6872): Compat change id reported: 202956589; UID 10229; state: ENABLED
+11-04 15:51:56.153 V/GraphicsEnvironment( 6872): Currently set values for:
+11-04 15:51:56.153 V/GraphicsEnvironment( 6872):   angle_gl_driver_selection_pkgs=[]
+11-04 15:51:56.153 V/GraphicsEnvironment( 6872):   angle_gl_driver_selection_values=[]
+11-04 15:51:56.153 V/GraphicsEnvironment( 6872): Global.Settings values are invalid: number of packages: 0, number of values: 0
+11-04 15:51:56.153 V/GraphicsEnvironment( 6872): Neither updatable production driver nor prerelease driver is supported.
+11-04 15:51:56.181 D/CompatChangeReporter( 6872): Compat change id reported: 279646685; UID 10229; state: ENABLED
+11-04 15:51:56.203 W/OptProp (  592): Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+11-04 15:51:56.203 D/CompatChangeReporter(  592): Compat change id reported: 324203798; UID 10229; state: ENABLED
+11-04 15:51:56.294 D/EGL_emulation( 1289): app_time_stats: avg=456.94ms min=2.32ms max=2101.65ms count=5
+11-04 15:51:56.418 D/TextToSpeechManagerPerUserService(  592): Trying to start connection to TTS engine: com.google.android.tts
+11-04 15:51:56.421 I/GoogleTtsServicePeer(15322): Creating Google TTS service, version googletts.google-speech-apk_20240319.00_p0.617183227
+11-04 15:51:56.421 I/ExoPlayerImpl(15322): Init fd5d16d [AndroidXMedia3/1.3.0] [emu64xa, sdk_gphone64_x86_64, Google, 35]
+11-04 15:51:56.426 I/TextToSpeech( 6872): Sucessfully bound to com.google.android.tts
+11-04 15:51:56.432 I/ExoPlayerImpl(15322): Init b2791a2 [AndroidXMedia3/1.3.0] [emu64xa, sdk_gphone64_x86_64, Google, 35]
+11-04 15:51:56.487 D/CompatChangeReporter( 6872): Compat change id reported: 309578419; UID 10229; state: ENABLED
+11-04 15:51:56.502 I/PipelineReaderImpl(15322): Initializing en-us-x-iog-seanet-embedded from disk
+11-04 15:51:56.527 W/HWUI    ( 6872): Unknown dataspace 0
+11-04 15:51:56.738 W/BpBinder( 6918): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-04 15:51:56.739 W/ProcessState( 6918): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-04 15:51:56.761 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:56.761 I/Gralloc4( 6918): mapper 4.x is not supported
+--------- beginning of kernel
+11-04 15:51:56.913 I/servicemanager(    0): Caller(pid=6918,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:56.847 W/WindowOnBackDispatcher( 6872): OnBackInvokedCallback is not enabled for the application.
+11-04 15:51:56.847 W/WindowOnBackDispatcher( 6872): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:51:56.857 D/CoreBackPreview(  592): Window{500e1b2 u0 vn.bubbledict/vn.bubbledict.ui.result.ResultActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@f9f57d6, mPriority=0, mIsAnimationCallback=false}
+11-04 15:51:56.864 I/EGL_emulation( 6872): Opening libGLESv1_CM_emulation.so
+11-04 15:51:56.864 I/EGL_emulation( 6872): Opening libGLESv2_emulation.so
+11-04 15:51:56.932 W/HWUI    ( 6872): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 15:51:56.943 W/HWUI    ( 6872): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-04 15:51:57.043 I/hwservicemanager(  179): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-04 15:51:57.043 I/Gralloc4( 6872): mapper 4.x is not supported
+11-04 15:51:57.196 I/servicemanager(    0): Caller(pid=6872,uid=10229,sid=u:r:untrusted_app:s0:c229,c256,c512,c768) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-04 15:51:57.148 E/tflite  (15322): third_party/tensorflow/lite/core/subgraph.cc:1059 tensor.data.raw != nullptr was not true.
+11-04 15:51:57.155 I/Choreographer( 6872): Skipped 34 frames!  The application may be doing too much work on its main thread.
+11-04 15:51:57.165 W/WindowOnBackDispatcher( 6872): OnBackInvokedCallback is not enabled for the application.
+11-04 15:51:57.165 W/WindowOnBackDispatcher( 6872): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+11-04 15:51:57.193 I/BistoHotwordHelper( 4776): (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Common causes for lock verification issues are non-optimized dex code
+11-04 15:51:57.295 W/vn.bubbledict( 6872): and incorrect proguard optimizations.
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+11-04 15:51:57.295 W/vn.bubbledict( 6872): Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.

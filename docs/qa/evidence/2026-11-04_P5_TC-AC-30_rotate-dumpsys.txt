@@ -1,0 +1,4 @@
+== AC30 rotate test build 18:23 ==
+PORTRAIT: 
+LANDSCAPE: 
+PORTRAIT AGAIN: 

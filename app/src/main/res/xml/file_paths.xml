@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- F12: chỉ chia sẻ thư mục cache nơi UpdateManager lưu APK tải về. -->
+<paths>
+    <cache-path
+        name="updates"
+        path="." />
+</paths>
