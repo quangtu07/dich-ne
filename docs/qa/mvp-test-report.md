@@ -573,3 +573,29 @@ Còn nợ/ghi nhận: **BUG-25 minor** (prefs hỏng → app crash `Unable to pa
 - Trong lúc QA ghi tay cờ `keylessQuotaBlockedOn` vào DataStore (công cụ test) và app đang chạy, file prefs bị ghi đè → 3 lần mở app liên tiếp crash: `r1.b: Unable to parse preferences proto` (`DefaultDispatcher-worker-1/5`, PID 12545/12656/12862), **không tự phục hồi**; xoá file prefs thì app chạy lại bình thường.
 - Đây là lỗi do thao tác test tạo ra, **không phải luồng người dùng**, nhưng phản ánh việc DataStore không có `ReplaceFileCorruptionHandler`: nếu file prefs hỏng vì lý do thật (crash giữa lúc ghi, hết chỗ) user sẽ kẹt ở màn hình đen/launcher cho tới khi xoá dữ liệu app.
 - Đề nghị @Backend (backlog 1.0.6): thêm `.corruptionHandler(ReplaceFileCorruptionHandler { emptyPreferences() })` khi tạo DataStore. Không chặn 1.0.5.
+
+## 11. Lần chạy 11 — 1.0.6 / code 7 FINAL (`7ab5cc0c…`) — 2026-11-05 08:42–08:52
+
+- Build: `dist/dich-ne-1.0.6.apk`, **31.595.914 B**, sha256 `7ab5cc0c299c7726c894d48fc660c6f98cbc84147ccae85111e5feae58921610`, `versionCode=7 versionName=1.0.6`, `find app/src -newer APK` = 0, chữ ký **giữ `73e23c2a…`** (debug keystore theo chốt Chief → cài đè 1.0.5 được). Cài đè 1.0.5, `lastUpdateTime=2026-11-05 08:44:53`, mở app 3 lần → FATAL **0**.
+- Phiếu: [1.0.6-final-pass-sheet.md](1.0.6-final-pass-sheet.md). Ảnh: `2026-11-05_P12_*`.
+
+| Nhóm | Case | Kết quả | Bằng chứng |
+|---|---|---|---|
+| BUG-25 | Ghi **rác 32 B** vào `settings.preferences_pb` → mở app | **PASS** — app mở bình thường với mặc định, `FATAL=0`, `Unable to parse preferences`=**0**, prefs tự ghi lại file hợp lệ (166 B); sau đó bật/tắt bóng + restart vẫn nhớ | `_P12_bug25-corrupt-prefs-recovered.png` |
+| Dev activity | Manifest APK | **PASS** — chỉ còn `MainActivity`, `ResultActivity`, `RegionSelectActivity`, `GoogleApiActivity`; `DebugHooks/HistoryDev/VocabDev/SettingsDev/TtsProbe/ResultPreview` = **0** trong manifest và **0** trong dex | `_P12_apk-activities.txt` |
+| Dev activity runtime | `am start` 3 activity dev | **PASS** — cả 3 `Error type 3 … does not exist` | `_P12_dev-activity-blocked.log` |
+| Cleartext | `res/8G.xml` (network_security_config) | **PASS** — chỉ `base-config cleartextTrafficPermitted=false`, không còn host LAN/Tailscale/10.0.2.2 | `_P12_network-security.txt` |
+| Classifier (bỏ space) | `ab 好`, `OK 好`, `iPhone 手机很好用` | **PASS** — cả 3 là **Câu** (spec 1.31: trộn script không bao giờ là Từ); `苹果` = **Từ** | `_P12_classifier-*.png` |
+| Strip `「」` | `「你好。」` → Câu, text hiện `你好。`; `「今天天气很好，我们去公园散步。」` → `Câu · ZH → VI` + bản dịch | **PASS** | `_P12_strip-quotes-*.png` |
+| Hồi quy F14 | JA → `Đoạn · JA → VI`; KO → `Câu · KO → VI`; VI→VI có "Văn bản đã ở ngôn ngữ đích." + **0** nút Nghe | **PASS** | `_P12_ja-sentence/ko-sentence/same-lang-vi.png` |
+| E3c / E3a / E3b | E3c "…nguồn online không dùng được cho từ này"; E3a (máy bay) "Bật mạng, hoặc tải gói…"; E3b (đoạn 239 ký tự + máy bay) "Cần mạng để dịch đoạn này", **không** nút tải | **PASS** | `_P12_e3c/e3a/e3b.png` |
+| E28 | Chặn 3 IP MyMemory + 2 IP Mozhi, đoạn 234 ký tự, có mạng | **PASS** — "Nguồn dịch miễn phí tạm không dùng được" | `_P12_e28.png` |
+| Màn chính | 3 ảnh bật/tắt/thiếu quyền trên cùng sha | **PASS** | `_P12_final_home-*.png` |
+| Dialog đích | "Dịch sang" 5 lựa chọn | **PASS** | `_P12_final_settings-lang-dialog.png` |
+| Màn gói | 5 dòng, EN "Không cần gói", VI+JA "Chưa tải" → **"Tải tất cả"**; bấm → cả 4 gói `Đã tải` | **PASS** | `_P12_final_offline-packs*.png` |
+| DB + cache | `history=0`, `vocab=0`, `cache=20` key theo cặp (`en>vi` 7, `zh>vi` 5, `ja>vi`, `ko>vi`, `en>zh`, `zh>zh`); FATAL 0; `cache/update-*.apk` = 0 | **PASS** | pull root 08:52 |
+| zh-TW fallback | Không dựng được runtime (Mozhi `zh-CN` đang sống) | **PASS (unit)** — Backend/CR xác nhận có test `zh-TW` retry | báo cáo BE `219/219` |
+| Update 1.0.5→1.0.6 | Raw GitHub code 7 / sha `7ab5cc0c…` (Chief push 08:57:39) → hạ máy về 1.0.5 (code 6) → mở app → banner **"Bản mới 1.0.6"** + notes → `Cập nhật` → tải → verify sha → installer → `Update` → `InstallSuccess`, `dumpsys` = **`versionCode=7/1.0.6`**, mở app **0 FATAL**; `cache/update-*.apk` sau đó **đã dọn** (BUG-21 trên đường update thật) | **PASS** | `_P12_update_banner-1.0.6.png`, `_P12_update_installer-1.0.6.png`, `_P12_update_installed-1.0.6.png` |
+
+**Kết luận bản `7ab5cc0c…`: ĐẠT — 24/24 case PASS** — 0 blocker/critical, toàn bộ nợ 1.0.6 đã đóng bằng runtime (trừ `zh-TW` chấm bằng unit test). **Không hồi quy** case nào của 1.0.5.
+Ghi nhận nhỏ (không chặn): cache còn 4 row key cũ `"vi"` từ 1.0.4 + 1 row `zh>zh` từ lần test đổi đích — sẽ prune theo TTL; spec 1.31 đã sửa lại ví dụ `OK 好`.

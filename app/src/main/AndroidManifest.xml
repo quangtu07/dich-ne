@@ -63,30 +63,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Màn dev để render ResultSheet với dữ liệu mẫu (không xuất ra ngoài app). -->
-        <activity
-            android:name=".ui.result.ResultPreviewActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BubbleDict" />
-
-        <!-- Màn dev seed lịch sử + render HistoryScreen cho QA chụp ảnh. -->
-        <activity
-            android:name=".ui.history.HistoryDevActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BubbleDict" />
-
-        <!-- Màn dev seed từ vựng + render VocabScreen cho QA chụp ảnh. -->
-        <activity
-            android:name=".ui.vocab.VocabDevActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BubbleDict" />
-
-        <!-- Màn dev render Settings cho QA chụp ảnh. -->
-        <activity
-            android:name=".ui.settings.SettingsDevActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BubbleDict" />
-
         <!-- F2 (BE-13): foreground service giữ bong bóng nổi trên app khác. -->
         <service
             android:name=".platform.BubbleService"
@@ -120,12 +96,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-        <!-- Màn dev kiểm tra TTS voice en-US/en-GB trên máy đang chạy. -->
-        <activity
-            android:name=".ui.debug.TtsProbeActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BubbleDict" />
     </application>
 
 </manifest>

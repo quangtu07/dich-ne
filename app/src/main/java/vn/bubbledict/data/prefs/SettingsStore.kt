@@ -2,9 +2,11 @@ package vn.bubbledict.data.prefs
 
 import android.content.Context
 import androidx.datastore.core.DataStore
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
@@ -54,7 +56,15 @@ data class AppSettings(
     val skippedUpdateVersionCode: Int = 0,
 )
 
-private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+/**
+ * BUG-25: file prefs hỏng (crash giữa lúc ghi, hết chỗ) từng làm app crash `Unable to parse
+ * preferences proto` và **không tự phục hồi**. Handler thay file hỏng bằng prefs rỗng để app
+ * vẫn mở được; user mất cài đặt chứ không mất app.
+ */
+private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(
+    name = "settings",
+    corruptionHandler = ReplaceFileCorruptionHandler { emptyPreferences() },
+)
 
 /**
  * Đọc/ghi cài đặt. `DataStore.edit` tuần tự hoá ghi nên không cần lock riêng.

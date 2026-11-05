@@ -49,9 +49,11 @@ class MozhiTranslator(
         // Spec 1.26: Mozhi (engine Google) không nhận mã ISO "zh" trần -> map sang zh-CN.
         val sourceLang = providerLang(request.sourceLang.ifBlank { "en" })
         val targetLang = providerLang(request.targetLang.ifBlank { "vi" })
+        // 1.0.6 (low CR 1.0.5): instance/engine từ chối `zh-CN` thì thử `zh-TW` trước khi bỏ.
+        val alternate = alternatePair(request.sourceLang.ifBlank { "en" }, request.targetLang.ifBlank { "vi" })
         val translated = StringBuilder()
         for (chunk in splitForQuery(request.text)) {
-            when (val outcome = lookupChunkWithFailover(chunk, sourceLang, targetLang)) {
+            when (val outcome = lookupChunkWithFailover(chunk, sourceLang, targetLang, alternate)) {
                 is TranslationOutcome.Translation -> {
                     if (translated.isNotEmpty()) translated.append(' ')
                     translated.append(outcome.text)
@@ -71,6 +73,7 @@ class MozhiTranslator(
         chunk: String,
         sourceLang: String,
         targetLang: String,
+        alternate: Pair<String, String>?,
     ): TranslationOutcome {
         var lastFailure: TranslationOutcome.Failure? = null
         val currentTime = now()
@@ -79,7 +82,7 @@ class MozhiTranslator(
                 logger("mozhi instance-${index + 1} skipped (recently failed)")
                 continue
             }
-            when (val outcome = lookupChunk(base, chunk, sourceLang, targetLang)) {
+            when (val outcome = lookupChunk(base, chunk, sourceLang, targetLang, alternate)) {
                 is TranslationOutcome.Translation -> {
                     instanceDownUntil.remove(base)
                     return outcome
@@ -105,6 +108,7 @@ class MozhiTranslator(
         chunk: String,
         sourceLang: String,
         targetLang: String,
+        alternate: Pair<String, String>? = null,
     ): TranslationOutcome =
         withContext(Dispatchers.IO) {
             try {
@@ -136,6 +140,18 @@ class MozhiTranslator(
                     if (!response.isSuccessful) {
                         // 400/422 = provider từ chối cặp/mã ngôn ngữ -> PAIR_UNSUPPORTED (E31).
                         if (status == 400 || status == 422) {
+                            // 1.0.6: thử mã thay thế (`zh-CN` -> `zh-TW`) trước khi kết luận E31.
+                            // `alternate` chỉ truyền một lần nên tối đa 1 lần retry, không đệ quy vô hạn.
+                            if (alternate != null) {
+                                logger("mozhi pair-rejected retry-alt")
+                                return@withContext lookupChunk(
+                                    baseUrl = baseUrl,
+                                    chunk = chunk,
+                                    sourceLang = alternate.first,
+                                    targetLang = alternate.second,
+                                    alternate = null,
+                                )
+                            }
                             return@withContext TranslationOutcome.Failure(
                                 HttpErrors.E4,
                                 FailureReason.PAIR_UNSUPPORTED,
@@ -163,6 +179,18 @@ class MozhiTranslator(
 
     /** Bảng mã riêng của Mozhi: `zh` -> `zh-CN` (spec 1.26); ngôn ngữ khác dùng mã ISO. */
     internal fun providerLang(iso: String): String = ProviderLanguages.mozhi(iso)
+
+    /**
+     * Cặp mã dự phòng khi Mozhi từ chối cặp chính (1.0.6): hiện chỉ Hán có `zh-CN` -> `zh-TW`.
+     * null = không có phương án thay thế, trả `PAIR_UNSUPPORTED` luôn.
+     */
+    internal fun alternatePair(sourceIso: String, targetIso: String): Pair<String, String>? {
+        val altSource = ProviderLanguages.mozhiAlternate(sourceIso)
+        val altTarget = ProviderLanguages.mozhiAlternate(targetIso)
+        if (altSource == null && altTarget == null) return null
+        return (altSource ?: ProviderLanguages.mozhi(sourceIso)) to
+            (altTarget ?: ProviderLanguages.mozhi(targetIso))
+    }
 
     private fun buildGetUrl(baseUrl: String, text: String, sourceLang: String, targetLang: String): String {
         val encoded = java.net.URLEncoder.encode(text, "UTF-8")

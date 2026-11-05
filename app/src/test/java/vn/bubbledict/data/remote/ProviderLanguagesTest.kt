@@ -1,6 +1,7 @@
 package vn.bubbledict.data.remote
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 /** Spec 1.26/1.28: bảng mã riêng từng provider (CR: gom một chỗ, không rải if trong client). */
@@ -26,5 +27,14 @@ class ProviderLanguagesTest {
         assertEquals("ko", ProviderLanguages.mozhi("ko"))
         assertEquals("en", ProviderLanguages.mozhi("en"))
         assertEquals("vi", ProviderLanguages.mozhi("vi"))
+    }
+
+    @Test
+    fun mozhiAlternate_isZhTwOnlyForChinese() {
+        // 1.0.6 (low CR 1.0.5): provider từ chối `zh-CN` thì thử `zh-TW`.
+        assertEquals("zh-TW", ProviderLanguages.mozhiAlternate("zh"))
+        assertEquals("zh-TW", ProviderLanguages.mozhiAlternate("ZH"))
+        assertNull(ProviderLanguages.mozhiAlternate("en"))
+        assertNull(ProviderLanguages.mozhiAlternate("ja"))
     }
 }

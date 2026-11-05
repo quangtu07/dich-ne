@@ -1,0 +1,4 @@
+"com.google.android.gms.common.api.GoogleApiActivity" (Raw: "com.google.android.gms.common.api.GoogleApiActivity")
+"vn.bubbledict.ui.main.MainActivity" (Raw: "vn.bubbledict.ui.main.MainActivity")
+"vn.bubbledict.ui.region.RegionSelectActivity" (Raw: "vn.bubbledict.ui.region.RegionSelectActivity")
+"vn.bubbledict.ui.result.ResultActivity" (Raw: "vn.bubbledict.ui.result.ResultActivity")

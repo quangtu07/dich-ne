@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  F12: manifest cập nhật + APK được host nội bộ qua HTTP (LAN/Tailscale) trong giai đoạn sideload.
-  Chỉ các host dưới đây được phép cleartext; mọi host khác (Gemini, MyMemory, dictionaryapi…)
-  vẫn bắt buộc HTTPS như mặc định của Android.
-  Khi chuyển sang Cloudflare Tunnel (https) thì xoá các domain này, chỉ giữ base-config.
+  1.0.6: siết cleartext — mọi kết nối ra ngoài bắt buộc HTTPS.
+  Trước đây có domain-config cho host LAN/Tailscale/10.0.2.2 để test update qua HTTP nội bộ;
+  từ khi manifest update nằm trên GitHub raw (https) không còn host nào cần cleartext.
+  Ai muốn test update qua HTTP nội bộ thì dùng bản debug (thêm file res/xml riêng) — bản phát
+  không mở lại danh sách host này nữa.
 -->
 <network-security-config>
     <base-config cleartextTrafficPermitted="false" />
-
-    <domain-config cleartextTrafficPermitted="true">
-        <!-- Máy host LAN của team (Chief dựng http://…:8770). -->
-        <domain includeSubdomains="false">192.168.100.106</domain>
-        <!-- Địa chỉ Tailscale cùng máy host. -->
-        <domain includeSubdomains="false">100.74.239.73</domain>
-        <!-- Host loopback của emulator trỏ về máy dev (dùng để test tay). -->
-        <domain includeSubdomains="false">10.0.2.2</domain>
-        <domain includeSubdomains="false">localhost</domain>
-    </domain-config>
 </network-security-config>

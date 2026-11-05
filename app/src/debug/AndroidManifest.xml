@@ -7,6 +7,18 @@
             android:name=".debug.DebugHooksActivity"
             android:exported="false"
             android:theme="@style/Theme.BubbleDict" />
+
+        <!-- 1.0.6: màn dev kiểm tra TTS voice en-US/en-GB — chỉ tồn tại trong debug build. -->
+        <activity
+            android:name=".ui.debug.TtsProbeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BubbleDict" />
+
+        <!-- 1.0.6: màn dev render ResultSheet với dữ liệu mẫu — chỉ trong debug build. -->
+        <activity
+            android:name=".ui.result.ResultPreviewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BubbleDict" />
     </application>
 
 </manifest>

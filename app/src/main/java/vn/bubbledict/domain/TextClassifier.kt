@@ -11,10 +11,14 @@ import vn.bubbledict.domain.model.TextKind
  * 3. ≤ 3 token và không kết thúc bằng `.` `!` `?` `;` `:` -> WORD.
  * 4. Còn lại -> SENTENCE.
  *
- * **CJK/Hangul (ZH/JA/KO)** — spec 1.25/1.26 (BUG-22), đếm **ký tự chữ** thay vì token vì các
+ * **CJK/Hangul (ZH/JA/KO)** — spec 1.25/1.26 (BUG-22), đếm **ký tự chữ/số** thay vì token vì các
  * ngôn ngữ này không có dấu cách: ≤3 ký tự -> WORD; ≥60 ký tự hoặc ≥2 dấu kết câu CJK
  * (`。！？；`) -> PARAGRAPH; còn lại -> SENTENCE. Trộn script (vd `iPhone 手机很好用`) cũng áp luật
- * ký tự cho toàn chuỗi để kết quả cố định.
+ * ký tự cho toàn chuỗi, và **chuỗi trộn script không bao giờ là WORD** (chip `Từ` hứa "một từ",
+ * chuỗi lai không phải một từ — Designer §9c).
+ *
+ * Ghi chú 1.0.6: bản 1.0.5 đếm cả khoảng trắng vào "ký tự" để khớp ví dụ spec `OK 好` = 4; nay
+ * chỉ đếm chữ/số, còn `OK 好` vẫn SENTENCE nhờ luật trộn script ở trên.
  *
  * Text rỗng coi như WORD; pipeline (BE-10) phải chặn text rỗng trước khi gọi classifier.
  */
@@ -37,12 +41,15 @@ object TextClassifier {
 
         // CJK/Hangul: đếm ký tự (không có dấu cách để tách token).
         if (cjkChars > 0) {
-            // Spec 1.28: trộn script đếm **tổng** ký tự chữ/số; ca chuẩn "OK 好" = 4 -> SENTENCE
-            // (đếm cả khoảng trắng giữa các chữ để khớp đúng ví dụ spec; trim ở normalize).
-            val letterCount = text.count { it.isLetterOrDigit() || it.isWhitespace() }
+            // 1.0.6: chỉ đếm chữ/số — khoảng trắng không phải "ký tự" (CR low: trước đây cộng cả
+            // space làm đoạn CJK+Latin chạm ngưỡng paragraph sớm vài ký tự).
+            val letterCount = text.count { it.isLetterOrDigit() }
             val marks = text.count { it in cjkSentenceMarks }
             if (marks >= 2 || letterCount >= PARAGRAPH_MIN_CJK_CHARS) return TextKind.PARAGRAPH
-            if (letterCount <= WORD_MAX_CJK_CHARS && text.lastOrNull() !in wordTerminators) {
+            // Chuỗi trộn script (Latin + CJK/Hangul) luôn ít nhất là SENTENCE: "OK 好" = 3 chữ
+            // nhưng không phải một từ, gắn chip "Từ" là nói sai (Designer §9c).
+            val mixedScript = text.any { it.isLetter() && !it.isCjkOrHangul() }
+            if (!mixedScript && letterCount <= WORD_MAX_CJK_CHARS && text.lastOrNull() !in wordTerminators) {
                 return TextKind.WORD
             }
             return TextKind.SENTENCE

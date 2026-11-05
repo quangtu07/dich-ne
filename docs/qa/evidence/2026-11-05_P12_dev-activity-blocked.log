@@ -1,0 +1,3 @@
+Starting: Intent { cmp=vn.bubbledict/.debug.DebugHooksActivity }
+Error type 3
+Error: Activity class {vn.bubbledict/vn.bubbledict.debug.DebugHooksActivity} does not exist.

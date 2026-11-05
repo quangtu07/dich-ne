@@ -3,11 +3,12 @@ package vn.bubbledict.domain
 /**
  * Chuẩn hoá text theo spec §5.4 (BE-04):
  * trim, gộp khoảng trắng và xuống dòng, bỏ ký tự bao ngoài không phải chữ (ngoặc kép/đơn, ngoặc đơn,
- * guillemets…). **Giữ** dấu kết câu `.` `!` `?` `;` `:` vì [TextClassifier] cần chúng.
+ * guillemets, ngoặc Nhật/Trung `「」『』〈〉`…). **Giữ** dấu kết câu `.` `!` `?` `;` `:` vì
+ * [TextClassifier] cần chúng.
  */
 object NormalizeText {
 
-    private const val WRAPPERS = "\"'“”‘’«»()[]{}<>"
+    private const val WRAPPERS = "\"'“”‘’«»()[]{}<>「」『』〈〉"
 
     private val whitespace = Regex("\\s+")
 

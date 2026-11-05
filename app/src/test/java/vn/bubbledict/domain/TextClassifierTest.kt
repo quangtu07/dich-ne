@@ -105,6 +105,21 @@ class TextClassifierTest {
     }
 
     @Test
+    fun normalize_stripsCjkQuotes() {
+        // 1.0.6 (low CR 1.0.5): ngoặc Nhật/Trung 「」『』〈〉 cũng là wrapper.
+        assertEquals("你好。", NormalizeText.normalize("「你好。」"))
+        assertEquals("你好。", NormalizeText.normalize("『你好。』"))
+        assertEquals("今天天气很好，我们去公园散步。", NormalizeText.normalize("「今天天气很好，我们去公园散步。」"))
+    }
+
+    @Test
+    fun cjkQuotedSentence_classifiesAsSentence() {
+        // 1.0.6: "「你好。」" phải SENTENCE (dấu kết câu thắng độ dài), không phải WORD.
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("「你好。」"))
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("「今天天气很好，我们去公园散步。」"))
+    }
+
+    @Test
     fun tokenCount_boundaries() {
         assertEquals(0, NormalizeText.tokenCount(""))
         assertEquals(3, NormalizeText.tokenCount("a b c"))
@@ -135,8 +150,25 @@ class TextClassifierTest {
 
     @Test
     fun mixedScript_okHao_isSentence() {
-        // Spec 1.28: trộn script đếm TỔNG ký tự chữ -> "OK 好" = 4 -> SENTENCE.
+        // Spec 1.28/1.30 + Designer: chuỗi lai không phải "một từ" -> SENTENCE.
+        // 1.0.6: không còn đếm khoảng trắng; "OK 好" = 3 chữ nhưng là mixed script nên vẫn SENTENCE.
         assertEquals(TextKind.SENTENCE, TextClassifier.classify("OK 好"))
+    }
+
+    @Test
+    fun mixedScript_abHao_isSentence_neverWord() {
+        // 1.0.6: bỏ đếm khoảng trắng -> "ab 好" chỉ còn 3 chữ, nhưng trộn script thì KHÔNG được ra
+        // WORD (chip "Từ" hứa có nghĩa + từ loại; chuỗi lai không phải một từ — Designer §9c).
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify("ab 好"))
+    }
+
+    @Test
+    fun mixedScript_longText_paragraphThresholdCountsRealCharsOnly() {
+        // 1.0.6: khoảng trắng không được cộng vào ngưỡng paragraph 60 ký tự.
+        // "ab " + 54 chữ Hán + " ab" = 58 chữ + 2 space -> mới 58 (SENTENCE); bản 1.0.5 đếm cả space
+        // thành 60 nên nhảy PARAGRAPH sớm.
+        val text = "ab " + "好".repeat(54) + " ab"
+        assertEquals(TextKind.SENTENCE, TextClassifier.classify(text))
     }
 
     @Test

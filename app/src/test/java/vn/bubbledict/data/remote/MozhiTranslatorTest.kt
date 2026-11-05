@@ -6,6 +6,7 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -201,5 +202,93 @@ class MozhiTranslatorTest {
         assertEquals("ja", translator.providerLang("ja"))
         assertEquals("ko", translator.providerLang("KO"))
         assertEquals("vi", translator.providerLang("vi"))
+    }
+
+    // --- 1.0.6 (low CR 1.0.5): Mozhi từ chối `zh-CN` thì thử `zh-TW` trước khi bỏ ---
+
+    @Test
+    fun chineseSource_zhCnRejected_retriesZhTw() = runBlocking {
+        primary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"Source language code invalid"}"""))
+        primary.enqueue(MockResponse().setBody("""{"translated-text":"Hôm nay trời đẹp."}"""))
+        val chainRequest = LookupRequest(
+            "今天天气很好。",
+            TextSource.SELECTION,
+            sourceLang = "zh",
+            targetLang = "vi",
+        )
+
+        val outcome = translator().lookup(chainRequest)
+
+        assertTrue("phải thử zh-TW rồi dịch được", outcome is TranslationOutcome.Translation)
+        assertEquals("Hôm nay trời đẹp.", (outcome as TranslationOutcome.Translation).text)
+        val first = primary.takeRequest()
+        val second = primary.takeRequest()
+        assertTrue("lần 1 dùng zh-CN", first.path!!.contains("from=zh-CN"))
+        assertTrue("lần 2 fallback zh-TW", second.path!!.contains("from=zh-TW"))
+    }
+
+    @Test
+    fun chineseTarget_zhCnRejected_retriesZhTw() = runBlocking {
+        primary.enqueue(MockResponse().setResponseCode(422).setBody("""{"error":"Target language code invalid"}"""))
+        primary.enqueue(MockResponse().setBody("""{"translated-text":"今天天气很好。"}"""))
+        val chainRequest = LookupRequest(
+            "The weather is nice today.",
+            TextSource.SELECTION,
+            sourceLang = "en",
+            targetLang = "zh",
+        )
+
+        val outcome = translator().lookup(chainRequest)
+
+        assertTrue(outcome is TranslationOutcome.Translation)
+        primary.takeRequest()
+        assertTrue("lần 2 fallback to=zh-TW", primary.takeRequest().path!!.contains("to=zh-TW"))
+    }
+
+    @Test
+    fun chineseRejectedTwice_isPairUnsupported() = runBlocking {
+        primary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"Source language code invalid"}"""))
+        primary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"Source language code invalid"}"""))
+        secondary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"Source language code invalid"}"""))
+        secondary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"Source language code invalid"}"""))
+        val chainRequest = LookupRequest(
+            "今天天气很好。",
+            TextSource.SELECTION,
+            sourceLang = "zh",
+            targetLang = "vi",
+        )
+
+        val outcome = translator().lookup(chainRequest)
+
+        assertEquals(
+            FailureReason.PAIR_UNSUPPORTED,
+            (outcome as TranslationOutcome.Failure).reason,
+        )
+    }
+
+    @Test
+    fun nonChinesePairRejected_isPairUnsupportedWithoutRetry() = runBlocking {
+        primary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"not supported"}"""))
+        secondary.enqueue(MockResponse().setResponseCode(400).setBody("""{"error":"not supported"}"""))
+        val chainRequest = LookupRequest(
+            "Hello there, how are you?",
+            TextSource.SELECTION,
+            sourceLang = "en",
+            targetLang = "ko",
+        )
+
+        val outcome = translator().lookup(chainRequest)
+
+        assertEquals(FailureReason.PAIR_UNSUPPORTED, (outcome as TranslationOutcome.Failure).reason)
+        // không có mã thay thế -> mỗi instance chỉ 1 request, không retry
+        assertEquals(1, primary.requestCount)
+    }
+
+    @Test
+    fun alternatePair_onlyForChinese() {
+        val translator = translator()
+        assertEquals("zh-TW" to "vi", translator.alternatePair("zh", "vi"))
+        assertEquals("en" to "zh-TW", translator.alternatePair("en", "zh"))
+        assertNull(translator.alternatePair("en", "ko"))
     }
 }
